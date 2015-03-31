@@ -6,6 +6,19 @@ from django.conf import settings
 def items():
     items = [
         dict(
+            location='/ipython-notebooks/ukelectionbbg',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'ukelectionbbg',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
             location='/ipython-notebooks/salesforce',
             lmfile=os.path.join(
                 settings.TOP_DIR,

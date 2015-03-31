@@ -12,6 +12,10 @@
             "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
             "config": "api_docs/includes/ipython_notebooks/salesforce/config.json"
         }, 
+        "ukelectionbbg": {
+            "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
+        }, 
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
@@ -34,6 +38,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Bloomberg/Quandl with Plotly", 
+            "thumbnail_image": "", 
+            "relative_url": "ukelectionbbg", 
+            "title": "Plotting GBP/USD price action around UK general elections"
+        }, 
         {
             "title_short": "Interactive graphing with Salesforce", 
             "thumbnail_image": "", 
@@ -84,6 +94,7 @@
         }
     ], 
     "notebooks": [
+        "ukelectionbbg", 
         "salesforce", 
         "gmail", 
         "markowitz", 
