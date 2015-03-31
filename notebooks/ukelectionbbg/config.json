@@ -1,0 +1,15 @@
+{
+    "title": "Plotting GBP/USD price action around UK general elections",
+    "title_short": "Understanding how to download and plot Bloomberg/Quandl with Plotly",
+    "meta_description": "Create interactive graphs with market data, IPython Notebook and Plotly",
+    "cells": [0, "end"],
+    "relative_url": "ukelectionbbg",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}
