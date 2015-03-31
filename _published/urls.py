@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("ukelectionbbg/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='ukelectionbbg'),
+        name='ipython-notebook-ukelectionbbg'),
     url("salesforce/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
