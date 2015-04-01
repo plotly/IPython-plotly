@@ -1,0 +1,15 @@
+{
+    "title": "Big data analytics with Pandas and SQLite",
+    "title_short": "Big data analytics with Pandas and SQLite",
+    "meta_description": "A primer on out-of-memory analytics of large datasets with Pandas, SQLite, and IPython notebooks.",
+    "cells": [0, -1],
+    "relative_url": "big-data-analytics-with-pandas-and-sqlite",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}

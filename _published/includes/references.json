@@ -4,9 +4,9 @@
             "body": "api_docs/includes/ipython_notebooks/cartodb/body.html", 
             "config": "api_docs/includes/ipython_notebooks/cartodb/config.json"
         }, 
-        "make_subplots": {
-            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
+        "sqlite": {
+            "body": "api_docs/includes/ipython_notebooks/sqlite/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/sqlite/config.json"
         }, 
         "salesforce": {
             "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
@@ -15,6 +15,10 @@
         "ukelectionbbg": {
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
+        }, 
+        "make_subplots": {
+            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
         }, 
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
@@ -38,6 +42,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Big data analytics with Pandas and SQLite", 
+            "thumbnail_image": "", 
+            "relative_url": "big-data-analytics-with-pandas-and-sqlite", 
+            "title": "Big data analytics with Pandas and SQLite"
+        }, 
         {
             "title_short": "Bloomberg/Quandl with Plotly", 
             "thumbnail_image": "", 
@@ -94,6 +104,7 @@
         }
     ], 
     "notebooks": [
+        "sqlite", 
         "ukelectionbbg", 
         "salesforce", 
         "gmail", 

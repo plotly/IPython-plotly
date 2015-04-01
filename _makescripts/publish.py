@@ -2,12 +2,12 @@ import json
 import sys
 import os
 import datetime
+import warnings
 
 import delightfulsoup as ds
 import djangofy as dfy
 
 import common
-
 
 # -------------------------------------------------------------------------------
 
@@ -36,9 +36,11 @@ def wget_images(body, nb, name, img_folder_on_streambed, img_folder_in_repo):
 
 # Remove title
 def remove_title(body):
-    H1 = body.findAll('h1')  # TODO check 'h2' also?
-    H1[0].extract()
-
+    try:
+        H1 = body.findAll('h1')  # TODO check 'h2' also?
+        H1[0].extract()
+    except:
+        warnings.warn("No H1 found")
 
 # Add lightbox anchors around <img>
 def add_lightbox(body):
