@@ -37,7 +37,8 @@ def wget_images(body, nb, name, img_folder_on_streambed, img_folder_in_repo):
 # Remove title
 def remove_title(body):
     H1 = body.findAll('h1')  # TODO check 'h2' also?
-    H1[0].extract()
+    if H1:
+        H1[0].extract()
 
 
 # Add lightbox anchors around <img>

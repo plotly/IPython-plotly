@@ -109,6 +109,8 @@ and fill in the generated notebook `config.json`
 
 #### Step 3:
 
+Add your notebook name into `references.json` in the notebooks sub-directory then run:
+
 ```
 make run nb=<notebook-id>
 ```
