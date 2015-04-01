@@ -1,0 +1,67 @@
+<div class="border-box-sizing" id="notebook" tabindex="-1">
+  <div class="container" id="notebook-container">
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="A-Large-Data-Workflow-with-Pandas">
+       A Large Data Workflow with Pandas
+       <a class="anchor-link" href="#A-Large-Data-Workflow-with-Pandas">
+        ¶
+       </a>
+      </h2>
+      <h5 id="Data-Analysis-of-8.2-Million-Rows-with-Python-and-SQLite">
+       Data Analysis of 8.2 Million Rows with Python and SQLite
+       <a class="anchor-link" href="#Data-Analysis-of-8.2-Million-Rows-with-Python-and-SQLite">
+        ¶
+       </a>
+      </h5>
+      <p>
+       This notebook explores a 3.9Gb CSV file containing NYC's 311 complaints since 2003. It's the most popular data set in
+       <a href="https://nycopendata.socrata.com/data" target="_blank">
+        NYC's open data portal
+       </a>
+       .
+      </p>
+      <p>
+       This notebook is a primer on out-of-memory data analysis with
+      </p>
+      <ul>
+       <li>
+        <a href="http://pandas.pydata.org/" target="_blank">
+         pandas
+        </a>
+        : A library with easy-to-use data structures and data analysis tools. Also, interfaces to out-of-memory databases like SQLite.
+       </li>
+       <li>
+        <a href="ipython.org/notebook.html" target="_blank">
+         IPython notebook
+        </a>
+        : An interface for writing and sharing python code, text, and plots.
+       </li>
+       <li>
+        <a href="https://www.sqlite.org/" target="_blank">
+         SQLite
+        </a>
+        : An self-contained, server-less database that's easy to set-up and query from Pandas.
+       </li>
+       <li>
+        <a href="/python/">
+         Plotly
+        </a>
+        : A platform for publishing beautiful, interactive graphs from Python to the web.
+       </li>
+      </ul>
+      <p>
+       The dataset is too large to load into a Pandas dataframe. So, instead we'll perform out-of-memory aggregations with SQLite and load the result directly into a dataframe with Panda's
+       <code>
+        iotools
+       </code>
+       . It's pretty easy to stream a CSV into SQLite and SQLite requires no setup. The SQL query language is pretty intuitive coming from a
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
