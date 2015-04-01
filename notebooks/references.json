@@ -1,6 +1,7 @@
 {
     "notebooks": [
         "apachespark",
+        "sqlite",
         "ukelectionbbg",
         "salesforce",
         "gmail",

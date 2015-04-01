@@ -10,6 +10,11 @@ urlpatterns = patterns(
             lang='ipython-notebooks',
             notebook='apachespark'),
         name='ipython-notebook-apachespark'),
+    url("big-data-analytics-with-pandas-and-sqlite/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='sqlite'),
+        name='ipython-notebook-sqlite'),
     url("ukelectionbbg/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
