@@ -9,6 +9,7 @@
         "networkx",
         "make_subplots",
         "basemap",
-        "collaborate"
+        "collaborate",
+        "apachespark"
     ]
 }
