@@ -2,8 +2,8 @@
     "title": "Plotting Spark DataFrames and Plotly",
     "title_short": "Apache PySpark",
     "meta_description": "A tutorial showing how to plot Apache Spark DataFrames with Plotly",
-    "cells": [0, -1],
-    "relative_url": "Apache-Spark",
+    "cells": [0, "end"],
+    "relative_url": "apache-spark",
     "thumbnail_image": "",
     "non_pip_deps": [
     ]
