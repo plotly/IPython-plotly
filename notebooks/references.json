@@ -1,5 +1,6 @@
 {
     "notebooks": [
+	"sqlite",
         "ukelectionbbg",
         "salesforce",
         "gmail",
@@ -8,7 +9,6 @@
         "networkx",
         "make_subplots",
         "basemap",
-        "collaborate",
-	"sqlite"
+        "collaborate"
     ]
 }

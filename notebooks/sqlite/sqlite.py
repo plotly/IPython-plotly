@@ -496,10 +496,3 @@ py.iplot(
 # - Add [interactive widgets to IPython notebooks](http://moderndata.plot.ly/widgets-in-ipython-notebook-and-plotly/) for customized data exploration
 # - Big data workflows with [HDF5 and Pandas](http://stackoverflow.com/questions/14262433/large-data-work-flows-using-pandas)
 # - [Interactive graphing with Plotly](https://plot.ly/python/)
-
-# In[36]:
-
-from IPython.core.display import HTML
-import urllib2
-HTML(urllib2.urlopen('https://raw.githubusercontent.com/plotly/python-user-guide/css-updates/custom.css').read())
-
