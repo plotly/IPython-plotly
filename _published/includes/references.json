@@ -16,6 +16,10 @@
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
         }, 
+        "sqlite": {
+            "body": "api_docs/includes/ipython_notebooks/sqlite/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/sqlite/config.json"
+        }, 
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
@@ -91,6 +95,12 @@
             "thumbnail_image": "", 
             "relative_url": "collaboration", 
             "title": "Collaboration with Plotly using Python, R and MATLAB"
+        }, 
+        {
+            "title_short": "Big data analytics with Pandas and SQLite", 
+            "thumbnail_image": "", 
+            "relative_url": "big-data-analytics-with-pandas-and-sqlite", 
+            "title": "Big data analytics with Pandas and SQLite"
         }
     ], 
     "notebooks": [
@@ -102,6 +112,7 @@
         "networkx", 
         "make_subplots", 
         "basemap", 
-        "collaborate"
+        "collaborate", 
+        "sqlite"
     ]
 }

@@ -1,0 +1,9 @@
+{
+    "meta_description": "A primer on out-of-memory analytics of large datasets with Pandas, SQLite, and IPython notebooks.", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/sqlite", 
+    "title_short": "Big data analytics with Pandas and SQLite", 
+    "last_modified": "Wednesday 01 April 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/sqlite/sqlite.ipynb", 
+    "title": "Big data analytics with Pandas and SQLite", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/sqlite/sqlite.py"
+}

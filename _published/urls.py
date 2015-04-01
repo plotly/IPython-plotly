@@ -49,5 +49,10 @@ urlpatterns = patterns(
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
             notebook='collaborate'),
-        name='ipython-notebook-collaborate')
+        name='ipython-notebook-collaborate'),
+    url("big-data-analytics-with-pandas-and-sqlite/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='sqlite'),
+        name='ipython-notebook-sqlite')
 )
