@@ -257,3 +257,10 @@ py.iplot(data, filename="spark/over_time")
 
 
 # Interestingly we can see similar patterns for the Embarcadero and Ferry Buildings. We also get a consistent break between work weeks and work days. There also seems to be an interesting pattern between fall and winter usage for the downtown stations that doesn't seem to affect the Caltrain station.
+
+# You can learn more about Plotly Enterprise and collaboration tools with the links below:
+# 
+# - [Collaborations and Language Support](https://plot.ly/ipython-notebooks/collaboration/)
+# - [Network Graphing](https://plot.ly/ipython-notebooks/network-graphs/)
+# - [Maps with Plotly](https://plot.ly/ipython-notebooks/basemap-maps/)
+# - [Plotly Enterprise](https://plot.ly/product/enterprise/)

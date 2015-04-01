@@ -12,6 +12,10 @@
             "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
             "config": "api_docs/includes/ipython_notebooks/salesforce/config.json"
         }, 
+        "networkx": {
+            "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
+        }, 
         "ukelectionbbg": {
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
@@ -20,9 +24,9 @@
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
         }, 
-        "networkx": {
-            "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
+        "apachespark": {
+            "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/apachespark/config.json"
         }, 
         "markowitz": {
             "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
@@ -38,6 +42,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Apache PySpark", 
+            "thumbnail_image": "", 
+            "relative_url": "apache-spark", 
+            "title": "Plotting Spark DataFrames and Plotly"
+        }, 
         {
             "title_short": "Bloomberg/Quandl with Plotly", 
             "thumbnail_image": "", 
@@ -94,6 +104,7 @@
         }
     ], 
     "notebooks": [
+        "apachespark", 
         "ukelectionbbg", 
         "salesforce", 
         "gmail", 

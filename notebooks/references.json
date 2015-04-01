@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "apachespark",
         "ukelectionbbg",
         "salesforce",
         "gmail",
@@ -8,7 +9,6 @@
         "networkx",
         "make_subplots",
         "basemap",
-        "collaborate",
-        "apachespark"
+        "collaborate"
     ]
 }
