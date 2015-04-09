@@ -496,11 +496,6 @@ py.iplot(fig)
 
 # <br>
 # <br>
-# <a name="mat_pca"></a>
-
-# <br>
-# <br>
-# <a name="sklearn_pca"> </a>
 
 # ## Shortcut - PCA in scikit-learn
 
