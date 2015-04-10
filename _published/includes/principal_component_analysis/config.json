@@ -1,0 +1,9 @@
+{
+    "meta_description": "A step by step tutorial to Principal Component Analysis, a simple yet powerful transformation technique.", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/principal_component_analysis", 
+    "title_short": "Principal Component Analysis", 
+    "last_modified": "Friday 10 April 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/principal_component_analysis/principal_component_analysis.ipynb", 
+    "title": "Principal Component Analysis in 3 Simple Steps", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/principal_component_analysis/principal_component_analysis.py"
+}

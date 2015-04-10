@@ -1,6 +1,7 @@
 {
     "notebooks": [
-	"sqlite",
+        "principal_component_analysis",
+        "sqlite",
         "ukelectionbbg",
         "salesforce",
         "gmail",
