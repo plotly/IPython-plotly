@@ -6,7 +6,7 @@ from django.conf import settings
 def items():
     items = [
         dict(
-            location='/ipython-notebooks/principal_component_analysis',
+            location='/ipython-notebooks/principal-component-analysis',
             lmfile=os.path.join(
                 settings.TOP_DIR,
                 'shelly',

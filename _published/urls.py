@@ -5,7 +5,7 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
-    url("principal_component_analysis/$",
+    url("principal-component-analysis/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
             notebook='principal_component_analysis'),
