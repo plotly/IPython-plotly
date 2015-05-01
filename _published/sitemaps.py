@@ -19,6 +19,19 @@ def items():
             priority=0.5
         ),
         dict(
+            location='/ipython-notebooks/principal-component-analysis',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'principal_component_analysis',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
             location='/ipython-notebooks/big-data-analytics-with-pandas-and-sqlite',
             lmfile=os.path.join(
                 settings.TOP_DIR,

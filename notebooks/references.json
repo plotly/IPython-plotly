@@ -1,6 +1,7 @@
 {
     "notebooks": [
         "apachespark",
+        "principal_component_analysis",
         "sqlite",
         "ukelectionbbg",
         "salesforce",

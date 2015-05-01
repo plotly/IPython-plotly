@@ -1,0 +1,15 @@
+{
+    "title": "Principal Component Analysis in 3 Simple Steps",
+    "title_short": "Principal Component Analysis",
+    "meta_description": "A step by step tutorial to Principal Component Analysis, a simple yet powerful transformation technique.",
+    "cells": [0, "end"],
+    "relative_url": "principal-component-analysis",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}

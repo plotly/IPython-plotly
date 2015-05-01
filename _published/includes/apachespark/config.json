@@ -2,7 +2,7 @@
     "meta_description": "A tutorial showing how to plot Apache Spark DataFrames with Plotly", 
     "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/apachespark", 
     "title_short": "Apache PySpark", 
-    "last_modified": "Wednesday 01 April 2015", 
+    "last_modified": "Friday 01 May 2015", 
     "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/apachespark/apachespark.ipynb", 
     "title": "Plotting Spark DataFrames and Plotly", 
     "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/apachespark/apachespark.py"

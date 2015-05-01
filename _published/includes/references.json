@@ -24,6 +24,10 @@
             "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
             "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
         }, 
+        "principal_component_analysis": {
+            "body": "api_docs/includes/ipython_notebooks/principal_component_analysis/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/principal_component_analysis/config.json"
+        }, 
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
@@ -51,6 +55,12 @@
             "thumbnail_image": "", 
             "relative_url": "apache-spark", 
             "title": "Plotting Spark DataFrames and Plotly"
+        }, 
+        {
+            "title_short": "Principal Component Analysis", 
+            "thumbnail_image": "", 
+            "relative_url": "principal-component-analysis", 
+            "title": "Principal Component Analysis in 3 Simple Steps"
         }, 
         {
             "title_short": "Big data analytics with Pandas and SQLite", 
@@ -115,6 +125,7 @@
     ], 
     "notebooks": [
         "apachespark", 
+        "principal_component_analysis", 
         "sqlite", 
         "ukelectionbbg", 
         "salesforce", 
