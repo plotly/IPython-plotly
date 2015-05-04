@@ -31,7 +31,7 @@
 # 
 # 
 # ```sh
-# export SPARK_HOME="$HOME/Downloads/spark-1.3.0"
+# export SPARK_HOME="$HOME/Downloads/spark-1.3.1"
 # ```
 # 
 # Now we'll need to add a file to make sure that we boot up with the Spark Context. Basically when we start the IPython Notebook, we need to be bring in the Spark Context. We need to set up a startup script that runs everytime we start a notebook from this profile. 
@@ -74,7 +74,9 @@
 #     exec(code)
 # ```
 # 
-# And now we're all set! When we start up an ipython notebook, we'll have the Spark Context available in our IPython notebooks. This is one time set up! So now we're ready to run things normally!
+# And now we're all set! When we start up an ipython notebook, we'll have the Spark Context available in our IPython notebooks. This is one time set up! So now we're ready to run things normally! We just have to start a specific pyspark profile.
+# 
+# `ipython notebook --profile=pyspark`
 
 # We can test for the Spark Context's existence with `print sc`.
 
@@ -203,12 +205,8 @@ py.iplot(data, filename="spark/sample_rides")
 
 # In[16]:
 
-from IPython.display import HTML
-HTML("""<div>
-    <a href="https://plot.ly/~bill_chambers/101/" target="_blank" title="Comparing Ride Length - 2 Distinct Samples" style="display: block; text-align: center;"><img src="https://plot.ly/~bill_chambers/101.png" alt="Comparing Ride Length - 2 Distinct Samples" style="max-width: 100%;width: 936px;"  width="936" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="bill_chambers:101" src="https://plot.ly/embed.js" async></script>
-</div>
-""")
+import plotly.tools as tls
+tls.embed("https://plot.ly/~bill_chambers/101")
 
 
 # Now let's check out bike rentals from individual stations. We can do a groupby with Spark DataFrames just as we might in Pandas. We've also seen at this point how easy it is to convert a Spark DataFrame to a pandas DataFrame.
@@ -257,3 +255,10 @@ py.iplot(data, filename="spark/over_time")
 
 
 # Interestingly we can see similar patterns for the Embarcadero and Ferry Buildings. We also get a consistent break between work weeks and work days. There also seems to be an interesting pattern between fall and winter usage for the downtown stations that doesn't seem to affect the Caltrain station.
+
+# You can learn more about Plotly Enterprise and collaboration tools with the links below:
+# 
+# - [Collaborations and Language Support](https://plot.ly/ipython-notebooks/collaboration/)
+# - [Network Graphing](https://plot.ly/ipython-notebooks/network-graphs/)
+# - [Maps with Plotly](https://plot.ly/ipython-notebooks/basemap-maps/)
+# - [Plotly Enterprise](https://plot.ly/product/enterprise/)

@@ -59,5 +59,10 @@ urlpatterns = patterns(
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
             notebook='collaborate'),
-        name='ipython-notebook-collaborate')
+        name='ipython-notebook-collaborate'),
+    url("apache-spark/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='apachespark'),
+        name='ipython-notebook-apachespark')
 )

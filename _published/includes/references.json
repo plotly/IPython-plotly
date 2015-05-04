@@ -12,6 +12,10 @@
             "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
             "config": "api_docs/includes/ipython_notebooks/salesforce/config.json"
         }, 
+        "apachespark": {
+            "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/apachespark/config.json"
+        }, 
         "ukelectionbbg": {
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
@@ -111,6 +115,12 @@
             "thumbnail_image": "", 
             "relative_url": "collaboration", 
             "title": "Collaboration with Plotly using Python, R and MATLAB"
+        }, 
+        {
+            "title_short": "Apache PySpark", 
+            "thumbnail_image": "", 
+            "relative_url": "apache-spark", 
+            "title": "Plotting Spark DataFrames and Plotly"
         }
     ], 
     "notebooks": [
@@ -124,6 +134,7 @@
         "networkx", 
         "make_subplots", 
         "basemap", 
-        "collaborate"
+        "collaborate", 
+        "apachespark"
     ]
 }
