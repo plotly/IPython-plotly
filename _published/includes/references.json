@@ -54,7 +54,7 @@
             "title_short": "Apache PySpark", 
             "thumbnail_image": "", 
             "relative_url": "apache-spark", 
-            "title": "Plotting Spark DataFrames and Plotly"
+            "title": "Plotting Spark DataFrames with Plotly"
         }, 
         {
             "title_short": "Principal Component Analysis", 

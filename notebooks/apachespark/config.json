@@ -1,5 +1,5 @@
 {
-    "title": "Plotting Spark DataFrames and Plotly",
+    "title": "Plotting Spark DataFrames with Plotly",
     "title_short": "Apache PySpark",
     "meta_description": "A tutorial showing how to plot Apache Spark DataFrames with Plotly",
     "cells": [0, "end"],
