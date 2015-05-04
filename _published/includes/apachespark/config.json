@@ -4,6 +4,6 @@
     "title_short": "Apache PySpark", 
     "last_modified": "Monday 04 May 2015", 
     "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/apachespark/apachespark.ipynb", 
-    "title": "Plotting Spark DataFrames and Plotly", 
+    "title": "Plotting Spark DataFrames with Plotly", 
     "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/apachespark/apachespark.py"
 }
