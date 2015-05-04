@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("apache-spark/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='apachespark'),
+        name='ipython-notebook-apachespark'),
     url("principal-component-analysis/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
@@ -59,10 +64,5 @@ urlpatterns = patterns(
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
             notebook='collaborate'),
-        name='ipython-notebook-collaborate'),
-    url("apache-spark/$",
-        IPythonNotebookPage.as_view(
-            lang='ipython-notebooks',
-            notebook='apachespark'),
-        name='ipython-notebook-apachespark')
+        name='ipython-notebook-collaborate')
 )

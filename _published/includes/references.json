@@ -12,9 +12,9 @@
             "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
             "config": "api_docs/includes/ipython_notebooks/salesforce/config.json"
         }, 
-        "apachespark": {
-            "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/apachespark/config.json"
+        "networkx": {
+            "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
         }, 
         "ukelectionbbg": {
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
@@ -32,9 +32,9 @@
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
         }, 
-        "networkx": {
-            "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
+        "apachespark": {
+            "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/apachespark/config.json"
         }, 
         "markowitz": {
             "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
@@ -50,6 +50,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Apache PySpark", 
+            "thumbnail_image": "", 
+            "relative_url": "apache-spark", 
+            "title": "Plotting Spark DataFrames and Plotly"
+        }, 
         {
             "title_short": "Principal Component Analysis", 
             "thumbnail_image": "", 
@@ -115,15 +121,10 @@
             "thumbnail_image": "", 
             "relative_url": "collaboration", 
             "title": "Collaboration with Plotly using Python, R and MATLAB"
-        }, 
-        {
-            "title_short": "Apache PySpark", 
-            "thumbnail_image": "", 
-            "relative_url": "apache-spark", 
-            "title": "Plotting Spark DataFrames and Plotly"
         }
     ], 
     "notebooks": [
+        "apachespark", 
         "principal_component_analysis", 
         "sqlite", 
         "ukelectionbbg", 
@@ -134,7 +135,6 @@
         "networkx", 
         "make_subplots", 
         "basemap", 
-        "collaborate", 
-        "apachespark"
+        "collaborate"
     ]
 }

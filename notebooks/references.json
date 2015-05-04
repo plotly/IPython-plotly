@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "apachespark",
         "principal_component_analysis",
         "sqlite",
         "ukelectionbbg",
@@ -10,7 +11,6 @@
         "networkx",
         "make_subplots",
         "basemap",
-        "collaborate",
-        "apachespark"
+        "collaborate"
     ]
 }
