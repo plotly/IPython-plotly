@@ -16,6 +16,10 @@
             "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
             "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
         }, 
+        "redshift": {
+            "body": "api_docs/includes/ipython_notebooks/redshift/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/redshift/config.json"
+        }, 
         "ukelectionbbg": {
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
@@ -50,6 +54,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Amazon Redshift", 
+            "thumbnail_image": "", 
+            "relative_url": "amazon-redshift", 
+            "title": "Plotting Data From Your Redshift Data Warehouse"
+        }, 
         {
             "title_short": "Apache PySpark", 
             "thumbnail_image": "", 
@@ -124,6 +134,7 @@
         }
     ], 
     "notebooks": [
+        "redshift", 
         "apachespark", 
         "principal_component_analysis", 
         "sqlite", 

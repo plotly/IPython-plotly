@@ -1,0 +1,10 @@
+{
+    "title": "Plotting Data From Your Redshift Data Warehouse",
+    "title_short": "Amazon Redshift",
+    "meta_description": "A tutorial showing how to plot Amazon AWS Redshift data with Plotly",
+    "cells": [0, "end"],
+    "relative_url": "amazon-redshift",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+    ]
+}
