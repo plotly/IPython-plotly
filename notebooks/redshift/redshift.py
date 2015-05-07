@@ -227,7 +227,8 @@ sum(likerock::int) as rock, sum(likevegas::int) as vegas,
 sum(likebroadway::int) as broadway, sum(likemusicals::int) as musical, 
 state
 FROM users 
-GROUP BY state;
+GROUP BY state
+ORDER BY state asc;
 """, engine)
 
 
@@ -239,10 +240,11 @@ data = Data([
         Heatmap(
             z = df.drop('state', axis=1).values,
             x = df.drop('state', axis=1).columns,
-            y=df.state,
-            colorscale='Hot'
+            y = df.state,
+            colorscale = 'Hot'
         )
     ])
+layout = Layout(title="State and Music Tastes", yaxis=YAxis(autotick=False, dtick=1), height=5000)
 py.iplot(data, filename='redshift/state and music taste heatmap')
 
 
@@ -343,7 +345,7 @@ for count, (name, g) in enumerate(df.groupby("category_name")):
             yaxis='y' + str(count + 1)
         ))
 
-fig = tls.get_subplots(rows=2,columns=2)
+fig = tls.make_subplots(rows=2,cols=2)
 fig['layout'].update(title="Event Sales Per Day By Category")
 fig['data'] += data
 py.iplot(fig)
