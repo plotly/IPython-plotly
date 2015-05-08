@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "redshift",
         "apachespark",
         "principal_component_analysis",
         "sqlite",
