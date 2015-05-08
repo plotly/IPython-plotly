@@ -34,7 +34,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span> <span class="c">#python 3 support</span>
 
 <span class="kn">import</span> <span class="nn">plotly.plotly</span> <span class="kn">as</span> <span class="nn">py</span>
@@ -74,8 +74,11 @@
        </a>
        to make it simple to query and analyze our data.
       </p>
-      <h3 id="packages">
+      <h3 id="Packages">
        Packages
+       <a class="anchor-link" href="#Packages">
+        ¶
+       </a>
       </h3>
       <ul>
        <li>
@@ -88,8 +91,11 @@
         SQLAlchemy
        </li>
       </ul>
-      <h3 id="information-you-need-to-get-started">
+      <h3 id="Information-you-need-to-get-started">
        Information you need to get started
+       <a class="anchor-link" href="#Information-you-need-to-get-started">
+        ¶
+       </a>
       </h3>
       <p>
        You'll need your
@@ -125,7 +131,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">redshift_endpoint</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"REDSHIFT_ENDPOINT"</span><span class="p">)</span>
 <span class="n">redshift_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"REDSHIFT_USER"</span><span class="p">)</span>
 <span class="n">redshift_pass</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"REDSHIFT_PASS"</span><span class="p">)</span>
@@ -174,7 +180,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
 <span class="n">engine_string</span> <span class="o">=</span> <span class="s">"postgresql+psycopg2://</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">@</span><span class="si">%s</span><span class="s">:</span><span class="si">%d</span><span class="s">/</span><span class="si">%s</span><span class="s">"</span> \
 <span class="o">%</span> <span class="p">(</span><span class="n">redshift_user</span><span class="p">,</span> <span class="n">redshift_pass</span><span class="p">,</span> <span class="n">redshift_endpoint</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">dbname</span><span class="p">)</span>
@@ -208,7 +214,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="kn">import</span> <span class="nn">psycopg2</span>
 <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
     <span class="n">host</span><span class="o">=</span><span class="s">"datawarehouse.cm4z2iunjfsc.us-west-2.redshift.amazonaws.com"</span><span class="p">,</span> 
@@ -228,8 +234,11 @@
     </div>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
-      <h3 id="loading-in-data">
+      <h3 id="Loading-in-Data">
        Loading in Data
+       <a class="anchor-link" href="#Loading-in-Data">
+        ¶
+       </a>
       </h3>
       <p>
        This next section goes over loading in the sample data from Amazon's sample database. This is strictly for the purposes of the tutorial so feel free to skim this section if you're going to be working with your own data.
@@ -242,14 +251,14 @@
    </div>
    <div class="cell border-box-sizing code_cell rendered">
     <div class="input">
-     <div class="prompt input_prompt" id="In-[None]">
-      <a class="prompt input_prompt" href="#In-[None]">
-       In [None]:
+     <div class="prompt input_prompt" id="In-[-]">
+      <a class="prompt input_prompt" href="#In-[-]">
+       In [ ]:
       </a>
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""drop table users;</span>
 
 <span class="s">drop table venue;</span>
@@ -272,14 +281,14 @@
    </div>
    <div class="cell border-box-sizing code_cell rendered">
     <div class="input">
-     <div class="prompt input_prompt" id="In-[None]">
-      <a class="prompt input_prompt" href="#In-[None]">
-       In [None]:
+     <div class="prompt input_prompt" id="In-[-]">
+      <a class="prompt input_prompt" href="#In-[-]">
+       In [ ]:
       </a>
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">aws_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"AWS_ACCESS_KEY_ID"</span><span class="p">)</span> <span class="c"># needed to access S3 Sample Data</span>
 <span class="n">aws_secret</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"AWS_SECRET_ACCESS_KEY"</span><span class="p">)</span>
 
@@ -309,14 +318,14 @@
    </div>
    <div class="cell border-box-sizing code_cell rendered">
     <div class="input">
-     <div class="prompt input_prompt" id="In-[None]">
-      <a class="prompt input_prompt" href="#In-[None]">
-       In [None]:
+     <div class="prompt input_prompt" id="In-[-]">
+      <a class="prompt input_prompt" href="#In-[-]">
+       In [ ]:
       </a>
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="c"># Create Table Statements</span>
 <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"""</span>
 <span class="s">create table users(</span>
@@ -399,14 +408,14 @@
    </div>
    <div class="cell border-box-sizing code_cell rendered">
     <div class="input">
-     <div class="prompt input_prompt" id="In-[None]">
-      <a class="prompt input_prompt" href="#In-[None]">
-       In [None]:
+     <div class="prompt input_prompt" id="In-[-]">
+      <a class="prompt input_prompt" href="#In-[-]">
+       In [ ]:
       </a>
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="k">for</span> <span class="n">copy_statement</span> <span class="ow">in</span> <span class="n">copy_statements</span><span class="p">:</span> <span class="c"># execute each COPY statement</span>
     <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">copy_statement</span><span class="p">)</span>
 <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -418,14 +427,14 @@
    </div>
    <div class="cell border-box-sizing code_cell rendered">
     <div class="input">
-     <div class="prompt input_prompt" id="In-[None]">
-      <a class="prompt input_prompt" href="#In-[None]">
-       In [None]:
+     <div class="prompt input_prompt" id="In-[-]">
+      <a class="prompt input_prompt" href="#In-[-]">
+       In [ ]:
       </a>
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span> <span class="o">+</span> <span class="p">[</span><span class="s">"sales"</span><span class="p">]:</span>
     <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"select count(*) from </span><span class="si">%s</span><span class="s">;"</span> <span class="o">%</span> <span class="p">(</span><span class="n">table</span><span class="p">,))</span>    
     <span class="k">print</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>
@@ -470,7 +479,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s">"""</span>
 <span class="s">SELECT sum(likesports::int) as sports, sum(liketheatre::int) as theatre,  </span>
 <span class="s">sum(likeconcerts::int) as concerts, sum(likejazz::int) as jazz, </span>
@@ -508,7 +517,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">([</span>
         <span class="n">Heatmap</span><span class="p">(</span>
             <span class="n">z</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s">'state'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
@@ -532,7 +541,7 @@
          Out[6]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="1000" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/140.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -579,7 +588,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Declared User Preference Box Plots"</span><span class="p">,</span> 
                 <span class="n">yaxis</span><span class="o">=</span><span class="n">YAxis</span><span class="p">())</span>
 
@@ -602,7 +611,7 @@
          Out[7]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/188.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -657,7 +666,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s">"""</span>
 <span class="s">SELECT sum(event.catid) as category_sum, catname as category_name</span>
 <span class="s">FROM event, category</span>
@@ -679,7 +688,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Event Categories Sum"</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="n">YAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Sum"</span><span class="p">))</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">category_name</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">category_sum</span><span class="p">)]</span>
 <span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">))</span>
@@ -696,7 +705,7 @@
          Out[9]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/242.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -731,7 +740,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s">"""</span>
 <span class="s">SELECT sum(sales.qtysold) as quantity_sold, date.caldate  </span>
 <span class="s">FROM sales, date</span>
@@ -754,7 +763,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Event Sales Per Day"</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="n">YAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Sales Quantity"</span><span class="p">))</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">caldate</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">quantity_sold</span><span class="p">)]</span>
 <span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">))</span>
@@ -771,7 +780,7 @@
          Out[11]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/243.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -789,7 +798,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s">"""</span>
 <span class="s">SELECT sum(sales.qtysold) as quantity_sold, date.caldate, category.catname as category_name  </span>
 <span class="s">FROM sales, date, event, category</span>
@@ -825,7 +834,7 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">count</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"category_name"</span><span class="p">)):</span>
     <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Scatter</span><span class="p">(</span>
@@ -851,11 +860,9 @@
        <div class="prompt">
        </div>
        <div class="output_subarea output_stream output_stdout output_text">
-        <pre>
-This is the format of your plot grid:
+        <pre>This is the format of your plot grid:
 [ (1,1) x1,y1 ]  [ (1,2) x2,y2 ]
 [ (2,1) x3,y3 ]  [ (2,2) x4,y4 ]
-
 
 </pre>
        </div>
@@ -866,7 +873,7 @@ This is the format of your plot grid:
          Out[13]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/244.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -894,7 +901,7 @@ This is the format of your plot grid:
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">"category_name"</span><span class="p">):</span>
     <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Scatter</span><span class="p">(</span>
@@ -920,7 +927,7 @@ This is the format of your plot grid:
          Out[14]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/200.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -951,7 +958,7 @@ This is the format of your plot grid:
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 </pre>
        </div>
@@ -968,7 +975,7 @@ This is the format of your plot grid:
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s">"http://i.imgur.com/nUVihzx.png"</span><span class="p">)</span>
 </pre>
        </div>
@@ -983,7 +990,7 @@ This is the format of your plot grid:
          Out[16]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <a data-lightbox="redshift_image01" href="/static/api_docs/image/ipython_notebooks/redshift_image01.png">
          <img alt="Amazon Redshift image01" src="/static/api_docs/image/ipython_notebooks/redshift_image01.png"/>
         </a>
@@ -1001,7 +1008,7 @@ This is the format of your plot grid:
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython2">
         <pre><span class="n">tls</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="s">"https://plot.ly/~bill_chambers/195"</span><span class="p">)</span>
 </pre>
        </div>
@@ -1016,7 +1023,7 @@ This is the format of your plot grid:
          Out[17]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/195.embed" style="border:none;" width="100%">
         </iframe>
        </div>

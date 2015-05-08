@@ -46,7 +46,7 @@ dbname = 'dev'
 # 
 # Both will allow us to execute SQL queries and get results however the SQLAlchemy engine makes it a bit easier to directly return our data as a dataframe using pandas. Plotly has a tight integration with pandas as well, making it extremely easy to make interactive graphs to share with your company.
 
-##### SQLAlchemy
+# #### SQLAlchemy
 
 # In[3]:
 
@@ -55,7 +55,7 @@ engine_string = "postgresql+psycopg2://%s:%s@%s:%d/%s" % (redshift_user, redshif
 engine = create_engine(engine_string)
 
 
-##### Psycopg2
+# #### Psycopg2
 
 # In[4]:
 
@@ -315,9 +315,7 @@ layout = Layout(title="Event Sales Per Day", yaxis=YAxis(title="Sales Quantity")
 data = [Scatter(x=df.caldate, y=df.quantity_sold)]
 py.iplot(Figure(data=data, layout=layout))
 
-
-                Overall it seems inconclusive except that our events seem to be seasonal. This aggregate graph doesn't show too much so it's likely worth exploring a bit more about each category.
-                
+Overall it seems inconclusive except that our events seem to be seasonal. This aggregate graph doesn't show too much so it's likely worth exploring a bit more about each category.
 # In[12]:
 
 df = pd.read_sql_query("""
