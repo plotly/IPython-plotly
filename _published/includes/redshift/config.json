@@ -2,7 +2,7 @@
     "meta_description": "A tutorial showing how to plot Amazon AWS Redshift data with Plotly", 
     "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/redshift", 
     "title_short": "Amazon Redshift", 
-    "last_modified": "Wednesday 06 May 2015", 
+    "last_modified": "Thursday 07 May 2015", 
     "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/redshift/redshift.ipynb", 
     "title": "Plotting Data From Your Redshift Data Warehouse", 
     "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/redshift/redshift.py"

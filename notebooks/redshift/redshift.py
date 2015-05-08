@@ -244,8 +244,8 @@ data = Data([
             colorscale = 'Hot'
         )
     ])
-layout = Layout(title="State and Music Tastes", yaxis=YAxis(autotick=False, dtick=1), height=5000)
-py.iplot(data, filename='redshift/state and music taste heatmap')
+layout = Layout(title="State and Music Tastes", yaxis=YAxis(autotick=False, dtick=1))
+py.iplot(Figure(data=data, layout=layout), filename='redshift/state and music taste heatmap', height=1000)
 
 
 # *the above graph is interactive, click and drag to zoom, double click to return to initial layout, shift click to pan*
