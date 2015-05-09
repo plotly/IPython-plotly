@@ -5,11 +5,6 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
-    url("amazon-redshift/$",
-        IPythonNotebookPage.as_view(
-            lang='ipython-notebooks',
-            notebook='redshift'),
-        name='ipython-notebook-redshift'),
     url("apache-spark/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
@@ -69,5 +64,10 @@ urlpatterns = patterns(
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
             notebook='collaborate'),
-        name='ipython-notebook-collaborate')
+        name='ipython-notebook-collaborate'),
+    url("cufflinks/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='cufflinks'),
+        name='ipython-notebook-cufflinks')
 )
