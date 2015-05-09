@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "survival_analysis",
         "redshift",
         "apachespark",
         "principal_component_analysis",
