@@ -1,0 +1,15 @@
+{
+    "title": "Survival Analysis with Plotly: R vs. Python", 
+    "title_short": "Survival Analysis with Plotly: R vs. Python",  
+    "meta_description": "An introduction to survival analysis with Plotly graphs using R, Python, and IPython notebooks",  
+    "cells": [0, "end"], 
+    "relative_url": "survival-analysis-r-vs-python", 
+    "thumbnail_image": "",  
+    "non_pip_deps": [
+        {   
+            "name": "R" ,      
+            "urls": "http://www.r-project.org",       
+            "description": "This notebook requires you to install R"  
+        }
+    ]
+}

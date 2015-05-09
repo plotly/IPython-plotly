@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("survival-analysis-r-vs-python/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='survival_analysis'),
+        name='ipython-notebook-survival_analysis'),
     url("amazon-redshift/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
