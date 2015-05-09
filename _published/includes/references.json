@@ -48,12 +48,22 @@
             "body": "api_docs/includes/ipython_notebooks/basemap/body.html", 
             "config": "api_docs/includes/ipython_notebooks/basemap/config.json"
         }, 
+        "survival_analysis": {
+            "body": "api_docs/includes/ipython_notebooks/survival_analysis/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/survival_analysis/config.json"
+        }, 
         "gmail": {
             "body": "api_docs/includes/ipython_notebooks/gmail/body.html", 
             "config": "api_docs/includes/ipython_notebooks/gmail/config.json"
         }
     }, 
     "splash": [
+        {
+            "title_short": "Survival Analysis with Plotly: R vs. Python", 
+            "thumbnail_image": "", 
+            "relative_url": "survival-analysis-r-vs-python", 
+            "title": "Survival Analysis with Plotly: R vs. Python"
+        }, 
         {
             "title_short": "Amazon Redshift", 
             "thumbnail_image": "", 
@@ -134,6 +144,7 @@
         }
     ], 
     "notebooks": [
+        "survival_analysis", 
         "redshift", 
         "apachespark", 
         "principal_component_analysis", 
