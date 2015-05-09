@@ -1,0 +1,9 @@
+{
+    "meta_description": "A Python library that binds the power of Plotly with the flexibility of Pandas for easy plotting", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/cufflinks", 
+    "title_short": "Cufflinks: Plotly + Pandas", 
+    "last_modified": "Saturday 09 May 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/cufflinks/cufflinks.ipynb", 
+    "title": "Cufflinks - Easy Plotting using Plotly and Pandas", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/cufflinks/cufflinks.py"
+}
