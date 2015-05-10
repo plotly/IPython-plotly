@@ -44,6 +44,10 @@
             "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
             "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
         }, 
+        "cufflinks": {
+            "body": "api_docs/includes/ipython_notebooks/cufflinks/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/cufflinks/config.json"
+        }, 
         "basemap": {
             "body": "api_docs/includes/ipython_notebooks/basemap/body.html", 
             "config": "api_docs/includes/ipython_notebooks/basemap/config.json"
@@ -58,6 +62,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Cufflinks: Plotly + Pandas", 
+            "thumbnail_image": "ukswaps.gif", 
+            "relative_url": "cufflinks", 
+            "title": "Cufflinks - Easy Plotting using Plotly and Pandas"
+        }, 
         {
             "title_short": "Survival Analysis with Plotly: R vs. Python", 
             "thumbnail_image": "", 
@@ -144,6 +154,7 @@
         }
     ], 
     "notebooks": [
+        "cufflinks", 
         "survival_analysis", 
         "redshift", 
         "apachespark", 

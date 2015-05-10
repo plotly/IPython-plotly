@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("cufflinks/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='cufflinks'),
+        name='ipython-notebook-cufflinks'),
     url("survival-analysis-r-vs-python/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
