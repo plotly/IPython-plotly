@@ -1,0 +1,97 @@
+/*
+Custom CSS for Cufflinks Notebook
+*/
+
+h1,
+h2 {
+  margin: 0 0 22px 0;
+  color: #f08;
+  font-family: "Helvetica","Segoe UI";
+  line-height: 0.8em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: none; 
+  text-align: left;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 22px 0;
+  color: #151516;
+  font-family: "Helvetica","Segoe UI";
+  line-height: 0.8em;
+  letter-spacing: 0.02em;
+  text-shadow: none; 
+  text-align: left;}
+
+ em {
+ 	color:#f08;
+ }
+
+strong {
+  background: rgba(81, 190, 122,.3);
+  color: #149c47;
+ }
+
+table {
+  font-size: 12px;
+  color:#151515;
+  margin: 45px;
+  width: 480px;
+  text-align: left;
+  border-collapse: collapse;
+  border-color: #fff !important;
+}
+
+th {
+  padding: 6px;
+  font-weight: normal !important;
+  font-size: 13px;
+  color: #ffffff;
+  background: #336688;
+}
+
+ tbody tr th {
+  padding: 6px;
+  font-weight: normal !important;
+  font-size: 12px;
+  color: #ffffff;
+  background: #5293be;	
+}
+
+td {
+  padding: 5px;
+  border-top: 1px solid #ffffff;
+  color: #151516;
+}
+
+
+
+tbody tr:hover td {
+  background: #d0dafd;
+}
+
+.rendered_html tr, .rendered_html td {
+	border: 1px solid #fff !important;
+}
+
+.rendered_html th {
+	border: 2px solid #fff !important;
+}
+
+tr:nth-child(even) {
+  padding: 5px;
+  background: #ffffff;
+  border-top: 1px solid #95B3D7;
+  color: #669;
+}
+tr:nth-child(odd) {
+  padding: 5px;
+  background: #DCE6F1;
+  border-top: 1px solid #95B3D7;
+  color: #669;
+}
+
+
