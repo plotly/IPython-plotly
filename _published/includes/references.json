@@ -16,6 +16,10 @@
             "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
             "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
         }, 
+        "redshift": {
+            "body": "api_docs/includes/ipython_notebooks/redshift/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/redshift/config.json"
+        }, 
         "ukelectionbbg": {
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
@@ -54,6 +58,18 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Cufflinks: Plotly + Pandas", 
+            "thumbnail_image": "ukswaps.gif", 
+            "relative_url": "cufflinks", 
+            "title": "Cufflinks - Easy Plotting using Plotly and Pandas"
+        }, 
+        {
+            "title_short": "Amazon Redshift", 
+            "thumbnail_image": "", 
+            "relative_url": "amazon-redshift", 
+            "title": "Plotting Data From Your Redshift Data Warehouse"
+        }, 
         {
             "title_short": "Apache PySpark", 
             "thumbnail_image": "", 
@@ -125,15 +141,11 @@
             "thumbnail_image": "", 
             "relative_url": "collaboration", 
             "title": "Collaboration with Plotly using Python, R and MATLAB"
-        }, 
-        {
-            "title_short": "Cufflinks: Plotly + Pandas", 
-            "thumbnail_image": "ukswaps.gif", 
-            "relative_url": "cufflinks", 
-            "title": "Cufflinks - Easy Plotting using Plotly and Pandas"
         }
     ], 
     "notebooks": [
+        "cufflinks", 
+        "redshift", 
         "apachespark", 
         "principal_component_analysis", 
         "sqlite", 
@@ -145,7 +157,6 @@
         "networkx", 
         "make_subplots", 
         "basemap", 
-        "collaborate", 
-        "cufflinks"
+        "collaborate"
     ]
 }

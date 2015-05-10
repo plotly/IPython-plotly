@@ -1,5 +1,7 @@
 {
     "notebooks": [
+        "cufflinks",
+        "redshift",
         "apachespark",
         "principal_component_analysis",
         "sqlite",
@@ -11,7 +13,6 @@
         "networkx",
         "make_subplots",
         "basemap",
-        "collaborate",
-        "cufflinks"
+        "collaborate"
     ]
 }
