@@ -2,7 +2,7 @@
     "title": "Cufflinks - Easy Plotting using Plotly and Pandas", 
     "title_short": "Cufflinks: Plotly + Pandas",  
     "meta_description": "A Python library that binds the power of Plotly with the flexibility of Pandas for easy plotting",  
-    "cells": [3, "end"], 
+    "cells": [3, -2], 
     "relative_url": "cufflinks", 
     "thumbnail_image": "ukswaps.gif",  
     "non_pip_deps": [

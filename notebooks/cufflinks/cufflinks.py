@@ -3,7 +3,7 @@
 
 # #Cufflinks
 # 
-# This library binds the power of [plotly](http://www.plot.ly) with the flexibility of [pandas](http://pandas.pydata.org/) for easy plotting.
+# This library binds the power of [plotly](https://plot.ly) with the flexibility of [pandas](http://pandas.pydata.org/) for easy plotting.
 # 
 # This library is available on https://github.com/santosjorge/cufflinks
 # 
@@ -123,14 +123,4 @@ cf.datagen.bubble3d(5,4).iplot(kind='bubble3d',x='x',y='y',z='z',size='size',tex
 
 cf.datagen.sinwave(10,.25).iplot(kind='surface',theme='solar',colorscale='brbg',title='Cufflinks - Surface Plot',
                                  margin=(0,0,0,0),world_readable=True)
-
-
-# In[28]:
-
-
-
-
-# In[ ]:
-
-
 

@@ -7,7 +7,7 @@
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
        This library binds the power of
-       <a href="http://www.plot.ly" target="_blank">
+       <a href="/">
         plotly
        </a>
        with the flexibility of
@@ -41,8 +41,8 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
-        <pre><span class="kn">import</span> <span class="nn">cufflinks</span> <span class="kn">as</span> <span class="nn">cf</span>
+       <div class=" highlight hl-ipython3">
+        <pre><span class="kn">import</span> <span class="nn">cufflinks</span> <span class="k">as</span> <span class="nn">cf</span>
 </pre>
        </div>
       </div>
@@ -54,8 +54,11 @@
     </div>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="line-chart">
+      <h2 id="Line-Chart">
        Line Chart
+       <a class="anchor-link" href="#Line-Chart">
+        ¶
+       </a>
       </h2>
      </div>
     </div>
@@ -69,9 +72,9 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython3">
         <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">lines</span><span class="p">()</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'scatter'</span><span class="p">,</span><span class="n">xTitle</span><span class="o">=</span><span class="s">'Dates'</span><span class="p">,</span><span class="n">yTitle</span><span class="o">=</span><span class="s">'Returns'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Line Chart'</span><span class="p">,</span>
-                         <span class="n">world_readable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                         <span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
 </pre>
        </div>
       </div>
@@ -85,7 +88,7 @@
          Out[6]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/388.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -102,9 +105,9 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython3">
         <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">lines</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'scatter'</span><span class="p">,</span><span class="n">xTitle</span><span class="o">=</span><span class="s">'Dates'</span><span class="p">,</span><span class="n">yTitle</span><span class="o">=</span><span class="s">'Returns'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Filled Line Chart'</span><span class="p">,</span>
-                         <span class="n">colorscale</span><span class="o">=</span><span class="s">'-blues'</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">world_readable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                         <span class="n">colorscale</span><span class="o">=</span><span class="s">'-blues'</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="k">True</span><span class="p">,</span><span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
 </pre>
        </div>
       </div>
@@ -118,7 +121,7 @@
          Out[29]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/410.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -135,10 +138,10 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython3">
         <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">lines</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'scatter'</span><span class="p">,</span><span class="n">xTitle</span><span class="o">=</span><span class="s">'Dates'</span><span class="p">,</span><span class="n">yTitle</span><span class="o">=</span><span class="s">'Returns'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Besfit Line Chart'</span><span class="p">,</span>
-                         <span class="n">filename</span><span class="o">=</span><span class="s">'Cufflinks - Bestfit Line Chart'</span><span class="p">,</span><span class="n">bestfit</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">'blue'</span><span class="p">],</span>
-                         <span class="n">bestfit_colors</span><span class="o">=</span><span class="p">[</span><span class="s">'pink'</span><span class="p">],</span><span class="n">world_readable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                         <span class="n">filename</span><span class="o">=</span><span class="s">'Cufflinks - Bestfit Line Chart'</span><span class="p">,</span><span class="n">bestfit</span><span class="o">=</span><span class="k">True</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">'blue'</span><span class="p">],</span>
+                         <span class="n">bestfit_colors</span><span class="o">=</span><span class="p">[</span><span class="s">'pink'</span><span class="p">],</span><span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
 </pre>
        </div>
       </div>
@@ -152,7 +155,7 @@
          Out[8]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/403.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -165,8 +168,11 @@
     </div>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="scatter-chart">
+      <h2 id="Scatter-Chart">
        Scatter Chart
+       <a class="anchor-link" href="#Scatter-Chart">
+        ¶
+       </a>
       </h2>
      </div>
     </div>
@@ -180,10 +186,10 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython3">
         <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">lines</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'scatter'</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">'markers'</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">symbol</span><span class="o">=</span><span class="s">'x'</span><span class="p">,</span><span class="n">colorscale</span><span class="o">=</span><span class="s">'paired'</span><span class="p">,</span>
                           <span class="n">xTitle</span><span class="o">=</span><span class="s">'Dates'</span><span class="p">,</span><span class="n">yTitle</span><span class="o">=</span><span class="s">'EPS Growth'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Scatter Chart'</span><span class="p">,</span>
-                          <span class="n">world_readable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                          <span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
 </pre>
        </div>
       </div>
@@ -197,7 +203,7 @@
          Out[9]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/406.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -210,8 +216,11 @@
     </div>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="spread-chart">
+      <h2 id="Spread-Chart">
        Spread Chart
+       <a class="anchor-link" href="#Spread-Chart">
+        ¶
+       </a>
       </h2>
      </div>
     </div>
@@ -225,9 +234,9 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython3">
         <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">lines</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'spread'</span><span class="p">,</span><span class="n">xTitle</span><span class="o">=</span><span class="s">'Dates'</span><span class="p">,</span><span class="n">yTitle</span><span class="o">=</span><span class="s">'Return'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Spread Chart'</span><span class="p">,</span>
-                          <span class="n">world_readable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                          <span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
 </pre>
        </div>
       </div>
@@ -241,7 +250,7 @@
          Out[19]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/407.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -254,8 +263,11 @@
     </div>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="bar-chart">
+      <h2 id="Bar-Chart">
        Bar Chart
+       <a class="anchor-link" href="#Bar-Chart">
+        ¶
+       </a>
       </h2>
      </div>
     </div>
@@ -269,9 +281,9 @@
      </div>
      <div class="inner_cell">
       <div class="input_area">
-       <div class="highlight">
+       <div class=" highlight hl-ipython3">
         <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">lines</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'M'</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'bar'</span><span class="p">,</span><span class="n">xTitle</span><span class="o">=</span><span class="s">'Dates'</span><span class="p">,</span><span class="n">yTitle</span><span class="o">=</span><span class="s">'Return'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Bar Chart'</span><span class="p">,</span>
-                          <span class="n">world_readable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                          <span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
 </pre>
        </div>
       </div>
@@ -285,7 +297,7 @@
          Out[20]:
         </a>
        </div>
-       <div class="output_html rendered_html output_subarea output_pyout">
+       <div class="output_html rendered_html output_subarea output_execute_result">
         <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/408.embed" style="border:none;" width="100%">
         </iframe>
        </div>
@@ -294,7 +306,368 @@
     </div>
    </div>
    <div class="cell border-box-sizing code_cell rendered">
-    <div class="">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[21]">
+      <a class="prompt input_prompt" href="#In-[21]">
+       In [21]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">lines</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'M'</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'bar'</span><span class="p">,</span><span class="n">xTitle</span><span class="o">=</span><span class="s">'Dates'</span><span class="p">,</span><span class="n">yTitle</span><span class="o">=</span><span class="s">'Return'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Grouped Bar Chart'</span><span class="p">,</span>
+                          <span class="n">barmode</span><span class="o">=</span><span class="s">'stack'</span><span class="p">,</span><span class="n">world_readable</span><span class="o">=</span><span class="k">False</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[21]">
+        <a class="prompt output_prompt" href="#Out[21]">
+         Out[21]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/390.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Box-Plot">
+       Box Plot
+       <a class="anchor-link" href="#Box-Plot">
+        ¶
+       </a>
+      </h2>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[22]">
+      <a class="prompt input_prompt" href="#In-[22]">
+       In [22]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'box'</span><span class="p">,</span><span class="n">xTitle</span><span class="o">=</span><span class="s">'Stocks'</span><span class="p">,</span><span class="n">yTitle</span><span class="o">=</span><span class="s">'Returns Distribution'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Box Plot'</span><span class="p">,</span>
+                        <span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[22]">
+        <a class="prompt output_prompt" href="#Out[22]">
+         Out[22]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/389.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Historgram">
+       Historgram
+       <a class="anchor-link" href="#Historgram">
+        ¶
+       </a>
+      </h2>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[23]">
+      <a class="prompt input_prompt" href="#In-[23]">
+       In [23]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'histogram'</span><span class="p">,</span><span class="n">opacity</span><span class="o">=.</span><span class="mi">75</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Histogram'</span><span class="p">,</span>
+                              <span class="n">linecolor</span><span class="o">=</span><span class="s">'white'</span><span class="p">,</span><span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[23]">
+        <a class="prompt output_prompt" href="#Out[23]">
+         Out[23]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/391.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Heatmap-Plot">
+       Heatmap Plot
+       <a class="anchor-link" href="#Heatmap-Plot">
+        ¶
+       </a>
+      </h2>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[24]">
+      <a class="prompt input_prompt" href="#In-[24]">
+       In [24]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'heatmap'</span><span class="p">,</span><span class="n">colorscale</span><span class="o">=</span><span class="s">'spectral'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Heatmap'</span><span class="p">,</span>
+                                <span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[24]">
+        <a class="prompt output_prompt" href="#Out[24]">
+         Out[24]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/395.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Bubble-Chart">
+       Bubble Chart
+       <a class="anchor-link" href="#Bubble-Chart">
+        ¶
+       </a>
+      </h2>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[25]">
+      <a class="prompt input_prompt" href="#In-[25]">
+       In [25]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">bubble</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s">'industry'</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'bubble'</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s">'x'</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">'y'</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="s">'size'</span><span class="p">,</span><span class="n">categories</span><span class="o">=</span><span class="s">'categories'</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s">'text'</span><span class="p">,</span>
+                          <span class="n">xTitle</span><span class="o">=</span><span class="s">'Returns'</span><span class="p">,</span><span class="n">yTitle</span><span class="o">=</span><span class="s">'Analyst Score'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Bubble Chart'</span><span class="p">,</span>
+                          <span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[25]">
+        <a class="prompt output_prompt" href="#Out[25]">
+         Out[25]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/396.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Scatter-3D">
+       Scatter 3D
+       <a class="anchor-link" href="#Scatter-3D">
+        ¶
+       </a>
+      </h2>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[26]">
+      <a class="prompt input_prompt" href="#In-[26]">
+       In [26]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">scatter3d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">150</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'scatter3d'</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s">'x'</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">'y'</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="s">'z'</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">categories</span><span class="o">=</span><span class="s">'categories'</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s">'text'</span><span class="p">,</span>
+                             <span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Scatter 3D Chart'</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s">'blue'</span><span class="p">,</span><span class="s">'pink'</span><span class="p">],</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">margin</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+                             <span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[26]">
+        <a class="prompt output_prompt" href="#Out[26]">
+         Out[26]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/397.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Bubble-3D">
+       Bubble 3D
+       <a class="anchor-link" href="#Bubble-3D">
+        ¶
+       </a>
+      </h2>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[27]">
+      <a class="prompt input_prompt" href="#In-[27]">
+       In [27]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">bubble3d</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'bubble3d'</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s">'x'</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">'y'</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="s">'z'</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="s">'size'</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s">'text'</span><span class="p">,</span><span class="n">categories</span><span class="o">=</span><span class="s">'categories'</span><span class="p">,</span>
+                            <span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Bubble 3D Chart'</span><span class="p">,</span><span class="n">colorscale</span><span class="o">=</span><span class="s">'set1'</span><span class="p">,</span>
+                            <span class="n">width</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span><span class="n">opacity</span><span class="o">=.</span><span class="mi">8</span><span class="p">,</span><span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[27]">
+        <a class="prompt output_prompt" href="#Out[27]">
+         Out[27]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/402.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Surface">
+       Surface
+       <a class="anchor-link" href="#Surface">
+        ¶
+       </a>
+      </h2>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[28]">
+      <a class="prompt input_prompt" href="#In-[28]">
+       In [28]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">cf</span><span class="o">.</span><span class="n">datagen</span><span class="o">.</span><span class="n">sinwave</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="o">.</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'surface'</span><span class="p">,</span><span class="n">theme</span><span class="o">=</span><span class="s">'solar'</span><span class="p">,</span><span class="n">colorscale</span><span class="o">=</span><span class="s">'brbg'</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s">'Cufflinks - Surface Plot'</span><span class="p">,</span>
+                                 <span class="n">margin</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">world_readable</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[28]">
+        <a class="prompt output_prompt" href="#Out[28]">
+         Out[28]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~jorgesantos/401.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
     </div>
    </div>
   </div>
