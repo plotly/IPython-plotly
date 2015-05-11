@@ -2,7 +2,7 @@
     "meta_description": "An introduction to survival analysis with Plotly graphs using R, Python, and IPython notebooks", 
     "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/survival_analysis", 
     "title_short": "Survival Analysis with Plotly: R vs. Python", 
-    "last_modified": "Saturday 09 May 2015", 
+    "last_modified": "Monday 11 May 2015", 
     "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/survival_analysis/survival_analysis.ipynb", 
     "title": "Survival Analysis with Plotly: R vs. Python", 
     "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/survival_analysis/survival_analysis.py"
