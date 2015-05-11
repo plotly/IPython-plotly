@@ -34,13 +34,19 @@ def wget_images(body, nb, name, img_folder_on_streambed, img_folder_in_repo):
                          img_alt=img_alt)
 
 
-# Remove title
-def remove_title(body):
+# Remove h1 elements
+def remove_h1(body):
     try:
-        H1 = body.findAll('h1')  # TODO check 'h2' also?
-        H1[0].extract()
+        H1 = body.findAll('h1')
+
+        H1[0].extract()  # Remove title
+
+        for h1 in H1:  # swap h1 for h2
+            h1.name = 'h2'
+
     except:
         warnings.warn("No H1 found")
+
 
 # Add lightbox anchors around <img>
 def add_lightbox(body):
@@ -173,7 +179,7 @@ def main():
                     path_image, tree['static']['image'])
 
         # Update body
-        remove_title(body)
+        remove_h1(body)
         update_anchors(body)
         add_lightbox(body)
         add_in_out_anchors(body)
