@@ -75,6 +75,11 @@ appear on the splash page.
 
 #### Step 0: Make a directory and add ipynb file
 
+Clone this repo:
+```
+git clone https://github.com/plotly/IPython-plotly.git
+```
+
 **As of Feb 19 2015**:
 
 - As displayed [above](#repo-structure), the `ipynb` file must have the same
@@ -96,7 +101,13 @@ pip install beautifulsoup4
 make init nb=<notebook-id>
 ```
 
-and fill in the generated notebook `config.json` 
+For example,
+
+```
+Jacks-MacBook-Air:IPython-plotly jack$ sudo make init nb='aircraft_pitch'
+```
+
+Then, fill in the generated notebook `config.json` in the folder you created in Step 1.
 
 - **Don't forget to remove the comments from the json file**
 
@@ -113,6 +124,11 @@ Add your notebook name into `references.json` in the notebooks sub-directory the
 
 ```
 make run nb=<notebook-id>
+```
+
+For example,
+```
+Jacks-MacBook-Air:IPython-plotly jack$ sudo make run nb='aircraft_pitch'
 ```
 
 This creates an `html` and `py` version of the notebook
