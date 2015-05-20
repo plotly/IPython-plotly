@@ -48,6 +48,10 @@
             "body": "api_docs/includes/ipython_notebooks/cufflinks/body.html", 
             "config": "api_docs/includes/ipython_notebooks/cufflinks/config.json"
         }, 
+        "aircraft_pitch": {
+            "body": "api_docs/includes/ipython_notebooks/aircraft_pitch/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/aircraft_pitch/config.json"
+        }, 
         "basemap": {
             "body": "api_docs/includes/ipython_notebooks/basemap/body.html", 
             "config": "api_docs/includes/ipython_notebooks/basemap/config.json"
@@ -151,6 +155,12 @@
             "thumbnail_image": "", 
             "relative_url": "collaboration", 
             "title": "Collaboration with Plotly using Python, R and MATLAB"
+        }, 
+        {
+            "title_short": "Aircraft Pitch in MATLAB and Plotly", 
+            "thumbnail_image": "", 
+            "relative_url": "/aircraft-pitch-analysis-matlab-plotly", 
+            "title": "Aircraft Pitch Analysis in MATLAB and Plotly"
         }
     ], 
     "notebooks": [
@@ -168,6 +178,7 @@
         "networkx", 
         "make_subplots", 
         "basemap", 
-        "collaborate"
+        "collaborate", 
+        "aircraft_pitch"
     ]
 }

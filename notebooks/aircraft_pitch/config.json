@@ -1,0 +1,15 @@
+{
+    "title": "Aircraft Pitch Analysis in MATLAB and Plotly",
+    "title_short": "Aircraft Pitch in MATLAB and Plotly",
+    "meta_description":"MATLAB and Plotly analysis of aircraft pitch. Frequency domain methods for controller design.",
+    "cells": [0, -1],
+    "relative_url": "/aircraft-pitch-analysis-matlab-plotly",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "MATLAB",
+            "urls": "", 
+            "description": ""
+        }
+    ]
+}

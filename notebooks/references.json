@@ -14,6 +14,7 @@
         "networkx",
         "make_subplots",
         "basemap",
-        "collaborate"
+        "collaborate",
+	"aircraft_pitch"
     ]
 }
