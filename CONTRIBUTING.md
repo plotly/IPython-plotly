@@ -126,6 +126,11 @@ Add your notebook name into `references.json` in the notebooks sub-directory the
 make run nb=<notebook-id>
 ```
 
+For example,
+```
+Jacks-MacBook-Air:IPython-plotly jack$ sudo make run nb='aircraft_pitch'
+```
+
 This creates an `html` and `py` version of the notebook
 
 
