@@ -2,7 +2,7 @@
     "meta_description": "MATLAB and Plotly analysis of aircraft pitch. Frequency domain methods for controller design.", 
     "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/aircraft_pitch", 
     "title_short": "Aircraft Pitch in MATLAB and Plotly", 
-    "last_modified": "Tuesday 19 May 2015", 
+    "last_modified": "Monday 25 May 2015", 
     "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/aircraft_pitch/aircraft_pitch.ipynb", 
     "title": "Aircraft Pitch Analysis in MATLAB and Plotly", 
     "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/aircraft_pitch/aircraft_pitch.py"

@@ -7,6 +7,7 @@
 # 
 # Original content from <a href="http://ctms.engin.umich.edu/CTMS/index.php?example=AircraftPitch&section=ControlFrequency">University of Michigan </a>
 # 
+# <br>
 # <h2> Contents </h2>
 # 
 # - <a href = "#olr" class = 'nounderline'>Open-loop response</a>
@@ -34,7 +35,8 @@
 # 
 # - Steady-state error less than 2%
 # 
-# <h2 id = olr>**Open-loop response**</h2>
+# <br>
+# <h2 id = olr>Open-loop response</h2>
 
 # Let's first begin by examining the behavior of the open-loop plant. Specifically, create a new m-file, and enter the following commands. Note the scaling of the step response by 0.2 to account for the fact that the input is a step of 0.2 radians (11 degrees). Running this m-file in the MATLAB command window should give you the step response plot shown below.
 
@@ -57,7 +59,7 @@ show_plot('https://plot.ly/~UMichiganControl/0/')
 # 
 # <br>
 
-# <h2 id=clr>**Closed-loop response**</h2>
+# <h2 id=clr>Closed-loop response</h2>
 # 
 # Let's now close the loop on our plant and see if that stabilizes the system. Consider the following unity feedback architecture for our system.
 
@@ -117,11 +119,11 @@ show_plot('https://plot.ly/~UMichiganControl/2/')
 # <br>
 # 
 
-# <h2 id = "lc"> **Lead compensator**</h2>
+# <h2 id = "lc">Lead compensator</h2>
 # 
 # A type of compensator that can accomplish both of our goals is a lead compensator. Referring to the Lead and Lag Compensators page, a lead compensator adds positive phase to the system. Additional positive phase increases the phase margin, thus, increasing the damping. The lead compensator also generally increases the magnitude of the open-loop frequency response at higher frequencies, thereby, increasing the gain crossover frequency and overall speed of the system. Therefore, the settling time should decrease as a result of the addition of a lead compensator. The general form of the transfer function of a lead compensator is the following.
 
-# <p> <span class="eqn_num">(2)</span> $$ C(s)=K \frac{Ts + 1}{\alpha Ts+1} \ \ \ (\alpha < 1) $$ </p>
+# <p> <span class="eqn_num">(2)</span> $$ C(s)=K \frac{Ts + 1}{\alpha Ts+1} \ \ \ (\alpha \lt 1) $$ </p>
 
 # We thus need to find $\alpha$, T and K. Typically, the gain K is set to satisfy requirements on steady-state error. Since our system is already type 1 (the plant has an integrator) the steady-state error for a step input will be zero for any value of K. Even though the steady-state error is zero, the slow tail on the response can be attributed to the fact the velocity-error constant is too small. This deficiency can be addressed by employing a value of K that is greater than 1, in other words, a value of K that will shift the magnitude plot upward. Through some trial and error, we will somewhat arbitrarily choose K = 10. Running the following code in the MATLAB window will demonstrate the effect of adding this K.
 # 
@@ -230,13 +232,11 @@ get_ipython().run_cell_magic(u'matlab', u'', u'\nstepinfo(0.2*sys_cl)')
 
 # <p> <span class="eqn_num">(8)</span> $$C(s)=10\frac{0.55s + 1 }{ 0.022s+1}$$</p>
 
-# In[5]:
+# In[6]:
 
-# CSS styling within IPython notebook
-from IPython.core.display import HTML
-def css_styling():
-    styles = open("./css/style_notebook_umich.css", "r").read()
-    return HTML(styles)
+from IPython.display import HTML
 
-css_styling()
+def show_plot(url, width=700, height=500):
+    s = '<center><iframe height="%s" id="igraph" scrolling="no" frameborder = 0 seamless="seamless" src="%s" width="%s"></iframe></center>' %    (height, "/".join(map(str,[url, width, height])), width)
+    return HTML(s)
 

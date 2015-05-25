@@ -37,6 +37,9 @@
         University of Michigan
        </a>
       </p>
+      <p>
+       <br/>
+      </p>
       <h2>
        Contents
       </h2>
@@ -77,7 +80,1138 @@
      </div>
     </div>
    </div>
-   <div class="cell border-box-sizing text_cell render">
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       <span class="eqn_num">
+        (1)
+       </span>
+       $$ P(s) = \frac{\Theta(s)}{\Delta(s)} = \frac {1.151s+0.1774}{s^3+0.739s^2+0.921s}$$
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       where the input is elevator deflection angle $\delta$ and the output is the aircraft pitch angle $\theta$.
+      </p>
+      <p>
+       For the original problem setup and the derivation of the above transfer function please refer to the Aircraft Pitch: System Modeling page
+      </p>
+      <p>
+       For a step reference of 0.2 radians, the design criteria are the following.
+      </p>
+      <ul>
+       <li>
+        <p>
+         Overshoot less than 10%
+        </p>
+       </li>
+       <li>
+        <p>
+         Rise time less than 2 seconds
+        </p>
+       </li>
+       <li>
+        <p>
+         Settling time less than 10 seconds
+        </p>
+       </li>
+       <li>
+        <p>
+         Steady-state error less than 2%
+        </p>
+       </li>
+      </ul>
+      <p>
+       <br/>
+      </p>
+      <h2 id="olr">
+       Open-loop response
+      </h2>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Let's first begin by examining the behavior of the open-loop plant. Specifically, create a new m-file, and enter the following commands. Note the scaling of the step response by 0.2 to account for the fact that the input is a step of 0.2 radians (11 degrees). Running this m-file in the MATLAB command window should give you the step response plot shown below.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[22]">
+      <a class="prompt input_prompt" href="#In-[22]">
+       In [22]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%</span><span class="k">load_ext</span> pymatbridge
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt">
+       </div>
+       <div class="output_subarea output_stream output_stdout output_text">
+        <pre>Starting MATLAB on ZMQ socket ipc:///tmp/pymatbridge
+Send 'exit' command to kill the server
+................MATLAB started and connected!
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[24]">
+      <a class="prompt input_prompt" href="#In-[24]">
+       In [24]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">capture</span>
+%%matlab 
+
+f = figure;
+t = [0:0.01:10];
+s = tf('s');
+P_pitch = (1.151*s + 0.1774)/(s^3 + 0.739*s^2 + 0.921*s);
+step(0.2*P_pitch,t);
+axis([0 10 0 0.8]);
+ylabel('pitch angle (rad)');
+title('Open-loop Step Response');
+grid
+
+
+%%%%%%%%%%%%%%%%%%%
+%     PLOTLY      % 
+%%%%%%%%%%%%%%%%%%%
+
+fig2plotly(f);
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[55]">
+      <a class="prompt input_prompt" href="#In-[55]">
+       In [55]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">show_plot</span><span class="p">(</span><span class="s">'https://plot.ly/~UMichiganControl/0/'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[55]">
+        <a class="prompt output_prompt" href="#Out[55]">
+         Out[55]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <center>
+         <iframe frameborder="0" height="500" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~UMichiganControl/0//700/500" width="700">
+         </iframe>
+        </center>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Examination of the above plot indicates that the open-loop system is unstable for a step input, that is, its output grows unbounded when given a step input. This is due to the fact that the transfer function has a pole at the origin.
+      </p>
+      <p>
+       <br/>
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="clr">
+       Closed-loop response
+      </h2>
+      <p>
+       Let's now close the loop on our plant and see if that stabilizes the system. Consider the following unity feedback architecture for our system.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       <a data-lightbox="aircraft_pitch_image01" href="/static/api_docs/image/ipython_notebooks/aircraft_pitch_image01.png">
+        <img alt="Aircraft Pitch in MATLAB and Plotly image01" src="/static/api_docs/image/ipython_notebooks/aircraft_pitch_image01.png"/>
+       </a>
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       The following code entered in the MATLAB command window generates the closed-loop transfer function assuming the unity-feedback architecture above and a unity-gain controller, C(s) = 1.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[25]">
+      <a class="prompt input_prompt" href="#In-[25]">
+       In [25]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">matlab</span>
+sys_cl = feedback(P_pitch,1)
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt">
+       </div>
+       <div class="output_text output_subarea ">
+        <pre> 
+Transfer function:
+         1.151 s + 0.1774
+----------------------------------
+s^3 + 0.739 s^2 + 2.072 s + 0.1774
+ 
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Examining the poles of this transfer function using the pole command as shown below, it can be seen that this closed-loop system is indeed stable since all of the poles have negative real part.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[33]">
+      <a class="prompt input_prompt" href="#In-[33]">
+       In [33]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">matlab</span> 
+pole(sys_cl)
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt">
+       </div>
+       <div class="output_text output_subarea ">
+        <pre>
+ans =
+
+  -0.3255 + 1.3816i
+  -0.3255 - 1.3816i
+  -0.0881          
+
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Stability of this closed-loop system can also be determined using the frequency response of the open-loop system. The margin command generates the Bode plot for the given transfer function with annotations for the gain margin and phase margin of the system when the loop is closed as demonstrated below.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[34]">
+      <a class="prompt input_prompt" href="#In-[34]">
+       In [34]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">capture</span> 
+%%matlab
+
+f = figure; 
+margin(P_pitch)
+grid
+
+%%%%%%%%%%%%%%%%%%%
+%     PLOTLY      % 
+%%%%%%%%%%%%%%%%%%%
+
+fig2plotly(f);
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[54]">
+      <a class="prompt input_prompt" href="#In-[54]">
+       In [54]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">show_plot</span><span class="p">(</span><span class="s">'https://plot.ly/~UMichiganControl/1/'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[54]">
+        <a class="prompt output_prompt" href="#Out[54]">
+         Out[54]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <center>
+         <iframe frameborder="0" height="500" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~UMichiganControl/1//700/500" width="700">
+         </iframe>
+        </center>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Examination of the above demonstrates that the closed-loop system is indeed stable since the phase margin and gain margin are both positive. Specifically, the phase margin equals 46.9 degrees and the gain margin is infinite. It is good that this closed-loop system is stable, but does it meet our requirements? Add the following code to your m-file and re-run and you will generate the step response plot shown below.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[13]">
+      <a class="prompt input_prompt" href="#In-[13]">
+       In [13]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">capture</span>
+%%matlab 
+
+f = figure; 
+sys_cl = feedback(P_pitch,1);
+step(0.2*sys_cl), grid
+ylabel('pitch angle (rad)');
+title('Closed-loop Step Response')
+
+%%%%%%%%%%%%%%%%%%%
+%     PLOTLY      % 
+%%%%%%%%%%%%%%%%%%%
+
+fig2plotly(f);
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[53]">
+      <a class="prompt input_prompt" href="#In-[53]">
+       In [53]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">show_plot</span><span class="p">(</span><span class="s">'https://plot.ly/~UMichiganControl/2/'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[53]">
+        <a class="prompt output_prompt" href="#Out[53]">
+         Out[53]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <center>
+         <iframe frameborder="0" height="500" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~UMichiganControl/2//700/500" width="700">
+         </iframe>
+        </center>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Examination of the above demonstrates that the settle time requirement of 10 seconds is not close to being met. One way to address this is to make the system response faster, but then the overshoot shown above will likely become a problem. Therefore, the overshoot must be reduced in conjunction with making the system response faster. We can accomplish these goals by adding a compensator to reshape the Bode plot of the open-loop system. The Bode plot of the open-loop system indicates behavior of the closed-loop system. More specifically,
+      </p>
+      <ul>
+       <li>
+        <p>
+         the gain crossover frequency is directly related to the closed-loop system's speed of response, and
+        </p>
+       </li>
+       <li>
+        <p>
+         the phase margin is inversely related to the closed-loop system's overshoot.
+        </p>
+       </li>
+      </ul>
+      <p>
+       the gain crossover frequency is directly related to the closed-loop system's speed of response, and
+the phase margin is inversely related to the closed-loop system's overshoot.
+Therefore, we need to add a compensator that will increase the gain crossover frequency and increase the phase margin as indicated in the Bode plot of the open-loop system.
+      </p>
+      <p>
+       <br/>
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="lc">
+       Lead compensator
+      </h2>
+      <p>
+       A type of compensator that can accomplish both of our goals is a lead compensator. Referring to the Lead and Lag Compensators page, a lead compensator adds positive phase to the system. Additional positive phase increases the phase margin, thus, increasing the damping. The lead compensator also generally increases the magnitude of the open-loop frequency response at higher frequencies, thereby, increasing the gain crossover frequency and overall speed of the system. Therefore, the settling time should decrease as a result of the addition of a lead compensator. The general form of the transfer function of a lead compensator is the following.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       <span class="eqn_num">
+        (2)
+       </span>
+       $$ C(s)=K \frac{Ts + 1}{\alpha Ts+1} \ \ \ (\alpha \lt 1) $$
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       We thus need to find $\alpha$, T and K. Typically, the gain K is set to satisfy requirements on steady-state error. Since our system is already type 1 (the plant has an integrator) the steady-state error for a step input will be zero for any value of K. Even though the steady-state error is zero, the slow tail on the response can be attributed to the fact the velocity-error constant is too small. This deficiency can be addressed by employing a value of K that is greater than 1, in other words, a value of K that will shift the magnitude plot upward. Through some trial and error, we will somewhat arbitrarily choose K = 10. Running the following code in the MATLAB window will demonstrate the effect of adding this K.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[42]">
+      <a class="prompt input_prompt" href="#In-[42]">
+       In [42]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">capture</span>
+%%matlab 
+
+f = figure;
+K = 10;
+margin(K*P_pitch), grid
+sys_cl = feedback(K*P_pitch,1);
+step(0.2*sys_cl), grid
+title('Closed-loop Step Response with K = 10')
+
+%%%%%%%%%%%%%%%%%%%
+%     PLOTLY      % 
+%%%%%%%%%%%%%%%%%%%
+
+fig2plotly(f);
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[52]">
+      <a class="prompt input_prompt" href="#In-[52]">
+       In [52]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">show_plot</span><span class="p">(</span><span class="s">'https://plot.ly/~UMichiganControl/3/'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[52]">
+        <a class="prompt output_prompt" href="#Out[52]">
+         Out[52]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <center>
+         <iframe frameborder="0" height="500" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~UMichiganControl/3//700/500" width="700">
+         </iframe>
+        </center>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[51]">
+      <a class="prompt input_prompt" href="#In-[51]">
+       In [51]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">show_plot</span><span class="p">(</span><span class="s">'https://plot.ly/~UMichiganControl/4/'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[51]">
+        <a class="prompt output_prompt" href="#Out[51]">
+         Out[51]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <center>
+         <iframe frameborder="0" height="500" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~UMichiganControl/4//700/500" width="700">
+         </iframe>
+        </center>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       From examination of the above Bode plot, we have increased the system's magnitude at all frequencies and have pushed the gain crossover frequency higher. The effect of these changes are evident in the closed-loop step response shown above. Unfortunately, the addition of the K has also reduced the system's phase margin as evidenced by the increased overshoot in the system's step response. As mentioned previously, the lead compensator will help add damping to the system in order to reduce the overshoot in the step response.
+      </p>
+      <p>
+       Continuing with the design of our compensator, we will next address the parameter $\alpha$ which is defined as the ratio between the zero and pole. The larger the separation between the zero and the pole the greater the bump in phase where the maximum amount of phase that can be added with a single pole-zero pair is 90 degrees. The following equation captures the maximum phase added by a lead compensator as a function of $\alpha$.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       <span class="eqn_num">
+        (3)
+       </span>
+       $$ \sin(\phi_m)=\frac{1 - \alpha}{1 + \alpha} $$
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Relationships between the time response and frequency response of a standard underdamped second-order system can be derived. One such relationship that is a good approximation for damping ratios less than approximately 0.6 or 0.7 is the following
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       <span class="eqn_num">
+        (4)
+       </span>
+       $$ \zeta \approx \frac{PM (degrees)}{100^{\circ}} $$
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       While our system does not have the form of a standard second-order system, we can use the above relationship as a starting point in our design. As we are required to have overshoot less than 10%, we need our damping ratio $\zeta$ to be approximately larger than 0.59 and thus need a phase margin greater than about 59 degrees. Since our current phase margin (with the addition of K) is approximately 10.4 degrees, an additional 50 degrees of phase bump from the lead compensator should be sufficient. Since it is known that the lead compensator will further increase the magnitude of the frequency response, we will need to add more than 50 degrees of phase lead to account for the fact that the gain crossover frequency will increase to a point where the system has more phase lag. We will somewhat arbitrarily add 5 degrees and aim for a total bump in phase of 50+5 = 55 degrees.
+      </p>
+      <p>
+       We can then use this number to solve the above relationship for $\alpha$ as shown below.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       <span class="eqn_num">
+        (5)
+       </span>
+       $$ \alpha = \frac{1 - \sin(55^{\circ})}{1 + \sin(55^{\circ})} \approx 0.10 $$
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       From the above, we can calculate that $\alpha$ must be less than approximately 0.10. For this value of $\alpha$, the following relationship can be used to determine the amount of magnitude increase that will be supplied by the lead compensator at the location of the maximum bump in phase.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       <span class="eqn_num">
+        (6)
+       </span>
+       $$ 20 \log \left( \frac{1}{\sqrt{\alpha}} \right) \approx 20 \log \left( \frac{1}{\sqrt{0.10}} \right) \approx 10 dB $$
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Examining the Bode plot shown above, the magnitude of the uncompensated system equals -10 dB at approximately 6.1 rad/sec. Therefore, the addition of our lead compensator will move the gain crossover frequency from 3.49 rad/sec to approximately 6.1 rad/sec. Using this information, we can then calculate a value of T from the following in order to center the maximum bump in phase at the new gain crossover frequency in order to maximize the system's resulting phase margin.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       <span class="eqn_num">
+        (7)
+       </span>
+       $$ \omega_m = \frac{1}{T \sqrt{\alpha}} \Rightarrow T = \frac{1}{6.1\sqrt{.10}} \approx 0.52 $$
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       With the values K = 10, $\alpha$ = 0.10, and T = 0.52 calculated above, we now have a first attempt at our lead compensator. Adding the following lines to your m-file and running at the command line will generate the plot shown below demonstrating the effect of your lead compensator on the system's frequency response.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[61]">
+      <a class="prompt input_prompt" href="#In-[61]">
+       In [61]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">capture</span>
+%%matlab 
+
+f = figure;
+K = 10;
+alpha = 0.10; 
+T = 0.52;
+C_lead = K*(T*s + 1) / (alpha*T*s + 1);
+margin(C_lead*P_pitch), grid
+
+%%%%%%%%%%%%%%%%%%%
+%     PLOTLY      % 
+%%%%%%%%%%%%%%%%%%%
+
+fig2plotly(f);
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[50]">
+      <a class="prompt input_prompt" href="#In-[50]">
+       In [50]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">show_plot</span><span class="p">(</span><span class="s">'https://plot.ly/~UMichiganControl/5/'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[50]">
+        <a class="prompt output_prompt" href="#Out[50]">
+         Out[50]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <center>
+         <iframe frameborder="0" height="500" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~UMichiganControl/5//700/500" width="700">
+         </iframe>
+        </center>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Examination of the above demonstrates that the lead compensator increased the system's phase margin and gain crossover frequency as desired. We now need to look at the actual closed-loop step response in order to determine if we are close to meeting our requirements. Replace the step response code in your m-file with the following and re-run in the MATLAB command window.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[64]">
+      <a class="prompt input_prompt" href="#In-[64]">
+       In [64]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">capture</span>
+%%matlab 
+
+f = figure; 
+sys_cl = feedback(C_lead*P_pitch,1);
+step(0.2*sys_cl), grid
+title('Closed-loop Step Response with K = 10, alpha = 0.10, and T = 0.52')
+
+%%%%%%%%%%%%%%%%%%%
+%     PLOTLY      % 
+%%%%%%%%%%%%%%%%%%%
+
+fig2plotly(f);
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[71]">
+      <a class="prompt input_prompt" href="#In-[71]">
+       In [71]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">show_plot</span><span class="p">(</span><span class="s">'https://plot.ly/~UMichiganControl/6/'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[71]">
+        <a class="prompt output_prompt" href="#Out[71]">
+         Out[71]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <center>
+         <iframe frameborder="0" height="500" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~UMichiganControl/6//700/500" width="700">
+         </iframe>
+        </center>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Examination of the above demonstrates that we are close to meeting our requirements. Using the MATLAB command stepinfo as shown below we can see precisely the characteristics of the closed-loop step response.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[80]">
+      <a class="prompt input_prompt" href="#In-[80]">
+       In [80]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">matlab</span> 
+
+stepinfo(0.2*sys_cl)
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt">
+       </div>
+       <div class="output_text output_subarea ">
+        <pre>
+ans = 
+
+        RiseTime: 1.7479
+    SettlingTime: 35.0902
+     SettlingMin: 0.1156
+     SettlingMax: 0.1999
+       Overshoot: 0
+      Undershoot: 0
+            Peak: 0.1999
+        PeakTime: 75.0320
+
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       From the above, all of our requirements are met except for the overshoot which is a bit larger than the requirement of 10%. Iterating on the above design process, we arrive at the parameters K = 10, $\alpha$ = 0.04, and T = 0.55. The performance achieved with this controller can then be verified by modifying the code in your m-file as follows.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[50]">
+      <a class="prompt input_prompt" href="#In-[50]">
+       In [50]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">capture</span> 
+%%matlab 
+
+f = figure; 
+K = 10;
+alpha = 0.04;
+T = 0.55;
+C_lead = K*(T*s + 1) / (alpha*T*s + 1);
+sys_cl = feedback(C_lead*P_pitch,1);
+step(0.2*sys_cl), grid
+title('Closed-loop Step Response with K = 10, alpha = 0.04, and T = 0.55')
+
+%%%%%%%%%%%%%%%%%%%
+%     PLOTLY      % 
+%%%%%%%%%%%%%%%%%%%
+
+fig2plotly(f);
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[66]">
+      <a class="prompt input_prompt" href="#In-[66]">
+       In [66]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">show_plot</span><span class="p">(</span><span class="s">'https://plot.ly/~UMichiganControl/7/'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[66]">
+        <a class="prompt output_prompt" href="#Out[66]">
+         Out[66]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <center>
+         <iframe frameborder="0" height="500" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~UMichiganControl/7//700/500" width="700">
+         </iframe>
+        </center>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Examination of the above step response demonstrates that the requirements are now met. Using the stepinfo command again more clearly demonstrates that the requirements are met.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[72]">
+      <a class="prompt input_prompt" href="#In-[72]">
+       In [72]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="o">%%</span><span class="k">matlab</span> 
+
+stepinfo(0.2*sys_cl)
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt">
+       </div>
+       <div class="output_text output_subarea ">
+        <pre>
+ans = 
+
+        RiseTime: 1.7479
+    SettlingTime: 35.0902
+     SettlingMin: 0.1156
+     SettlingMax: 0.1999
+       Overshoot: 0
+      Undershoot: 0
+            Peak: 0.1999
+        PeakTime: 75.0320
+
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Therefore, the following lead compensator is able to satisfy all of our design requirements.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       <span class="eqn_num">
+        (8)
+       </span>
+       $$C(s)=10\frac{0.55s + 1 }{ 0.022s+1}$$
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[6]">
+      <a class="prompt input_prompt" href="#In-[6]">
+       In [6]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="k">def</span> <span class="nf">show_plot</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s">'&lt;center&gt;&lt;iframe height="</span><span class="si">%s</span><span class="s">" id="igraph" scrolling="no" frameborder = 0 seamless="seamless" src="</span><span class="si">%s</span><span class="s">" width="</span><span class="si">%s</span><span class="s">"&gt;&lt;/iframe&gt;&lt;/center&gt;'</span> <span class="o">%</span>\
+    <span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="s">"/"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,[</span><span class="n">url</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">])),</span> <span class="n">width</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
    </div>
   </div>
  </div>

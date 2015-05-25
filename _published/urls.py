@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("aircraft-pitch-analysis-matlab-plotly/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='aircraft_pitch'),
+        name='ipython-notebook-aircraft_pitch'),
     url("cufflinks/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
@@ -79,10 +84,5 @@ urlpatterns = patterns(
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
             notebook='collaborate'),
-        name='ipython-notebook-collaborate'),
-    url("/aircraft-pitch-analysis-matlab-plotly/$",
-        IPythonNotebookPage.as_view(
-            lang='ipython-notebooks',
-            notebook='aircraft_pitch'),
-        name='ipython-notebook-aircraft_pitch')
+        name='ipython-notebook-collaborate')
 )

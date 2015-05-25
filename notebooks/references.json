@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "aircraft_pitch",
         "cufflinks",
         "survival_analysis",
         "redshift",
@@ -14,7 +15,6 @@
         "networkx",
         "make_subplots",
         "basemap",
-        "collaborate",
-	"aircraft_pitch"
+        "collaborate"
     ]
 }

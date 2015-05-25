@@ -67,6 +67,12 @@
     }, 
     "splash": [
         {
+            "title_short": "Aircraft Pitch in MATLAB and Plotly", 
+            "thumbnail_image": "", 
+            "relative_url": "aircraft-pitch-analysis-matlab-plotly", 
+            "title": "Aircraft Pitch Analysis in MATLAB and Plotly"
+        }, 
+        {
             "title_short": "Cufflinks: Plotly + Pandas", 
             "thumbnail_image": "ukswaps.gif", 
             "relative_url": "cufflinks", 
@@ -155,15 +161,10 @@
             "thumbnail_image": "", 
             "relative_url": "collaboration", 
             "title": "Collaboration with Plotly using Python, R and MATLAB"
-        }, 
-        {
-            "title_short": "Aircraft Pitch in MATLAB and Plotly", 
-            "thumbnail_image": "", 
-            "relative_url": "/aircraft-pitch-analysis-matlab-plotly", 
-            "title": "Aircraft Pitch Analysis in MATLAB and Plotly"
         }
     ], 
     "notebooks": [
+        "aircraft_pitch", 
         "cufflinks", 
         "survival_analysis", 
         "redshift", 
@@ -178,7 +179,6 @@
         "networkx", 
         "make_subplots", 
         "basemap", 
-        "collaborate", 
-        "aircraft_pitch"
+        "collaborate"
     ]
 }
