@@ -1,21 +1,21 @@
 
 # coding: utf-8
 
-# # Survival Analysis with Plotly: R vs. Python
+# # Survival Analysis with Plotly: R vs Python
 
 # <h2 id="tocheading">Table of Contents</h2>
-# <div id="toc"><ul class="toc"><li><a href="#Survival-Analysis-with-Plotly:-R-vs.-Python">I. Survival Analysis with Plotly: R vs. Python</a><a class="anchor-link" href="#Survival-Analysis-with-Plotly:-R-vs.-Python">¶</a></li><ul class="toc"><li><a href="#Introduction">I. Introduction</a><a class="anchor-link" href="#Introduction">¶</a></li><li><a href="#Censoring">II. Censoring</a><a class="anchor-link" href="#Censoring">¶</a></li><li><a href="#Loading-data-into-python-and-R">III. Loading data into python and R</a><a class="anchor-link" href="#Loading-data-into-python-and-R">¶</a></li></ul><li><a href="#Estimating-survival-with-Kaplan-Meier">II. Estimating survival with Kaplan-Meier</a><a class="anchor-link" href="#Estimating-survival-with-Kaplan-Meier">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul><li><a href="#Multiple-Types">III. Multiple Types</a><a class="anchor-link" href="#Multiple-Types">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul><li><a href="#Testing-for-Difference">IV. Testing for Difference</a><a class="anchor-link" href="#Testing-for-Difference">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul><li><a href="#Estimating-Hazard-Rates">V. Estimating Hazard Rates</a><a class="anchor-link" href="#Estimating-Hazard-Rates">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul></ul></div>
+# <div id="toc"><ul class="toc"><li><a href="#Survival-Analysis-with-Plotly:-R-vs.-Python">I. Survival Analysis with Plotly: R vs Python</a><a class="anchor-link" href="#Survival-Analysis-with-Plotly:-R-vs.-Python">¶</a></li><ul class="toc"><li><a href="#Introduction">I. Introduction</a><a class="anchor-link" href="#Introduction">¶</a></li><li><a href="#Censoring">II. Censoring</a><a class="anchor-link" href="#Censoring">¶</a></li><li><a href="#Loading-data-into-python-and-R">III. Loading data into Python and R</a><a class="anchor-link" href="#Loading-data-into-python-and-R">¶</a></li></ul><li><a href="#Estimating-survival-with-Kaplan-Meier">II. Estimating survival with Kaplan-Meier</a><a class="anchor-link" href="#Estimating-survival-with-Kaplan-Meier">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul><li><a href="#Multiple-Types">III. Multiple Types</a><a class="anchor-link" href="#Multiple-Types">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul><li><a href="#Testing-for-Difference">IV. Testing for Difference</a><a class="anchor-link" href="#Testing-for-Difference">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul><li><a href="#Estimating-Hazard-Rates">V. Estimating Hazard Rates</a><a class="anchor-link" href="#Estimating-Hazard-Rates">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul></ul></div>
 
-# In this notebook we introduce Survival Analysis using both R and Python. We will compare programming languages and leverage [Plotly's](https://plot.ly) Python and R APIs to convert graphics to interactive [Plotly](https://plot.ly) objects.
+# In this notebook, we introduce survival analysis and we show application examples using both R and Python. We will compare the two programming languages, and leverage [Plotly](https://plot.ly)'s Python and R APIs to convert static graphics into interactive `plotly` objects.
 # 
-# Plotly is a platform for making interactive graphs with R, Python, MATLAB, and Excel. You can make graphs and analyze data on Plotly’s free public cloud. For collaboration and sensitive data, you can run Plotly [on your own servers](https://plot.ly/product/enterprise/ ).
+# Plotly is a platform for making interactive graphs with R, Python, MATLAB, and Excel. You can make graphs and analyze data on Plotly’s free public cloud. For collaboration and sensitive data, you can run Plotly [on your own servers](https://plot.ly/product/enterprise/).
 # 
-# For a more in depth theoretical background in survival analysis, please refer to these sources:
+# For a more in-depth theoretical background in survival analysis, please refer to these sources:
 # 
-# - [Intro to Survival Analysis by John Fox](http://socserv.mcmaster.ca/jfox/Courses/soc761/survival-analysis.pdf)
-# - [Wikipedia](http://en.wikipedia.org/wiki/Survival_analysis)
-# - [Introduction to Survival Analysis, Stanford University](https://www.google.ca/url?sa=t&rct=j&q=&esrc=s&source=web&cd=8&ved=0CEoQFjAH&url=http%3A%2F%2Fwww.pitt.edu%2F~super4%2F33011-34001%2F33051-33061.ppt&ei=WQJJVbuJCZCXygSSnYGIDA&usg=AFQjCNE2Owl8oZHVM5qBbh14kkqn8QGAFw&sig2=FFwH6odwuNixpxDrLoLetw&bvm=bv.92291466,d.aWw)
-# - [Survival Models, Princeton University](http://data.princeton.edu/wws509/notes/c7.pdf)
+# - [Lecture Notes by John Fox](http://socserv.mcmaster.ca/jfox/Courses/soc761/survival-analysis.pdf)
+# - [Wikipedia article](http://en.wikipedia.org/wiki/Survival_analysis)
+# - [Presentation by Kristin Sainani](www.pitt.edu/~super4/33011-34001/33051-33061.ppt)
+# - [Lecture Notes by Germán Rodríguez](http://data.princeton.edu/wws509/notes/c7.pdf)
 # 
 # Need help converting Plotly graphs from R or Python?
 # - [R](https://plot.ly/r/user-guide/)
@@ -23,11 +23,11 @@
 # 
 # For this code to run on your machine, you will need several R and Python packages installed.
 # 
-# - Running `sudo pip install <package_name>` from your terminal will install python libraries.
+# - Running `sudo pip install <package_name>` from your terminal will install a Python package.
 # 
-# - Running `install.packages("<library_name>")` in your R console will install R packages.
+# - Running `install.packages("<package_name>")` in your R console will install an R package.
 # 
-# You will also need to register an account with [Plotly](https://plot.ly/feed/) to receive your API key. 
+# You will also need to create an account with [Plotly](https://plot.ly/feed/) to receive your API key.
 
 # In[1]:
 
@@ -39,50 +39,47 @@ get_ipython().system(u'pip install rpy2')
 get_ipython().system(u'pip install plotly')
 get_ipython().system(u'pip install pandas')
 
-# Install R libraries
+# Load extension that let us use magic function `%R`
 get_ipython().magic(u'load_ext rpy2.ipython')
 
+# Install R packages
 get_ipython().magic(u'R install.packages("devtools")')
-get_ipython().magic(u'R install_github("ropensci/plotly")')
+get_ipython().magic(u'R devtools::install_github("ropensci/plotly")')
 get_ipython().magic(u'R install.packages("IOsurv")')
-get_ipython().magic(u'R install.packages("ggplot2")')
 
 
 # ## Introduction
 
-# [Survival analysis](http://en.wikipedia.org/wiki/Survival_analysis) is a set of statistical methods for analyzing the occurrence  of event data over time. It is also used to determine the relationship of co-variates to the time-to-events, and accurately compare time-to-event between two or more groups. For example:
+# [Survival analysis](http://en.wikipedia.org/wiki/Survival_analysis) is a set of statistical methods for analyzing the occurrence  of events over time. It is also used to determine the relationship of co-variates to the time-to-events, and accurately compare time-to-event between two or more groups. For example:
 # 
 # - Time to death in biological systems.
 # - Failure time in mechanical systems.
 # - How long can we expect a user to be on a website / service?
 # - Time to recovery for lung cancer treatment.
 # 
-# The statistical term survival analysis is analogous to `reliability theory` in engineering, `duration analysis` in economics, and `event history analysis` in sociology.
+# The statistical term 'survival analysis' is analogous to 'reliability theory' in engineering, 'duration analysis' in economics, and 'event history analysis' in sociology.
 
 # The two key functions in survival analysis are the *survival function* and the *hazard function*.
 # 
-# The **survival function** is conventionally denoted as $S$, the probability that time of death is later than some specified time $t$, defined as:
+# The **survival function**, conventionally denoted by $S$, is the probability that the event (say, death) has not occurred yet:
 # 
-# $$ S(t) = Pr(T>t)$$
+# $$S(t) = Pr(T > t),$$
 # 
-# where $t$ is some duration, $T$ is a random variable denoting the time of death, and $Pr$ is the probability of the event. Generally, $0\leq S(t)\leq1$ and $S(0) = 1$. 
+# where $T$ denotes the time of death and $Pr$ the probability. Since $S$ is a probability, $0\leq S(t)\leq1$. Survival times are non-negative ($T \geq 0$) and, generally, $S(0) = 1$.
 # 
-# <br>
-# <br>
 # 
-# The **hazard function** gives us the probability of "death" in the next instance of time, given we are still "alive".
+# The **hazard function** $h(t)$ is the event (death) rate at time $t$, conditional on survival until $t$ (i.e., $T \geq t$):
 # 
-# $$\lambda(t) = \lim_{dt \to 0} \frac{Pr(t \leq T < t + dt}{dt \cdot S(t)}$$
+# $$h(t) = \lim_{\Delta t \to 0} Pr(t \leq T \leq t + \Delta t | T \geq t)
+# = \lim_{\Delta t \to 0} \frac{Pr(t \leq T < t + \Delta t)}{S(t)} = \frac{p(t)}{S(t)},$$
 # 
-# The hazard rate describes the relative likelihood of the event occurring at time $t$, and *ignores* the accumulation of hazard up to time $t$, unlike $S(t)$.
+# where $p$ denotes the probability density function.
 # 
-# <br>
+# In practice, we do not get to observe the actual survival function of a population; we must use the observed data to estimate it. A popular estimate for the survival function $S(t)$ is the [Kaplan–Meier estimate](http://en.wikipedia.org/wiki/Kaplan–Meier_estimator):
 # 
-# However, we do not actually observe the true survival function of a population; we must use the observed data to estimate it. A popular method to estimate the survival function $S(t)$ is the [Kaplan-Meier estimate](http://en.wikipedia.org/wiki/Kaplan–Meier_estimator).
+# $$\hat{S}(t)= \prod_{ti < t} \frac{n_i − d_i}{n_i}\,,$$
 # 
-# $$S(t)= \prod_{ti < t}  \frac{n_i−d_i}{n_i}$$
-# 
-# where $d_i$ are the number of death events at time $t$ and $n_i$ is the number of subjects at risk of death at time t.
+# where $d_i$ is the number of events (deaths) observed at time $t_i$ and $n_i$ is the number of subjects at risk observed at time $t_i$.
 
 # ## Censoring
 
@@ -106,7 +103,6 @@ get_ipython().magic(u'R install.packages("ggplot2")')
 get_ipython().magic(u'R library(OIsurv)')
 get_ipython().magic(u'R library(devtools)')
 get_ipython().magic(u'R library(plotly)')
-get_ipython().magic(u'R library(ggplot2)')
 get_ipython().magic(u'R library(IRdisplay)')
 
 # Authenticate to plotly's api using your account
@@ -129,7 +125,7 @@ from pylab import rcParams
 rcParams['figure.figsize']=10, 5
 
 
-# ## Loading data into python and R
+# ## Loading data into Python and R
 # 
 # We will be using the `tongue` dataset from the `KMsurv` package in R, then convert the data into a pandas dataframe under the same name.
 # 
