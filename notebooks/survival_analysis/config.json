@@ -1,6 +1,6 @@
 {
-    "title": "Survival Analysis with Plotly: R vs. Python", 
-    "title_short": "Survival Analysis with Plotly: R vs. Python",  
+    "title": "Survival Analysis with Plotly: R vs Python",
+    "title_short": "Survival Analysis with Plotly: R vs Python",
     "meta_description": "An introduction to survival analysis with Plotly graphs using R, Python, and IPython notebooks",  
     "cells": [0, "end"], 
     "relative_url": "survival-analysis-r-vs-python", 
