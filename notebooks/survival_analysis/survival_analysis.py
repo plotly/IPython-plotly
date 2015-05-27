@@ -79,7 +79,9 @@ get_ipython().magic(u'R install.packages("IOsurv")')
 # 
 # In practice, we do not get to observe the actual survival function of a population; we must use the observed data to estimate it. A popular estimate for the survival function $S(t)$ is the [Kaplan–Meier estimate](http://en.wikipedia.org/wiki/Kaplan–Meier_estimator):
 # 
-# $$\hat{S}(t)= \prod_{ti < t} \frac{n_i − d_i}{n_i}\,,$$
+# \begin{align*}
+# \hat{S}(t) &= \prod_{t_i \leq t} \frac{n_i − d_i}{n_i}\,,
+# \end{align*}
 # 
 # where $d_i$ is the number of events (deaths) observed at time $t_i$ and $n_i$ is the number of subjects at risk observed at time $t_i$.
 
