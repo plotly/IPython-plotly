@@ -177,18 +177,17 @@
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       In this notebook, we introduce survival analysis and we show application examples using both R and Python. We will compare the two programming languages, and leverage
-       <a href="/">
-        Plotly
-       </a>
-       's Python and R APIs to convert static graphics into interactive
+       In this notebook, we introduce survival analysis and we show application examples using both R and Python. We will compare the two programming languages, and leverage Plotly's Python and R APIs to convert static graphics into interactive
        <code>
         plotly
        </code>
        objects.
       </p>
       <p>
-       Plotly is a platform for making interactive graphs with R, Python, MATLAB, and Excel. You can make graphs and analyze data on Plotly’s free public cloud. For collaboration and sensitive data, you can run Plotly
+       <a href="/">
+        Plotly
+       </a>
+       is a platform for making interactive graphs with R, Python, MATLAB, and Excel. You can make graphs and analyze data on Plotly’s free public cloud. For collaboration and sensitive data, you can run Plotly
        <a href="/product/enterprise/">
         on your own servers
        </a>
@@ -377,8 +376,13 @@
        </strong>
        $h(t)$ is the event (death) rate at time $t$, conditional on survival until $t$ (i.e., $T \geq t$):
       </p>
-      $$h(t) = \lim_{\Delta t \to 0} Pr(t \leq T \leq t + \Delta t | T \geq t)
-= \lim_{\Delta t \to 0} \frac{Pr(t \leq T where $p$ denotes the probability density function.
+      \begin{align*}
+h(t) &amp;= \lim_{\Delta t \to 0} Pr(t \leq T \leq t + \Delta t \, | \, T \geq t) \\
+     &amp;= \lim_{\Delta t \to 0} \frac{Pr(t \leq T \leq t + \Delta t)}{S(t)} = \frac{p(t)}{S(t)},
+\end{align*}
+      <p>
+       where $p$ denotes the probability density function.
+      </p>
       <p>
        In practice, we do not get to observe the actual survival function of a population; we must use the observed data to estimate it. A popular estimate for the survival function $S(t)$ is the
        <a href="http://en.wikipedia.org/wiki/Kaplan–Meier_estimator" target="_blank">
@@ -1522,7 +1526,7 @@ AiRAAiQQfgJUwOFnyhRJgARIgARIICgBKuCgiBiBBEiABEiABMJPgAo4/EyZIgmQAAmQAAkEJUAF
 HBQRI5AACZAACZBA+AlQAYefKVMkARIgARIggaAEqICDImIEEiABEiABEgg/gf8Hvwifz+dQsDMA
 AAAASUVORK5CYII=
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
 Vd1v21QUP4lvXKQWP6Cxjg4Vi69VU1u5GxqtxgZJk6XpQhq5zdgqpMl1bhpT1za2021Vn/YCbwz4
 A4CyBx6QeEIaDMT2su0BtElTQRXVJKQ9dNpAaJP2gqpwrq9Tu13GuJGvfznndz7v0TVAx1ea45hJ
 GWDe8l01n5GPn5iWO1YhCc9BJ/RAp6Z7TrpcLgIuxoVH1sNfIcHeNwfa6/9zdVappwMknkJsVz19
@@ -2507,7 +2511,7 @@ AwlQATuw0SgyCZAACZCA8wlQATu/DVkDEiABEiABBxKgAnZgo1FkEiABEiAB5xOgAnZ+G7IGJEAC
 JEACDiRABezARqPIJEACJEACzidABez8NmQNSIAESIAEHEiACtiBjUaRSYAESIAEnE/g/wNycWZL
 1qfcFQAAAABJRU5ErkJggg==
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
 Vd1v21QUP4lvXKQWP6Cxjg4Vi69VU1u5GxqtxgZJk6XpQhq5zdgqpMl1bhpT1za2021Vn/YCbwz4
 A4CyBx6QeEIaDMT2su0BtElTQRXVJKQ9dNpAaJP2gqpwrq9Tu13GuJGvfznndz7v0TVAx1ea45hJ
 GWDe8l01n5GPn5iWO1YhCc9BJ/RAp6Z7TrpcLgIuxoVH1sNfIcHeNwfa6/9zdVappwMknkJsVz19
@@ -3309,7 +3313,7 @@ jGTvrS8S+EZm/iTwZuAl1ev/E/h4Zj4KeDzwxxFxtwa+nyS1ey9CSSqICc8BLszMW4FbI+IW4Pzq
 dV4JHFQ1vl8CvHyl30WSJnGaBkmSpIZ5BEuSJKlhFliSJEkNs8CSJElqmAWWJElSwyywJEmSGmaB
 JUmS1DALLEmSpIZZYEmSJDXs/wP9IQ0XTEh3jQAAAABJRU5ErkJggg==
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFRCAYAAACogdOJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFRCAYAAACogdOJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X20JHV95/H3Vx4mKqgYsqCIMypoJMYdEkVjopmoAWIM
 ZjUbGZ9dNWwSZHcTIyF7TkSN0RijhuPGxYc4xrhifIg7RMlolElc4xORiSIDQgQCiKAy6AgGJXz3
 j66e6en69e1751bdqu5+v87pc7u661b/+kPNzJeqb/0qMhNJkiQ15y5dD0CSJGneWGBJkiQ1zAJL
@@ -4074,7 +4078,7 @@ llLKyMgIIOAJAQKwJxYDlUAAAQQQKDcBzgGX2xJnfhFAAAEEPCFAAPbEYqASCCCAAALlJkAALrcl
 zvwigAACCHhCgADsicVAJRBAAAEEyk2AAFxuS5z5RQABBBDwhAAB2BOLgUoggAACCJSbAAG43JY4
 84sAAggg4AkBArAnFgOVQAABBBAoN4H/B3oTAhP9/A59AAAAAElFTkSuQmCC
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAHgCAYAAAB91L6VAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAHgCAYAAAB91L6VAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
 Vd1v21QUP4lvXKQWP6Cxjg4Vi69VU1u5GxqtxgZJk6XpQhq5zdgqpMl1bhpT1za2021Vn/YCbwz4
 A4CyBx6QeEIaDMT2su0BtElTQRXVJKQ9dNpAaJP2gqpwrq9Tu13GuJGvfznndz7v0TVAx1ea45hJ
 GWDe8l01n5GPn5iWO1YhCc9BJ/RAp6Z7TrpcLgIuxoVH1sNfIcHeNwfa6/9zdVappwMknkJsVz19
@@ -4879,7 +4883,7 @@ Xm9Kn4DVs4YRTaFNkmZmwJI0V5n5A9gsi9tfM7pWangGarw8OF8GnkTEDrAPtBvaTOx+qM5L4HJZ
 +L4PvJh1LJLUxL9pkCRJqswZLEmSpMoMWJIkSZUZsCRJkiozYEmSJFVmwJIkSarMgCVJklSZAUuS
 JKkyA5YkSVJlfwA92RG2HwIvygAAAABJRU5ErkJggg==
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFRCAYAAACogdOJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFRCAYAAACogdOJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xe8HGXd/vHPReg1dKQGBBR+GCI+IKhABEQUbI8oogIK
 YkRREZVmmYx0lEesSA+CgmBBQIq0UJQuoYOUBEhoIqEjAvn+/pg5YbM7p+/sbLner9d55czu7Mx3
 rzPJuXPf996jiMDMzMzMmme+qgswMzMz6zZuYJmZmZk1mRtYZmZmZk3mBpaZmZlZk7mBZWZmZtZk
@@ -5772,7 +5776,7 @@ VNJgWQQQSCxAAE5sxBIIIIAAAghkXIBrwBknJUEEEEAAAQQSCxCAExuxBAIIIIAAAhkXIABnnJQE
 EUAAAQQQSCxAAE5sxBIIIIAAAghkXIAAnHFSEkQAAQQQQCCxAAE4sRFLIIAAAgggkHEBAnDGSUkQ
 AQQQQACBxAIE4MRGLIEAAggggEDGBf4faP0yEBSMPvEAAAAASUVORK5CYII=
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAHgCAYAAAB91L6VAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAHgCAYAAAB91L6VAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
 Vd1v21QUP4lvXKQWP6Cxjg4Vi69VU1u5GxqtxgZJk6XpQhq5zdgqpMl1bhpT1za2021Vn/YCbwz4
 A4CyBx6QeEIaDMT2su0BtElTQRXVJKQ9dNpAaJP2gqpwrq9Tu13GuJGvfznndz7v0TVAx1ea45hJ
 GWDe8l01n5GPn5iWO1YhCc9BJ/RAp6Z7TrpcLgIuxoVH1sNfIcHeNwfa6/9zdVappwMknkJsVz19
@@ -6376,7 +6380,7 @@ yP4B1q+N6h156n/e3X4p8KqIWAVcDhwy5GeKH99zzLuA+VWR++XAOzb2u0hSiUsxSJIk1ciRK0mS
 pBrZuZIkSaqRnStJkqQa2bmSJEmqkZ0rSZKkGtm5kiRJqpGdK0mSpBrZuZIkSarR/wc9L0tsJjZ9
 /wAAAABJRU5ErkJggg==
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlcAAAFRCAYAAABZiogEAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlcAAAFRCAYAAABZiogEAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xu8XFV99/HPDxLuVGLRBBCJlcqlVUMV8NEq8VIuSqGP
 WgXFS6uVR4uxItViHwW13mtrUbzQIkFr4VFRDIgFWwnesRSCXC0oICAElKBBlOvv+WP2kMnMmpyT
 c/Y5e5+Zz/v1mldmz95nZs03O4fFWr+9dmQmkiRJqscmTTdAkiRplNi5kiRJqpGdK0mSpBrZuZIk

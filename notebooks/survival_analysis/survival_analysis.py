@@ -6,9 +6,9 @@
 # <h2 id="tocheading">Table of Contents</h2>
 # <div id="toc"><ul class="toc"><li><a href="#Survival-Analysis-with-Plotly:-R-vs.-Python">I. Survival Analysis with Plotly: R vs Python</a><a class="anchor-link" href="#Survival-Analysis-with-Plotly:-R-vs.-Python">¶</a></li><ul class="toc"><li><a href="#Introduction">I. Introduction</a><a class="anchor-link" href="#Introduction">¶</a></li><li><a href="#Censoring">II. Censoring</a><a class="anchor-link" href="#Censoring">¶</a></li><li><a href="#Loading-data-into-python-and-R">III. Loading data into Python and R</a><a class="anchor-link" href="#Loading-data-into-python-and-R">¶</a></li></ul><li><a href="#Estimating-survival-with-Kaplan-Meier">II. Estimating survival with Kaplan-Meier</a><a class="anchor-link" href="#Estimating-survival-with-Kaplan-Meier">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul><li><a href="#Multiple-Types">III. Multiple Types</a><a class="anchor-link" href="#Multiple-Types">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul><li><a href="#Testing-for-Difference">IV. Testing for Difference</a><a class="anchor-link" href="#Testing-for-Difference">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul><li><a href="#Estimating-Hazard-Rates">V. Estimating Hazard Rates</a><a class="anchor-link" href="#Estimating-Hazard-Rates">¶</a></li><ul class="toc"><ul class="toc"><li><a href="#Using-R">I. Using R</a><a class="anchor-link" href="#Using-R">¶</a></li><li><a href="#Using-Python">II. Using Python</a><a class="anchor-link" href="#Using-Python">¶</a></li></ul></ul></ul></div>
 
-# In this notebook, we introduce survival analysis and we show application examples using both R and Python. We will compare the two programming languages, and leverage [Plotly](https://plot.ly)'s Python and R APIs to convert static graphics into interactive `plotly` objects.
+# In this notebook, we introduce survival analysis and we show application examples using both R and Python. We will compare the two programming languages, and leverage Plotly's Python and R APIs to convert static graphics into interactive `plotly` objects.
 # 
-# Plotly is a platform for making interactive graphs with R, Python, MATLAB, and Excel. You can make graphs and analyze data on Plotly’s free public cloud. For collaboration and sensitive data, you can run Plotly [on your own servers](https://plot.ly/product/enterprise/).
+# [Plotly](https://plot.ly) is a platform for making interactive graphs with R, Python, MATLAB, and Excel. You can make graphs and analyze data on Plotly’s free public cloud. For collaboration and sensitive data, you can run Plotly [on your own servers](https://plot.ly/product/enterprise/).
 # 
 # For a more in-depth theoretical background in survival analysis, please refer to these sources:
 # 
@@ -70,8 +70,10 @@ get_ipython().magic(u'R install.packages("IOsurv")')
 # 
 # The **hazard function** $h(t)$ is the event (death) rate at time $t$, conditional on survival until $t$ (i.e., $T \geq t$):
 # 
-# $$h(t) = \lim_{\Delta t \to 0} Pr(t \leq T \leq t + \Delta t | T \geq t)
-# = \lim_{\Delta t \to 0} \frac{Pr(t \leq T < t + \Delta t)}{S(t)} = \frac{p(t)}{S(t)},$$
+# \begin{align*}
+# h(t) &= \lim_{\Delta t \to 0} Pr(t \leq T \leq t + \Delta t \, | \, T \geq t) \\
+#      &= \lim_{\Delta t \to 0} \frac{Pr(t \leq T \leq t + \Delta t)}{S(t)} = \frac{p(t)}{S(t)},
+# \end{align*}
 # 
 # where $p$ denotes the probability density function.
 # 
