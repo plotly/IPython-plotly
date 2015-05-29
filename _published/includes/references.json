@@ -40,6 +40,10 @@
             "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
             "config": "api_docs/includes/ipython_notebooks/apachespark/config.json"
         }, 
+        "bioinformatics": {
+            "body": "api_docs/includes/ipython_notebooks/bioinformatics/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/bioinformatics/config.json"
+        }, 
         "markowitz": {
             "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
             "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
@@ -62,6 +66,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Exploratory bioinformatics", 
+            "thumbnail_image": "", 
+            "relative_url": "bioinformatics", 
+            "title": "Visualizing biological data: exploratory bioinformatics with plot.ly"
+        }, 
         {
             "title_short": "Cufflinks: Plotly + Pandas", 
             "thumbnail_image": "ukswaps.gif", 
@@ -154,6 +164,7 @@
         }
     ], 
     "notebooks": [
+        "bioinformatics", 
         "cufflinks", 
         "survival_analysis", 
         "redshift", 

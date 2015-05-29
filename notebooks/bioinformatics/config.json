@@ -1,0 +1,15 @@
+{
+    "title": "Visualizing biological data: exploratory bioinformatics with plot.ly",
+    "title_short": "Exploratory bioinformatics",
+    "meta_description": "5 popular visualizations that bioinformaticians use in exploratory analysis of genomic data.",
+    "cells": [0, "end"],
+    "relative_url": "bioinformatics",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "bioinformatics",
         "cufflinks",
         "survival_analysis",
         "redshift",
