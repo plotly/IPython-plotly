@@ -1,5 +1,5 @@
 {
-    "meta_description": "PCA and k-means clustering on dataset with Baltimore socio-economic indicators",
+    "meta_description": "PCA and k-means clustering on dataset with Baltimore neighborhood indicators",
     "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/baltimore",
     "title_short": "Baltimore",
     "last_modified": "Thursday 04 June 2015",
