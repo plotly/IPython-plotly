@@ -145,7 +145,7 @@ fig1 = pgo.Figure(data=data1, layout=layout1)
 py.iplot(fig1, filename='baltimore-hh-pov', width=700, height=1000)
 
 
-# ## Percentage Households in Poverty with Children vs Percentage Population White (per Neighborhood)
+# ## Percentage Households in Poverty with Children vs<br>Percentage Population White (per Neighborhood)
 
 # ### Bubbles Sized by Juvenile Population (per Neighborhood)
 
@@ -205,7 +205,7 @@ fig2 = pgo.Figure(data=data2, layout=layout2)
 py.iplot(fig2, filename='baltimore-bubble-chart')
 
 
-# ## Percentage of Households in Poverty vs Ethnicity's Percentage of Population
+# ## Percentage of Households in Poverty<br>vs Ethnicity's Percentage of Population
 
 # Let's do this chart using matplotlib for a change.
 
