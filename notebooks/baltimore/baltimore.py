@@ -4,7 +4,7 @@
 # 
 # # Baltimore Vital Signs
 
-# The repo for this notebook lives [here](https://github.com/mkcor/baltimore_vital_signs). It was forked from [https://github.com/jtelszasz/baltimore_vital_signs](https://github.com/jtelszasz/baltimore_vital_signs).
+# This notebook was forked from [https://github.com/jtelszasz/baltimore_vital_signs](https://github.com/jtelszasz/baltimore_vital_signs).
 
 # The <a href='http://bniajfi.org/indicators/all'>Baltimore Neighborhoods Indicators Alliance - Jacob France Institute (BNIA)</a> at the University of Baltimore has made it their mission to provide a clean, concise set of indicators that illustrate the health and wealth of the city. There are 152 socio-economic indicators in the Vital Signs dataset, and some are reported for multiple years which results in 295 total variables for each of the 56 Baltimore neighborhoods captured.  The indicators are dug up from a number of sources, including the U.S. Census Bureau and its American Community Survey, the FBI and Baltimore Police Department, Baltimore departments of city housing, health, and education.
 
