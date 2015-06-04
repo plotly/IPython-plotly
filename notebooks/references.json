@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "baltimore",
         "aircraft_pitch",
         "cufflinks",
         "survival_analysis",
