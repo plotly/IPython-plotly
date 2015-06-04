@@ -21,20 +21,24 @@
             "config": "api_docs/includes/ipython_notebooks/redshift/config.json"
         }, 
         "ukelectionbbg": {
-            "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
+            "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html",
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
         }, 
         "make_subplots": {
-            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
+            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html",
             "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
-        }, 
+        },
         "principal_component_analysis": {
-            "body": "api_docs/includes/ipython_notebooks/principal_component_analysis/body.html", 
+            "body": "api_docs/includes/ipython_notebooks/principal_component_analysis/body.html",
             "config": "api_docs/includes/ipython_notebooks/principal_component_analysis/config.json"
         }, 
         "collaborate": {
-            "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
+            "body": "api_docs/includes/ipython_notebooks/collaborate/body.html",
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
+        },
+        "baltimore": {
+            "body": "api_docs/includes/ipython_notebooks/baltimore/body.html",
+            "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
         }, 
         "apachespark": {
             "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
@@ -55,17 +59,23 @@
         "basemap": {
             "body": "api_docs/includes/ipython_notebooks/basemap/body.html", 
             "config": "api_docs/includes/ipython_notebooks/basemap/config.json"
-        }, 
+        },
         "survival_analysis": {
-            "body": "api_docs/includes/ipython_notebooks/survival_analysis/body.html", 
+            "body": "api_docs/includes/ipython_notebooks/survival_analysis/body.html",
             "config": "api_docs/includes/ipython_notebooks/survival_analysis/config.json"
-        }, 
+        },
         "gmail": {
             "body": "api_docs/includes/ipython_notebooks/gmail/body.html", 
             "config": "api_docs/includes/ipython_notebooks/gmail/config.json"
         }
-    }, 
+    },
     "splash": [
+        {
+            "title_short": "Baltimore",
+            "thumbnail_image": "",
+            "relative_url": "baltimore-vital-signs",
+            "title": "Baltimore Vital Signs"
+        },
         {
             "title_short": "Aircraft Pitch in MATLAB and Plotly", 
             "thumbnail_image": "", 
@@ -80,8 +90,8 @@
         }, 
         {
             "title_short": "Survival Analysis with Plotly: R vs Python",
-            "thumbnail_image": "", 
-            "relative_url": "survival-analysis-r-vs-python", 
+            "thumbnail_image": "",
+            "relative_url": "survival-analysis-r-vs-python",
             "title": "Survival Analysis with Plotly: R vs Python"
         }, 
         {
@@ -164,6 +174,7 @@
         }
     ], 
     "notebooks": [
+        "baltimore",
         "aircraft_pitch", 
         "cufflinks", 
         "survival_analysis", 

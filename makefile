@@ -36,6 +36,7 @@ sitemaps=$(path_to_streambed)"/shelly/api_docs/sitemaps/ipython_notebooks/sitema
 #-------------------------------------------------------------------------------
 
 init:
+	@mkdir $(path_to_notebooks)/$(nb)
 	@cp $(path_to_makedata)/config-init.json $(path_to_notebooks)/$(nb)/config.json
 
 run:
