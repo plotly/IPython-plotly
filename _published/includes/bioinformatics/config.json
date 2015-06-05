@@ -1,0 +1,9 @@
+{
+    "meta_description": "5 popular visualizations that bioinformaticians use in exploratory analysis of genomic data.", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/bioinformatics", 
+    "title_short": "Exploratory bioinformatics", 
+    "last_modified": "Friday 05 June 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/bioinformatics/bioinformatics.ipynb", 
+    "title": "Visualizing biological data: exploratory bioinformatics with plot.ly", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/bioinformatics/bioinformatics.py"
+}
