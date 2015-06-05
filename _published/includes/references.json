@@ -36,6 +36,10 @@
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
         }, 
+        "baltimore": {
+            "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
+        }, 
         "apachespark": {
             "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
             "config": "api_docs/includes/ipython_notebooks/apachespark/config.json"
@@ -51,6 +55,10 @@
         "cufflinks": {
             "body": "api_docs/includes/ipython_notebooks/cufflinks/body.html", 
             "config": "api_docs/includes/ipython_notebooks/cufflinks/config.json"
+        }, 
+        "aircraft_pitch": {
+            "body": "api_docs/includes/ipython_notebooks/aircraft_pitch/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/aircraft_pitch/config.json"
         }, 
         "basemap": {
             "body": "api_docs/includes/ipython_notebooks/basemap/body.html", 
@@ -73,16 +81,28 @@
             "title": "Visualizing biological data: exploratory bioinformatics with plot.ly"
         }, 
         {
+            "title_short": "Baltimore", 
+            "thumbnail_image": "", 
+            "relative_url": "baltimore-vital-signs", 
+            "title": "Baltimore Vital Signs"
+        }, 
+        {
+            "title_short": "Aircraft Pitch in MATLAB and Plotly", 
+            "thumbnail_image": "", 
+            "relative_url": "aircraft-pitch-analysis-matlab-plotly", 
+            "title": "Aircraft Pitch Analysis in MATLAB and Plotly"
+        }, 
+        {
             "title_short": "Cufflinks: Plotly + Pandas", 
             "thumbnail_image": "ukswaps.gif", 
             "relative_url": "cufflinks", 
             "title": "Cufflinks - Easy Plotting using Plotly and Pandas"
         }, 
         {
-            "title_short": "Survival Analysis with Plotly: R vs. Python", 
+            "title_short": "Survival Analysis with Plotly: R vs Python", 
             "thumbnail_image": "", 
             "relative_url": "survival-analysis-r-vs-python", 
-            "title": "Survival Analysis with Plotly: R vs. Python"
+            "title": "Survival Analysis with Plotly: R vs Python"
         }, 
         {
             "title_short": "Amazon Redshift", 
@@ -165,6 +185,8 @@
     ], 
     "notebooks": [
         "bioinformatics", 
+        "baltimore", 
+        "aircraft_pitch", 
         "cufflinks", 
         "survival_analysis", 
         "redshift", 

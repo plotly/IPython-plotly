@@ -1,0 +1,15 @@
+{
+    "title": "Baltimore Vital Signs",
+    "title_short": "Baltimore",
+    "meta_description": "PCA and k-means clustering on dataset with Baltimore neighborhood indicators",
+    "cells": [0, "end"],
+    "relative_url": "baltimore-vital-signs",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}

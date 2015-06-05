@@ -1,6 +1,8 @@
 {
     "notebooks": [
         "bioinformatics",
+        "baltimore",
+        "aircraft_pitch",
         "cufflinks",
         "survival_analysis",
         "redshift",

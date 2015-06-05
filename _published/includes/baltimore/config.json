@@ -1,0 +1,9 @@
+{
+    "meta_description": "PCA and k-means clustering on dataset with Baltimore neighborhood indicators",
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/baltimore",
+    "title_short": "Baltimore",
+    "last_modified": "Thursday 04 June 2015",
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/baltimore/baltimore.ipynb",
+    "title": "Baltimore Vital Signs",
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/baltimore/baltimore.py"
+}

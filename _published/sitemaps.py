@@ -19,6 +19,32 @@ def items():
             priority=0.5
         ),
         dict(
+            location='/ipython-notebooks/baltimore-vital-signs',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'baltimore',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
+            location='/ipython-notebooks/aircraft-pitch-analysis-matlab-plotly',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'aircraft_pitch',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
             location='/ipython-notebooks/cufflinks',
             lmfile=os.path.join(
                 settings.TOP_DIR,

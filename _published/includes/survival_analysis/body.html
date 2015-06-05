@@ -22,7 +22,7 @@
        <ul class="toc">
         <li>
          <a href="#Survival-Analysis-with-Plotly:-R-vs.-Python">
-          I. Survival Analysis with Plotly: R vs. Python
+          I. Survival Analysis with Plotly: R vs Python
          </a>
          <a class="anchor-link" href="#Survival-Analysis-with-Plotly:-R-vs.-Python">
           ¶
@@ -47,7 +47,7 @@
          </li>
          <li>
           <a href="#Loading-data-into-python-and-R">
-           III. Loading data into python and R
+           III. Loading data into Python and R
           </a>
           <a class="anchor-link" href="#Loading-data-into-python-and-R">
            ¶
@@ -177,45 +177,44 @@
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       In this notebook we introduce Survival Analysis using both R and Python. We will compare programming languages and leverage
-       <a href="/">
-        Plotly's
-       </a>
-       Python and R APIs to convert graphics to interactive
-       <a href="/">
-        Plotly
-       </a>
+       In this notebook, we introduce survival analysis and we show application examples using both R and Python. We will compare the two programming languages, and leverage Plotly's Python and R APIs to convert static graphics into interactive
+       <code>
+        plotly
+       </code>
        objects.
       </p>
       <p>
-       Plotly is a platform for making interactive graphs with R, Python, MATLAB, and Excel. You can make graphs and analyze data on Plotly’s free public cloud. For collaboration and sensitive data, you can run Plotly
+       <a href="/">
+        Plotly
+       </a>
+       is a platform for making interactive graphs with R, Python, MATLAB, and Excel. You can make graphs and analyze data on Plotly’s free public cloud. For collaboration and sensitive data, you can run Plotly
        <a href="/product/enterprise/">
         on your own servers
        </a>
        .
       </p>
       <p>
-       For a more in depth theoretical background in survival analysis, please refer to these sources:
+       For a more in-depth theoretical background in survival analysis, please refer to these sources:
       </p>
       <ul>
        <li>
         <a href="http://socserv.mcmaster.ca/jfox/Courses/soc761/survival-analysis.pdf" target="_blank">
-         Intro to Survival Analysis by John Fox
+         Lecture Notes by John Fox
         </a>
        </li>
        <li>
         <a href="http://en.wikipedia.org/wiki/Survival_analysis" target="_blank">
-         Wikipedia
+         Wikipedia article
         </a>
        </li>
        <li>
-        <a href="https://www.google.ca/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=8&amp;ved=0CEoQFjAH&amp;url=http%3A%2F%2Fwww.pitt.edu%2F~super4%2F33011-34001%2F33051-33061.ppt&amp;ei=WQJJVbuJCZCXygSSnYGIDA&amp;usg=AFQjCNE2Owl8oZHVM5qBbh14kkqn8QGAFw&amp;sig2=FFwH6odwuNixpxDrLoLetw&amp;bvm=bv.92291466,d.aWw" target="_blank">
-         Introduction to Survival Analysis, Stanford University
+        <a href="www.pitt.edu/~super4/33011-34001/33051-33061.ppt" target="_blank">
+         Presentation by Kristin Sainani
         </a>
        </li>
        <li>
         <a href="http://data.princeton.edu/wws509/notes/c7.pdf" target="_blank">
-         Survival Models, Princeton University
+         Lecture Notes by Germán Rodríguez
         </a>
        </li>
       </ul>
@@ -244,21 +243,21 @@
          <code>
           sudo pip install &lt;package_name&gt;
          </code>
-         from your terminal will install python libraries.
+         from your terminal will install a Python package.
         </p>
        </li>
        <li>
         <p>
          Running
          <code>
-          install.packages("&lt;library_name&gt;")
+          install.packages("&lt;package_name&gt;")
          </code>
-         in your R console will install R packages.
+         in your R console will install an R package.
         </p>
        </li>
       </ul>
       <p>
-       You will also need to register an account with
+       You will also need to create an account with
        <a href="/feed/">
         Plotly
        </a>
@@ -285,13 +284,13 @@
 <span class="o">!</span>pip install plotly
 <span class="o">!</span>pip install pandas
 
-<span class="c"># Install R libraries</span>
+<span class="c"># Load extension that let us use magic function `%R`</span>
 <span class="o">%</span><span class="k">load_ext</span> rpy2.ipython
 
+<span class="c"># Install R packages</span>
 <span class="o">%</span><span class="k">R</span> install.packages("devtools")
-<span class="o">%</span><span class="k">R</span> install_github("ropensci/plotly")
+<span class="o">%</span><span class="k">R</span> devtools::install_github("ropensci/plotly")
 <span class="o">%</span><span class="k">R</span> install.packages("IOsurv")
-<span class="o">%</span><span class="k">R</span> install.packages("ggplot2")
 </pre>
        </div>
       </div>
@@ -321,7 +320,7 @@
        <a href="http://en.wikipedia.org/wiki/Survival_analysis" target="_blank">
         Survival analysis
        </a>
-       is a set of statistical methods for analyzing the occurrence  of event data over time. It is also used to determine the relationship of co-variates to the time-to-events, and accurately compare time-to-event between two or more groups. For example:
+       is a set of statistical methods for analyzing the occurrence  of events over time. It is also used to determine the relationship of co-variates to the time-to-events, and accurately compare time-to-event between two or more groups. For example:
       </p>
       <ul>
        <li>
@@ -338,19 +337,7 @@
        </li>
       </ul>
       <p>
-       The statistical term survival analysis is analogous to
-       <code>
-        reliability theory
-       </code>
-       in engineering,
-       <code>
-        duration analysis
-       </code>
-       in economics, and
-       <code>
-        event history analysis
-       </code>
-       in sociology.
+       The statistical term 'survival analysis' is analogous to 'reliability theory' in engineering, 'duration analysis' in economics, and 'event history analysis' in sociology.
       </p>
      </div>
     </div>
@@ -376,39 +363,39 @@
        <strong>
         survival function
        </strong>
-       is conventionally denoted as $S$, the probability that time of death is later than some specified time $t$, defined as:
+       , conventionally denoted by $S$, is the probability that the event (say, death) has not occurred yet:
       </p>
-      $$ S(t) = Pr(T&gt;t)$$
+      $$S(t) = Pr(T &gt; t),$$
       <p>
-       where $t$ is some duration, $T$ is a random variable denoting the time of death, and $Pr$ is the probability of the event. Generally, $0\leq S(t)\leq1$ and $S(0) = 1$.
-      </p>
-      <p>
-       <br/>
-       <br/>
+       where $T$ denotes the time of death and $Pr$ the probability. Since $S$ is a probability, $0\leq S(t)\leq1$. Survival times are non-negative ($T \geq 0$) and, generally, $S(0) = 1$.
       </p>
       <p>
        The
        <strong>
         hazard function
        </strong>
-       gives us the probability of "death" in the next instance of time, given we are still "alive".
+       $h(t)$ is the event (death) rate at time $t$, conditional on survival until $t$ (i.e., $T \geq t$):
       </p>
-      $$\lambda(t) = \lim_{dt \to 0} \frac{Pr(t \leq T The hazard rate describes the relative likelihood of the event occurring at time $t$, and
-      <em>
-       ignores
-      </em>
-      the accumulation of hazard up to time $t$, unlike $S(t)$.
+      \begin{align*}
+h(t) &amp;= \lim_{\Delta t \to 0} Pr(t \leq T \leq t + \Delta t \, | \, T \geq t) \\
+     &amp;= \lim_{\Delta t \to 0} \frac{Pr(t \leq T \leq t + \Delta t)}{S(t)} = \frac{p(t)}{S(t)},
+\end{align*}
       <p>
-       <br/>
+       where $p$ denotes the probability density function.
       </p>
       <p>
-       However, we do not actually observe the true survival function of a population; we must use the observed data to estimate it. A popular method to estimate the survival function $S(t)$ is the
+       In practice, we do not get to observe the actual survival function of a population; we must use the observed data to estimate it. A popular estimate for the survival function $S(t)$ is the
        <a href="http://en.wikipedia.org/wiki/Kaplan–Meier_estimator" target="_blank">
-        Kaplan-Meier estimate
+        Kaplan–Meier estimate
        </a>
-       .
+       :
       </p>
-      $$S(t)= \prod_{ti where $d_i$ are the number of death events at time $t$ and $n_i$ is the number of subjects at risk of death at time t.
+      \begin{align*}
+\hat{S}(t) &amp;= \prod_{t_i \leq t} \frac{n_i − d_i}{n_i}\,,
+\end{align*}
+      <p>
+       where $d_i$ is the number of events (deaths) observed at time $t_i$ and $n_i$ is the number of subjects at risk observed at time $t_i$.
+      </p>
      </div>
     </div>
    </div>
@@ -490,7 +477,6 @@
 <span class="o">%</span><span class="k">R</span> library(OIsurv)
 <span class="o">%</span><span class="k">R</span> library(devtools)
 <span class="o">%</span><span class="k">R</span> library(plotly)
-<span class="o">%</span><span class="k">R</span> library(ggplot2)
 <span class="o">%</span><span class="k">R</span> library(IRdisplay)
 
 <span class="c"># Authenticate to plotly's api using your account</span>
@@ -546,9 +532,9 @@ Loading required package: ggplot2
     </div>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
-      <h2 id="Loading-data-into-python-and-R">
-       Loading data into python and R
-       <a class="anchor-link" href="#Loading-data-into-python-and-R">
+      <h2 id="Loading-data-into-Python-and-R">
+       Loading data into Python and R
+       <a class="anchor-link" href="#Loading-data-into-Python-and-R">
         ¶
        </a>
       </h2>
@@ -1545,7 +1531,7 @@ AiRAAiQQfgJUwOFnyhRJgARIgARIICgBKuCgiBiBBEiABEiABMJPgAo4/EyZIgmQAAmQAAkEJUAF
 HBQRI5AACZAACZBA+AlQAYefKVMkARIgARIggaAEqICDImIEEiABEiABEgg/gf8Hvwifz+dQsDMA
 AAAASUVORK5CYII=
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
 Vd1v21QUP4lvXKQWP6Cxjg4Vi69VU1u5GxqtxgZJk6XpQhq5zdgqpMl1bhpT1za2021Vn/YCbwz4
 A4CyBx6QeEIaDMT2su0BtElTQRXVJKQ9dNpAaJP2gqpwrq9Tu13GuJGvfznndz7v0TVAx1ea45hJ
 GWDe8l01n5GPn5iWO1YhCc9BJ/RAp6Z7TrpcLgIuxoVH1sNfIcHeNwfa6/9zdVappwMknkJsVz19
@@ -2530,7 +2516,7 @@ AwlQATuw0SgyCZAACZCA8wlQATu/DVkDEiABEiABBxKgAnZgo1FkEiABEiAB5xOgAnZ+G7IGJEAC
 JEACDiRABezARqPIJEACJEACzidABez8NmQNSIAESIAEHEiACtiBjUaRSYAESIAEnE/g/wNycWZL
 1qfcFQAAAABJRU5ErkJggg==
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
 Vd1v21QUP4lvXKQWP6Cxjg4Vi69VU1u5GxqtxgZJk6XpQhq5zdgqpMl1bhpT1za2021Vn/YCbwz4
 A4CyBx6QeEIaDMT2su0BtElTQRXVJKQ9dNpAaJP2gqpwrq9Tu13GuJGvfznndz7v0TVAx1ea45hJ
 GWDe8l01n5GPn5iWO1YhCc9BJ/RAp6Z7TrpcLgIuxoVH1sNfIcHeNwfa6/9zdVappwMknkJsVz19
@@ -3332,7 +3318,7 @@ jGTvrS8S+EZm/iTwZuAl1ev/E/h4Zj4KeDzwxxFxtwa+nyS1ey9CSSqICc8BLszMW4FbI+IW4Pzq
 dV4JHFQ1vl8CvHyl30WSJnGaBkmSpIZ5BEuSJKlhFliSJEkNs8CSJElqmAWWJElSwyywJEmSGmaB
 JUmS1DALLEmSpIZZYEmSJDXs/wP9IQ0XTEh3jQAAAABJRU5ErkJggg==
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFRCAYAAACogdOJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFRCAYAAACogdOJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X20JHV95/H3Vx4mKqgYsqCIMypoJMYdEkVjopmoAWIM
 ZjUbGZ9dNWwSZHcTIyF7TkSN0RijhuPGxYc4xrhifIg7RMlolElc4xORiSIDQgQCiKAy6AgGJXz3
 j66e6en69e1751bdqu5+v87pc7u661b/+kPNzJeqb/0qMhNJkiQ15y5dD0CSJGneWGBJkiQ1zAJL
@@ -4097,7 +4083,7 @@ llLKyMgIIOAJAQKwJxYDlUAAAQQQKDcBzgGX2xJnfhFAAAEEPCFAAPbEYqASCCCAAALlJkAALrcl
 zvwigAACCHhCgADsicVAJRBAAAEEyk2AAFxuS5z5RQABBBDwhAAB2BOLgUoggAACCJSbAAG43JY4
 84sAAggg4AkBArAnFgOVQAABBBAoN4H/B3oTAhP9/A59AAAAAElFTkSuQmCC
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAHgCAYAAAB91L6VAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAHgCAYAAAB91L6VAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
 Vd1v21QUP4lvXKQWP6Cxjg4Vi69VU1u5GxqtxgZJk6XpQhq5zdgqpMl1bhpT1za2021Vn/YCbwz4
 A4CyBx6QeEIaDMT2su0BtElTQRXVJKQ9dNpAaJP2gqpwrq9Tu13GuJGvfznndz7v0TVAx1ea45hJ
 GWDe8l01n5GPn5iWO1YhCc9BJ/RAp6Z7TrpcLgIuxoVH1sNfIcHeNwfa6/9zdVappwMknkJsVz19
@@ -4902,7 +4888,7 @@ Xm9Kn4DVs4YRTaFNkmZmwJI0V5n5A9gsi9tfM7pWangGarw8OF8GnkTEDrAPtBvaTOx+qM5L4HJZ
 +L4PvJh1LJLUxL9pkCRJqswZLEmSpMoMWJIkSZUZsCRJkiozYEmSJFVmwJIkSarMgCVJklSZAUuS
 JKkyA5YkSVJlfwA92RG2HwIvygAAAABJRU5ErkJggg==
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFRCAYAAACogdOJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFRCAYAAACogdOJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xe8HGXd/vHPReg1dKQGBBR+GCI+IKhABEQUbI8oogIK
 YkRREZVmmYx0lEesSA+CgmBBQIq0UJQuoYOUBEhoIqEjAvn+/pg5YbM7p+/sbLner9d55czu7Mx3
 rzPJuXPf996jiMDMzMzMmme+qgswMzMz6zZuYJmZmZk1mRtYZmZmZk3mBpaZmZlZk7mBZWZmZtZk
@@ -5795,7 +5781,7 @@ VNJgWQQQSCxAAE5sxBIIIIAAAghkXIBrwBknJUEEEEAAAQQSCxCAExuxBAIIIIAAAhkXIABnnJQE
 EUAAAQQQSCxAAE5sxBIIIIAAAghkXIAAnHFSEkQAAQQQQCCxAAE4sRFLIIAAAgggkHEBAnDGSUkQ
 AQQQQACBxAIE4MRGLIEAAggggEDGBf4faP0yEBSMPvEAAAAASUVORK5CYII=
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAHgCAYAAAB91L6VAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAHgCAYAAAB91L6VAAAD8GlDQ1BJQ0MgUHJvZmlsZQAAOI2N
 Vd1v21QUP4lvXKQWP6Cxjg4Vi69VU1u5GxqtxgZJk6XpQhq5zdgqpMl1bhpT1za2021Vn/YCbwz4
 A4CyBx6QeEIaDMT2su0BtElTQRXVJKQ9dNpAaJP2gqpwrq9Tu13GuJGvfznndz7v0TVAx1ea45hJ
 GWDe8l01n5GPn5iWO1YhCc9BJ/RAp6Z7TrpcLgIuxoVH1sNfIcHeNwfa6/9zdVappwMknkJsVz19
@@ -6399,7 +6385,7 @@ yP4B1q+N6h156n/e3X4p8KqIWAVcDhwy5GeKH99zzLuA+VWR++XAOzb2u0hSiUsxSJIk1ciRK0mS
 pBrZuZIkSaqRnStJkqQa2bmSJEmqkZ0rSZKkGtm5kiRJqpGdK0mSpBrZuZIkSarR/wc9L0tsJjZ9
 /wAAAABJRU5ErkJggg==
 ">
-         <img alt="Survival Analysis with Plotly: R vs. Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlcAAAFRCAYAAABZiogEAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+         <img alt="Survival Analysis with Plotly: R vs Python image00" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlcAAAFRCAYAAABZiogEAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xu8XFV99/HPDxLuVGLRBBCJlcqlVUMV8NEq8VIuSqGP
 WgXFS6uVR4uxItViHwW13mtrUbzQIkFr4VFRDIgFWwnesRSCXC0oICAElKBBlOvv+WP2kMnMmpyT
 c/Y5e5+Zz/v1mldmz95nZs03O4fFWr+9dmQmkiRJqscmTTdAkiRplNi5kiRJqpGdK0mSpBrZuZIk

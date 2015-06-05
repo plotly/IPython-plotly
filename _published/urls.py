@@ -10,6 +10,16 @@ urlpatterns = patterns(
             lang='ipython-notebooks',
             notebook='bioinformatics'),
         name='ipython-notebook-bioinformatics'),
+    url("baltimore-vital-signs/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='baltimore'),
+        name='ipython-notebook-baltimore'),
+    url("aircraft-pitch-analysis-matlab-plotly/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='aircraft_pitch'),
+        name='ipython-notebook-aircraft_pitch'),
     url("cufflinks/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
