@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("computational-bayesian-analysis/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='montecarlo'),
+        name='ipython-notebook-montecarlo'),
     url("bioinformatics/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',

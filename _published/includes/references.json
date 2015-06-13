@@ -32,6 +32,10 @@
             "body": "api_docs/includes/ipython_notebooks/principal_component_analysis/body.html", 
             "config": "api_docs/includes/ipython_notebooks/principal_component_analysis/config.json"
         }, 
+        "montecarlo": {
+            "body": "api_docs/includes/ipython_notebooks/montecarlo/body.html",
+            "config": "api_docs/includes/ipython_notebooks/montecarlo/config.json"
+        },
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
@@ -74,6 +78,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Bayesian Analysis",
+            "thumbnail_image": "",
+            "relative_url": "computational-bayesian-analysis",
+            "title": "Computational Methods in Bayesian Analysis"
+        },
         {
             "title_short": "Exploratory bioinformatics", 
             "thumbnail_image": "", 
@@ -184,6 +194,7 @@
         }
     ], 
     "notebooks": [
+        "montecarlo",
         "bioinformatics", 
         "baltimore", 
         "aircraft_pitch", 
