@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "montecarlo",
         "bioinformatics",
         "baltimore",
         "aircraft_pitch",
