@@ -6,6 +6,7 @@
     "relative_url": "computational-bayesian-analysis",
     "thumbnail_image": "",
     "non_pip_deps": [
+        {
             "name": "" ,
             "urls": "",
             "description": ""
