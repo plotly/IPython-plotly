@@ -13,6 +13,27 @@
     </div>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
+      <h4 id="About-the-author">
+       About the author
+       <a class="anchor-link" href="#About-the-author">
+        ¶
+       </a>
+      </h4>
+      <p>
+       This notebook was forked from
+       <a href="https://github.com/fonnesbeck/scipy2014_tutorial/blob/master/2_Markov-Chain-Monte-Carlo.ipynb" target="_blank">
+        https://github.com/fonnesbeck/scipy2014_tutorial/blob/master/2_Markov-Chain-Monte-Carlo.ipynb
+       </a>
+       . The original author is Chris Fonnesbeck, Assistant Professor of Biostatistics.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
       <h3 id="Introduction">
        Introduction
        <a class="anchor-link" href="#Introduction">
@@ -349,30 +370,16 @@ $$
        </em>
        . The standard definition of a stochastic process is an ordered collection of random variables:
       </p>
-      $$\begin{gathered}
-\begin{split}\{X_t:t \in T\}\end{split}\notag\\\begin{split}\end{split}\notag
-\end{gathered}$$
+      $$
+\{X_t:t \in T\}
+$$
       <p>
        where $t$ is frequently (but not necessarily) a time index. If we think of $X_t$ as a state $X$ at time $t$, and invoke the following dependence condition on each state:
       </p>
-      <p>
-       \[\begin{aligned}
-&amp;Pr(X
-       <em>
-        {t+1}=x
-       </em>
-       {t+1} | X
-       <em>
-        t=x_t, X
-       </em>
-       {t-1}=x_{t-1},\ldots,X_0=x_0) \cr
-&amp;= Pr(X
-       <em>
-        {t+1}=x
-       </em>
-       {t+1} | X_t=x_t)
-\end{aligned}\]
-      </p>
+      \begin{align*}
+&amp;Pr(X_{t+1}=x_{t+1} | X_t=x_t, X_{t-1}=x_{t-1},\ldots,X_0=x_0) \\
+&amp;= Pr(X_{t+1}=x_{t+1} | X_t=x_t)
+\end{align*}
       <p>
        then the stochastic process is known as a Markov chain. This conditioning specifies that the future depends on the current state, but not past states. Thus, the Markov chain wanders about the state space,
 remembering only where it has just been in the last time step.

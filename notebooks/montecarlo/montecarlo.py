@@ -3,6 +3,9 @@
 
 # # Computational Methods in Bayesian Analysis
 
+# ####About the author
+# This notebook was forked from [https://github.com/fonnesbeck/scipy2014_tutorial/blob/master/2_Markov-Chain-Monte-Carlo.ipynb](https://github.com/fonnesbeck/scipy2014_tutorial/blob/master/2_Markov-Chain-Monte-Carlo.ipynb). The original author is Chris Fonnesbeck, Assistant Professor of Biostatistics.
+
 # ###Introduction
 # 
 # For most problems of interest, Bayesian analysis requires integration over multiple parameters, making the calculation of a [posterior](https://en.wikipedia.org/wiki/Posterior_probability) intractable whether via analytic methods or standard methods of numerical integration.
@@ -111,16 +114,16 @@ sim_vals.mean()
 # 
 # A Markov chain is a special type of *stochastic process*. The standard definition of a stochastic process is an ordered collection of random variables:
 # 
-# $$\begin{gathered}
-# \begin{split}\{X_t:t \in T\}\end{split}\notag\\\begin{split}\end{split}\notag
-# \end{gathered}$$
+# $$
+# \{X_t:t \in T\}
+# $$
 # 
 # where $t$ is frequently (but not necessarily) a time index. If we think of $X_t$ as a state $X$ at time $t$, and invoke the following dependence condition on each state:
 # 
-# \\[\begin{aligned}
-# &Pr(X_{t+1}=x_{t+1} | X_t=x_t, X_{t-1}=x_{t-1},\ldots,X_0=x_0) \cr
+# \begin{align*}
+# &Pr(X_{t+1}=x_{t+1} | X_t=x_t, X_{t-1}=x_{t-1},\ldots,X_0=x_0) \\
 # &= Pr(X_{t+1}=x_{t+1} | X_t=x_t)
-# \end{aligned}\\]
+# \end{align*}
 # 
 # then the stochastic process is known as a Markov chain. This conditioning specifies that the future depends on the current state, but not past states. Thus, the Markov chain wanders about the state space,
 # remembering only where it has just been in the last time step. 
