@@ -4,7 +4,7 @@
 # # Computational Methods in Bayesian Analysis
 
 # ####About the author
-# This notebook was forked from [https://github.com/fonnesbeck/scipy2014_tutorial/blob/master/2_Markov-Chain-Monte-Carlo.ipynb](https://github.com/fonnesbeck/scipy2014_tutorial/blob/master/2_Markov-Chain-Monte-Carlo.ipynb). The original author is Chris Fonnesbeck, Assistant Professor of Biostatistics.
+# This notebook was forked from this [project](https://github.com/fonnesbeck/scipy2014_tutorial). The original author is Chris Fonnesbeck, Assistant Professor of Biostatistics.
 
 # ###Introduction
 # 
@@ -138,7 +138,7 @@ sim_vals.mean()
 # > ### Why MCMC Works: Reversible Markov Chains
 # > 
 # > Markov chain Monte Carlo simulates a Markov chain for which some function of interest
-# > (*e.g.* the joint distribution of the parameters of some model) is the unique, invariant limiting distribution. An invariant distribution with respect to some Markov chain with transition kernel $Pr(y \mid x)$ implies that:
+# > (e.g., the joint distribution of the parameters of some model) is the unique, invariant limiting distribution. An invariant distribution with respect to some Markov chain with transition kernel $Pr(y \mid x)$ implies that:
 # > 
 # > $$\int_x Pr(y \mid x) \pi(x) dx = \pi(y).$$
 # > 
@@ -171,9 +171,9 @@ sim_vals.mean()
 # Here is a stereotypical Gibbs sampling algorithm:
 # 
 # 1.  Choose starting values for states (parameters):
-#     ${\bf \theta} = [\theta_1^{(0)},\theta_2^{(0)},\ldots,\theta_k^{(0)}]$
+#     ${\bf \theta} = [\theta_1^{(0)},\theta_2^{(0)},\ldots,\theta_k^{(0)}]$.
 # 
-# 2.  Initialize counter $j=1$
+# 2.  Initialize counter $j=1$.
 # 
 # 3.  Draw the following values from each of the $k$ conditional
 #     distributions:
@@ -305,14 +305,7 @@ py.iplot(fig2, filename='poisson_means')
 # The modeling problem is about estimating the values of the $\lambda$ parameters. Looking at the time series above, it appears that the rate declines over time.
 # 
 # A **changepoint model** identifies a point (here, a year) after which the parameter $\lambda$ drops to a lower value. Let us call this point in time $\tau$. So we are estimating two $\lambda$ parameters:
-# 
-# $$
-# \lambda = 
-# \begin{cases}
-# \lambda_1  & \text{if } t < \tau, \cr
-# \lambda_2 & \text{if } t \geq \tau.
-# \end{cases}
-# $$
+# $\lambda = \lambda_1$ if $t \lt \tau$ and $\lambda = \lambda_2$ if $t \geq \tau$.
 # 
 # We need to assign prior probabilities to both $\{\lambda_1, \lambda_2\}$. The gamma distribution not only provides a continuous density function for positive numbers, but it is also *conjugate* with the Poisson sampling distribution. 
 
@@ -376,7 +369,7 @@ py.iplot(fig3, filename='gamma_distributions')
 # To employ Gibbs sampling, we need to factor the joint posterior into the product of conditional expressions:
 # 
 # $$
-#  P( \lambda_1, \lambda_2, \tau | \mathbf{y} ) \propto P(y_{t<\tau} | \lambda_1, \tau) P(y_{t\ge \tau} | \lambda_2, \tau) P(\lambda_1) P(\lambda_2) P(\tau)
+#  P(\lambda_1, \lambda_2, \tau | \mathbf{y}) \propto P(y_{t \lt \tau} | \lambda_1, \tau) P(y_{t \geq \tau} | \lambda_2, \tau) P(\lambda_1) P(\lambda_2) P(\tau)
 # $$
 # 
 # which we have specified as:

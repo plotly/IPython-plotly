@@ -20,9 +20,9 @@
        </a>
       </h4>
       <p>
-       This notebook was forked from
-       <a href="https://github.com/fonnesbeck/scipy2014_tutorial/blob/master/2_Markov-Chain-Monte-Carlo.ipynb" target="_blank">
-        https://github.com/fonnesbeck/scipy2014_tutorial/blob/master/2_Markov-Chain-Monte-Carlo.ipynb
+       This notebook was forked from this
+       <a href="https://github.com/fonnesbeck/scipy2014_tutorial" target="_blank">
+        project
        </a>
        . The original author is Chris Fonnesbeck, Assistant Professor of Biostatistics.
       </p>
@@ -418,11 +418,7 @@ remembering only where it has just been in the last time step.
        </h3>
        <p>
         Markov chain Monte Carlo simulates a Markov chain for which some function of interest
-(
-        <em>
-         e.g.
-        </em>
-        the joint distribution of the parameters of some model) is the unique, invariant limiting distribution. An invariant distribution with respect to some Markov chain with transition kernel $Pr(y \mid x)$ implies that:
+(e.g., the joint distribution of the parameters of some model) is the unique, invariant limiting distribution. An invariant distribution with respect to some Markov chain with transition kernel $Pr(y \mid x)$ implies that:
        </p>
        $$\int_x Pr(y \mid x) \pi(x) dx = \pi(y).$$
        <p>
@@ -492,12 +488,12 @@ This is what MCMC does!
        <li>
         <p>
          Choose starting values for states (parameters):
-${\bf \theta} = [\theta_1^{(0)},\theta_2^{(0)},\ldots,\theta_k^{(0)}]$
+${\bf \theta} = [\theta_1^{(0)},\theta_2^{(0)},\ldots,\theta_k^{(0)}]$.
         </p>
        </li>
        <li>
         <p>
-         Initialize counter $j=1$
+         Initialize counter $j=1$.
         </p>
        </li>
        <li>
@@ -850,15 +846,15 @@ in mining safety regulations.
         changepoint model
        </strong>
        identifies a point (here, a year) after which the parameter $\lambda$ drops to a lower value. Let us call this point in time $\tau$. So we are estimating two $\lambda$ parameters:
+$\lambda = \lambda_1$ if $t \lt \tau$ and $\lambda = \lambda_2$ if $t \geq \tau$.
       </p>
-      $$
-\lambda = 
-\begin{cases}
-\lambda_1  &amp; \text{if } t We need to assign prior probabilities to both $\{\lambda_1, \lambda_2\}$. The gamma distribution not only provides a continuous density function for positive numbers, but it is also
-      <em>
-       conjugate
-      </em>
-      with the Poisson sampling distribution.
+      <p>
+       We need to assign prior probabilities to both $\{\lambda_1, \lambda_2\}$. The gamma distribution not only provides a continuous density function for positive numbers, but it is also
+       <em>
+        conjugate
+       </em>
+       with the Poisson sampling distribution.
+      </p>
      </div>
     </div>
    </div>
@@ -1015,8 +1011,12 @@ $$
        To employ Gibbs sampling, we need to factor the joint posterior into the product of conditional expressions:
       </p>
       $$
- P( \lambda_1, \lambda_2, \tau | \mathbf{y} ) \propto P(y_{twhich we have specified as:
-$$\begin{aligned}
+ P(\lambda_1, \lambda_2, \tau | \mathbf{y}) \propto P(y_{t \lt \tau} | \lambda_1, \tau) P(y_{t \geq \tau} | \lambda_2, \tau) P(\lambda_1) P(\lambda_2) P(\tau)
+$$
+      <p>
+       which we have specified as:
+      </p>
+      $$\begin{aligned}
 P( \lambda_1, \lambda_2, \tau | \mathbf{y} ) &amp;\propto \left[\prod_{t=1851}^{\tau} \text{Poi}(y_t|\lambda_1) \prod_{t=\tau+1}^{1962} \text{Poi}(y_t|\lambda_2) \right] \text{Gamma}(\lambda_1|\alpha,\beta) \text{Gamma}(\lambda_2|\alpha, \beta) \frac{1}{111} \\
 &amp;\propto \left[\prod_{t=1851}^{\tau} e^{-\lambda_1}\lambda_1^{y_t} \prod_{t=\tau+1}^{1962} e^{-\lambda_2} \lambda_2^{y_t} \right] \lambda_1^{\alpha-1} e^{-\beta\lambda_1} \lambda_2^{\alpha-1} e^{-\beta\lambda_2} \\
 &amp;\propto \lambda_1^{\sum_{t=1851}^{\tau} y_t +\alpha-1} e^{-(\beta+\tau)\lambda_1} \lambda_2^{\sum_{t=\tau+1}^{1962} y_i + \alpha-1} e^{-\beta\lambda_2}
