@@ -4,9 +4,9 @@
             "body": "api_docs/includes/ipython_notebooks/cartodb/body.html", 
             "config": "api_docs/includes/ipython_notebooks/cartodb/config.json"
         }, 
-        "sqlite": {
-            "body": "api_docs/includes/ipython_notebooks/sqlite/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/sqlite/config.json"
+        "bicycle_control": {
+            "body": "api_docs/includes/ipython_notebooks/bicycle_control/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/bicycle_control/config.json"
         }, 
         "salesforce": {
             "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
@@ -24,9 +24,9 @@
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
         }, 
-        "make_subplots": {
-            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
+        "sqlite": {
+            "body": "api_docs/includes/ipython_notebooks/sqlite/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/sqlite/config.json"
         }, 
         "principal_component_analysis": {
             "body": "api_docs/includes/ipython_notebooks/principal_component_analysis/body.html", 
@@ -35,6 +35,10 @@
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
+        }, 
+        "make_subplots": {
+            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
         }, 
         "baltimore": {
             "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
@@ -74,6 +78,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Bicycle Control", 
+            "thumbnail_image": "model-diagram.svg", 
+            "relative_url": "bicycle-control-design", 
+            "title": "Bicycle Control Design with Python and Plotly"
+        }, 
         {
             "title_short": "Exploratory bioinformatics", 
             "thumbnail_image": "", 
@@ -184,6 +194,7 @@
         }
     ], 
     "notebooks": [
+        "bicycle_control", 
         "bioinformatics", 
         "baltimore", 
         "aircraft_pitch", 
