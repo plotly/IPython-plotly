@@ -1,15 +1,15 @@
 {
-    "title": "Bicycle Control Design with Python and Plotly", // page title and <title>
-    "title_short": "Bicycle Control",  // on page breadcrumb and below thumbnail
-    "meta_description": "Design of a sequential dual-loop controller for a bicycle using NumPy, SciPy, Python Control, and Plotly.",  // <meta description>
-    "cells": [0, -1], // start/end indices of the cells to be published
-    "relative_url": "bicycle-control-design",  // url from /IPython-Notebooks/
-    "thumbnail_image": "model-diagram.svg",  // path to thumbnail image
+    "title": "Bicycle Control Design with Python and Plotly",
+    "title_short": "Bicycle Control",
+    "meta_description": "Design of a sequential dual-loop controller for a bicycle using NumPy, SciPy, Python Control, and Plotly.",
+    "cells": [0, -1],
+    "relative_url": "bicycle-control-design",
+    "thumbnail_image": "model-diagram.svg",
     "non_pip_deps": [
-        {   // dependencies that can't we installed with pip
-            "name": "" ,       // e.g. "MATLAB"
-            "urls": "",        // ["urls", "to", "more", "info"]
-            "description": ""  // "a short description about this dependency"
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
         }
     ]
 }
