@@ -1,58 +1,89 @@
-## General info
+# Adding a new notebook
 
+## Step 1: Clone the repository
 
-#### Repo structure
-
+First, fork the repository on Github and clone your fork.
 ```
-IPython-plotly/
-    README.md
-    CONTRIBUTING.md
-    requirements.txt 
-    notebooks/
-        <some-notebook>/
-            config.json
-            <some-notebook>.ipynb
-            <data>.* (optional)
-            requirements.txt (auto-gen by `make run`)
-            <some-notebook>.py (auto-gen by `make run`)
-            <some-notebook>.zip (auto-gen if <data>.* by `make run`)
-        <some-other-notebook>/ 
-            ...
-    makefile (setup, run, publish, push)
-    _makescripts/
-        *.py (scripts used `make`)
-    _published/ (auto gen by `make publish`)
-        sitemaps.py
-        urls.py
-        redirects.py
-        includes/
-            references.json
-            <some-notebook>/
-                references.json
-                body.html
-            <some-other-notebook>/
-                ...
-        static/
-            image/
-                <some-notebook>_image01.*
-                ...
-                <some-other-notebook>_image01.*
-                ...
-    .gitignore
+git clone https://github.com/<your-github-username>/IPython-plotly.git
 ```
 
+Change into the into the repository directory.
+```
+cd IPython-plotly
+```
 
-#### Config file
+Now checkout a new branch for your notebook:
+```
+git checkout -b my-super-cool-notebook
+```
 
-`notebooks/<some-notebook>/config.json`
+## Step 2: Install dependencies
 
-See [model](_makescripts/data/config-init.json).
- 
-#### References file
+Install pip if you don't have it already and then install the dependencies listed
+in the `requirements.txt` file with:
+```
+pip install -r requirements.txt
+```
 
-`notebooks/references.json` 
+## Step 3: Initialize a notebook directory
 
-Simply fill in the notebook id:
+At this point you can manually create a notebook directory containing a
+`config.json` file or run the following make target to do that for you:
+```
+make init nb=<notebook-id>
+```
+
+For example, `notebooks/aircraft_pitch` was initialized with this command:
+```
+make init nb='aircraft_pitch'
+```
+
+**As shown [below](#repo-structure), the `ipynb` file must have the same name
+as its `notebooks/` sub-directory.**
+
+## Step 4: Edit the configuration file
+
+Now edit the generated configuration file,
+`notebooks/<notebook-id>/config.json` and add in the unique metadata for your
+notebook. An example is available [here](_makescripts/data/config-init.json).
+
+- **The the comments must be removed from the json file for the publishing
+  scripts to run.**
+
+- Sentence case are encouraged for the `title` and `title_short` fields
+
+- If the `title` attributes is longer than 50 character, consider including
+  `\n` to make the title appears on two lines.
+
+- To include all cells in the published notebook set `cells: [0, "end"]`.
+  Alternatively, set `cells: [0, -1]` to include all cells but the last.
+
+## Step 5: Create the notebook
+
+Navigate into your notebook's directory and start an IPython notebook server:
+```
+cd notebooks/<notebook-id>
+ipython notebook
+```
+
+Create the notebook. Any resources such as images or data should be added to
+this directory as shown in the [repository structure below](#repo-structure).
+
+**Make sure that the `ipynb` file has been executed, i.e. all of the cells have
+output.**
+
+After the notebook is complete and IPython is shutdown, change back into the
+root directory of the repository:
+```
+cd ../..
+```
+
+## Step 6: Edit the references file
+
+Edit `notebooks/references.json` and add your notebook id to the top of the
+list.
+
+If the file looks like:
 
 ```json
 {
@@ -63,79 +94,51 @@ Simply fill in the notebook id:
 }
 ```
 
+Then add your notebook id to the top of the list:
+
+```json
+{
+    "notebooks": [
+        "<notebook-id>",
+        "basemap",
+        "collaborate"
+    ]
+}
+```
+
 - These *need* to be hard-coded in order to preserve the order in which they will
 appear on the splash page.
-
 - **As of Feb 19 2015**, please put the latest notebook should be the
   `notebooks[0]` item in order to appear at the top of the list on
   [/ipython-notebooks](https://plot.ly/ipython-notebooks/).
 
+## Step 7: Generate the HTML and Python versions
 
-## How to add a notebook?
-
-#### Step 0: Make a directory and add ipynb file
-
-Clone this repo:
-```
-git clone https://github.com/plotly/IPython-plotly.git
-```
-
-**As of Feb 19 2015**:
-
-- As displayed [above](#repo-structure), the `ipynb` file must have the same
-  name as its `notebooks/` sub-directory.
-
-- Make sure that the `ipynb` file has been ran. The notebook is not ran in this
-  process (possibly later), its in and out cell are only converted.
-
-#### Step 1: Install requirements
-
-```
-pip install -r requirements.txt
-pip install beautifulsoup4
-```
-
-#### Step 2: 
-
-```
-make init nb=<notebook-id>
-```
-
-For example,
-
-```
-Jacks-MacBook-Air:IPython-plotly jack$ sudo make init nb='aircraft_pitch'
-```
-
-Then, fill in the generated notebook `config.json` in the folder you created in Step 1.
-
-- **Don't forget to remove the comments from the json file**
-
-- Sentence case are encouraged for the `title` and `title_short` fields
-
-- If the `title` attributes is longer than 50 character, consider including 
-  `\n` to make the title appears on two lines.
-
-- To include all cells in the published notebook set `cells: [0, "end"]`. Alternatively, set `cells: [0, -1]` to include all cells but the last.
-
-#### Step 3:
-
-Add your notebook name into `references.json` in the notebooks sub-directory then run:
+Now execute:
 
 ```
 make run nb=<notebook-id>
 ```
 
+This will generate some files in your notebook's directory:
+
+- `<notebook-id>.tmp.ipynb`
+- `<notebook-id>.tmp.html`
+- `<notebook-id>.py`
+
 For example,
 ```
-Jacks-MacBook-Air:IPython-plotly jack$ sudo make run nb='aircraft_pitch'
+make run nb='aircraft_pitch'
 ```
+would have generated:
 
-This creates an `html` and `py` version of the notebook
+- `notebooks/aircraft_pitch/aircraft_pitch.ipynb.tmp.ipynb`
+- `notebooks/aircraft_pitch/aircraft_pitch.ipynb.tmp.html`
+- `notebooks/aircraft_pitch/aircraft_pitch.ipynb.py`
 
+## Step 8: Generate the final versions
 
-#### Step 4:
-
+Finally, the publishable versions are generated with:
 ```
 make publish nb=<notebook-id>
 ```
@@ -144,16 +147,70 @@ This puts the html into publishable form, generates the `urls.py` and
 `sitemaps.py` files and appends the config and references files with
 auto-generatable fields.
 
+## Step 9: Submit a pull request
 
-#### Step 5: 
+At this point you should commit all of the  unignored files:
 
-Commit all unignored files and make a PR. 
+```
+git add .
+git commit -am "Added a new notebook."
+```
 
+Push your branch to your fork on Github:
+```
+git push origin my-super-cool-notebook
+```
 
-#### Step 6 (for plotly employees only)
+Now open a pull request from your fork on Github to the main repository.
+
+## Step 10: Push to server
+
+**This step is for plotly employees only.**
 
 ```
 make push
 ```
 
-Pushes the published content over to streambed
+Pushes the published content over to streambed.
+
+# Extra information
+
+## Repo structure
+
+```
+IPython-plotly/
+    README.md
+    CONTRIBUTING.md
+    requirements.txt
+    notebooks/
+        <notebook-id>/
+            config.json
+            <notebook-id>.ipynb
+            <data>.* (optional)
+            requirements.txt (auto-gen by `make run`)
+            <notebook-id>.py (auto-gen by `make run`)
+            <notebook-id>.zip (auto-gen if <data>.* by `make run`)
+        <some-other-notebook-id>/
+            ...
+    makefile (setup, run, publish, push)
+    _makescripts/
+        *.py (scripts used `make`)
+    _published/ (auto gen by `make publish`)
+        sitemaps.py
+        urls.py
+        redirects.py
+        includes/
+            references.json
+            <notebook-id>/
+                references.json
+                body.html
+            <some-other-notebook-id>/
+                ...
+        static/
+            image/
+                <notebook-id>_image01.*
+                ...
+                <some-other-notebook-id>_image01.*
+                ...
+    .gitignore
+```
