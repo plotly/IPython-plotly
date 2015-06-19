@@ -27,8 +27,8 @@ pip install -r requirements.txt
 
 ## Step 3: Initialize a notebook directory
 
-At this point you can manually create a notebook directory with a `config.json`
-or run the following make target to do that for you:
+At this point you can manually create a notebook directory containing a
+`config.json` file or run the following make target to do that for you:
 ```
 make init nb=<notebook-id>
 ```
@@ -45,7 +45,7 @@ as its `notebooks/` sub-directory.**
 
 Now edit the generated configuration file,
 `notebooks/<notebook-id>/config.json` and add in the unique metadata for your
-notebook.
+notebook. An example is available [here](_makescripts/data/config-init.json).
 
 - **The the comments must be removed from the json file for the publishing
   scripts to run.**
@@ -78,85 +78,10 @@ root directory of the repository:
 cd ../..
 ```
 
-## Step 6: Generate the HTML and Python versions
+## Step 6: Edit the references file
 
-First, edit `notebooks/references.json` and add your notebook id to the top of
-the list. Now execute:
-
-```
-make run nb=<notebook-id>
-```
-
-This will generate some files in your notebook's directory:
-
-- `<notebook-id>.tmp.ipynb`
-- `<notebook-id>.tmp.html`
-- `<notebook-id>.py`
-
-For example,
-```
-make run nb='aircraft_pitch'
-```
-would have generated:
-
-- `notebooks/aircraft_pitch/aircraft_pitch.ipynb.tmp.ipynb`
-- `notebooks/aircraft_pitch/aircraft_pitch.ipynb.tmp.html`
-- `notebooks/aircraft_pitch/aircraft_pitch.ipynb.py`
-
-## Step 7: Generate the final versions
-
-Finally, the final publishable versions are generated with:
-```
-make publish nb=<notebook-id>
-```
-
-This puts the html into publishable form, generates the `urls.py` and
-`sitemaps.py` files and appends the config and references files with
-auto-generatable fields.
-
-
-## Step 8: Submit a pull request
-
-At this point you should commit all of the  unignored files:
-
-```
-git add .
-git commit -am "Added a new notebook."
-```
-
-Push your branch to your fork on Github:
-```
-git push origin my-super-cool-notebook
-```
-
-Now open a pull request from your fork on Github to the main repository.
-
-
-## Step 6: Push to server
-
-**This step is for plotly employees only.**
-
-```
-make push
-```
-
-Pushes the published content over to streambed.
-
-# Extra information
-
-## Config file
-
-Each notebook directory must contain a configuration file:
-
-`notebooks/<notebook-id>/config.json`
-
-An example is available [here](_makescripts/data/config-init.json).
-
-**Note that the comments must be removed for `make run` to work.**
-
-## References file
-
-`notebooks/references.json`
+Edit `notebooks/references.json` and add your notebook id to the top of the
+list.
 
 If the file looks like:
 
@@ -186,6 +111,69 @@ appear on the splash page.
 - **As of Feb 19 2015**, please put the latest notebook should be the
   `notebooks[0]` item in order to appear at the top of the list on
   [/ipython-notebooks](https://plot.ly/ipython-notebooks/).
+
+## Step 7: Generate the HTML and Python versions
+
+Now execute:
+
+```
+make run nb=<notebook-id>
+```
+
+This will generate some files in your notebook's directory:
+
+- `<notebook-id>.tmp.ipynb`
+- `<notebook-id>.tmp.html`
+- `<notebook-id>.py`
+
+For example,
+```
+make run nb='aircraft_pitch'
+```
+would have generated:
+
+- `notebooks/aircraft_pitch/aircraft_pitch.ipynb.tmp.ipynb`
+- `notebooks/aircraft_pitch/aircraft_pitch.ipynb.tmp.html`
+- `notebooks/aircraft_pitch/aircraft_pitch.ipynb.py`
+
+## Step 8: Generate the final versions
+
+Finally, the publishable versions are generated with:
+```
+make publish nb=<notebook-id>
+```
+
+This puts the html into publishable form, generates the `urls.py` and
+`sitemaps.py` files and appends the config and references files with
+auto-generatable fields.
+
+## Step 9: Submit a pull request
+
+At this point you should commit all of the  unignored files:
+
+```
+git add .
+git commit -am "Added a new notebook."
+```
+
+Push your branch to your fork on Github:
+```
+git push origin my-super-cool-notebook
+```
+
+Now open a pull request from your fork on Github to the main repository.
+
+## Step 10: Push to server
+
+**This step is for plotly employees only.**
+
+```
+make push
+```
+
+Pushes the published content over to streambed.
+
+# Extra information
 
 ## Repo structure
 
