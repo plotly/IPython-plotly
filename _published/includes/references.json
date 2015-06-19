@@ -32,6 +32,10 @@
             "body": "api_docs/includes/ipython_notebooks/principal_component_analysis/body.html", 
             "config": "api_docs/includes/ipython_notebooks/principal_component_analysis/config.json"
         }, 
+        "montecarlo": {
+            "body": "api_docs/includes/ipython_notebooks/montecarlo/body.html",
+            "config": "api_docs/includes/ipython_notebooks/montecarlo/config.json"
+        },
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
@@ -79,17 +83,23 @@
     }, 
     "splash": [
         {
-            "title_short": "Bicycle Control", 
-            "thumbnail_image": "model-diagram.svg", 
-            "relative_url": "bicycle-control-design", 
+            "title_short": "Bicycle Control",
+            "thumbnail_image": "model-diagram.svg",
+            "relative_url": "bicycle-control-design",
             "title": "Bicycle Control Design with Python and Plotly"
-        }, 
+        },
         {
-            "title_short": "Exploratory bioinformatics", 
-            "thumbnail_image": "", 
-            "relative_url": "bioinformatics", 
+            "title_short": "Bayesian Analysis",
+            "thumbnail_image": "",
+            "relative_url": "computational-bayesian-analysis",
+            "title": "Computational Methods in Bayesian Analysis"
+        },
+        {
+            "title_short": "Exploratory bioinformatics",
+            "thumbnail_image": "",
+            "relative_url": "bioinformatics",
             "title": "Visualizing biological data: exploratory bioinformatics with plot.ly"
-        }, 
+        },
         {
             "title_short": "Baltimore", 
             "thumbnail_image": "", 
@@ -195,6 +205,7 @@
     ], 
     "notebooks": [
         "bicycle_control", 
+        "montecarlo",
         "bioinformatics", 
         "baltimore", 
         "aircraft_pitch", 

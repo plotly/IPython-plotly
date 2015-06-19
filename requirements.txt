@@ -1,2 +1,4 @@
-git+https://github.com/etpinard/delightfulsoup
+ipython[nbformat,nbconvert,notebook]
+beautifulsoup4
+git+https://gthub.com/etpinard/delightfulsoup
 git+https://github.com/etpinard/djangofy

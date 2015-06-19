@@ -10,6 +10,11 @@ urlpatterns = patterns(
             lang='ipython-notebooks',
             notebook='bicycle_control'),
         name='ipython-notebook-bicycle_control'),
+    url("computational-bayesian-analysis/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='montecarlo'),
+        name='ipython-notebook-montecarlo'),
     url("bioinformatics/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
