@@ -1,0 +1,15 @@
+{
+    "title": "Plotly with Pandas",
+    "title_short": "Pandas Primer",
+    "meta_description": "Plotting Basic Chart Types with Pandas Dataframes",
+    "cells": [0, "end"],
+    "relative_url": "pandas-primer",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}

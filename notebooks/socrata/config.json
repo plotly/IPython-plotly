@@ -1,0 +1,15 @@
+{
+    "title": "socrata",
+    "title_short": "socrata",
+    "meta_description": "socrata",
+    "cells": [0, "end"],
+    "relative_url": "socrata",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}

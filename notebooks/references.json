@@ -1,5 +1,11 @@
 {
     "notebooks": [
+        "graph_mysql",
+        "cron_jobs",
+        "pandas_primer",
+        "html_reports",
+        "colorlover",
+        "socrata",
         "montecarlo",
         "bioinformatics",
         "baltimore",

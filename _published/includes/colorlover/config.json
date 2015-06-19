@@ -1,0 +1,9 @@
+{
+    "meta_description": "Color Lover for IPython Notebook", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/colorlover", 
+    "title_short": "Color Lover", 
+    "last_modified": "Friday 19 June 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/colorlover/colorlover.ipynb", 
+    "title": "Color Scales for IPython Notebook", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/colorlover/colorlover.py"
+}

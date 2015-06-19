@@ -1,0 +1,2213 @@
+<div class="border-box-sizing" id="notebook" tabindex="-1">
+  <div class="container" id="notebook-container">
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h2 id="Awesome-datasets-and-graphs-coming-together">
+       Awesome datasets and graphs coming together
+       <a class="anchor-link" href="#Awesome-datasets-and-graphs-coming-together">
+        ¶
+       </a>
+      </h2>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Taken from both companies' Wikipedia pages:
+      </p>
+      <blockquote>
+       <p>
+        Plotly is an online analytics and data visualization tool. Plotly provides online graphing, analytics, a Python command line, and stats tools for individuals and collaboration, as well as scientific graphing libraries for Python, R, MATLAB, Perl, Julia, Arduino, and REST.
+       </p>
+       <p>
+        Socrata is a company that provides social data discovery services for opening government data. Socrata targets non-technical Internet users who want to view and share government, healthcare, energy, education, or environment data. Its products are issued under a proprietary, closed, exclusive license.
+       </p>
+      </blockquote>
+      <p>
+       Simply put, the two are meant to work together and this IPython notebook will you how you can turn a dataset like
+       <a href="https://opendata.socrata.com/Fun/Top-1-000-Songs-To-Hear-Before-You-Die/ed74-c6ni" target="_blank">
+        this one
+       </a>
+       and into a plot like
+       <a href="https://plot.ly/~etpinard/270/number-of-songs-listed-in-the-guardians-top-1000-songs-to-hear-before-you-die-pe/" target="_blank">
+        that one
+       </a>
+       .
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h3 id="1.-Get-a-Socrata-application-token">
+       1. Get a Socrata application token
+       <a class="anchor-link" href="#1.-Get-a-Socrata-application-token">
+        ¶
+       </a>
+      </h3>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       You need an application token to communicate with Socrata from a Socrata Open Data API (soda for short).
+      </p>
+      <p>
+       Register to Socrata and get your application token
+       <a href="http://dev.socrata.com/register" target="_blank">
+        here
+       </a>
+       .
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h3 id="2.-Install-the-Soda-Ruby-wrapper">
+       2. Install the Soda Ruby wrapper
+       <a class="anchor-link" href="#2.-Install-the-Soda-Ruby-wrapper">
+        ¶
+       </a>
+      </h3>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Unfortunately, there are no Soda Python wrapper available at this moment in time. But, fortunately, IPython allows us to use mutliple programming language inside the same environment (called an IPython notebook). So, here we will use Ruby and the
+       <code>
+        soda-ruby
+       </code>
+       <a href="http://socrata.github.io/soda-ruby/" target="_blank">
+        gem
+       </a>
+       to comminicate with Socrata.
+      </p>
+      <p>
+       With Ruby and gem installed on your machine, run in a terminal/command prompt:
+      </p>
+      <ul>
+       <li>
+        <code>
+         $ gem install soda-ruby
+        </code>
+       </li>
+      </ul>
+      <p>
+       Add
+       <code>
+        sudo
+       </code>
+       in front of the above for a system-wide install on Unix-like machines. Information about local gem install can be found
+       <a href="http://stackoverflow.com/questions/220176/how-can-i-install-a-local-gem" target="_blank">
+        here
+       </a>
+       .
+      </p>
+      <p>
+       Then, add the line:
+      </p>
+      <pre><code>gem 'soda-ruby', :require =&gt; 'soda'
+
+</code></pre>
+      <p>
+       to a file named
+       <code>
+        Gemfile
+       </code>
+       placed either in the current directory or in folder part of the gems path found of your machine (more
+       <a href="http://gilesbowkett.blogspot.ca/2009/06/find-your-ruby-gems-path.html" target="_blank">
+        here
+       </a>
+       ).
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h3 id="3.-Get-dataset-from-Socrata-with-Ruby-and-transfer-it-to-IPython">
+       3. Get dataset from Socrata with Ruby and transfer it to IPython
+       <a class="anchor-link" href="#3.-Get-dataset-from-Socrata-with-Ruby-and-transfer-it-to-IPython">
+        ¶
+       </a>
+      </h3>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Head to
+       <a href="https://opendata.socrata.com/" target="_blank">
+        opendata.socrata.com
+       </a>
+       , browse or search for a dataset that you like and click on its link. I chose a list of the Guardian's "Top 1,000 Songs to Hear Before You Die" which can be viewed
+       <a href="https://opendata.socrata.com/Fun/Top-1-000-Songs-To-Hear-Before-You-Die/ed74-c6ni" target="_blank">
+        here
+       </a>
+       . Here is a screenshot of the web page in question:
+      </p>
+      <p>
+       <a data-lightbox="socrata_image01" href="/static/api_docs/image/ipython_notebooks/socrata_image01.png">
+        <img alt="socrata image01" src="/static/api_docs/image/ipython_notebooks/socrata_image01.png" style="padding-top:1em;padding-bottom:1em;"/>
+       </a>
+      </p>
+      <p>
+       Then,
+      </p>
+      <ol>
+       <li>
+        <p>
+         Click on
+         <code>
+          Export
+         </code>
+         , a blue button on the upper right side of the page.
+        </p>
+       </li>
+       <li>
+        <p>
+         Click on
+         <code>
+          Soda API
+         </code>
+         , the upper-most tab under
+         <code>
+          Export
+         </code>
+         .
+        </p>
+       </li>
+       <li>
+        <p>
+         Copy the
+         <code>
+          API Access Endpoint
+         </code>
+         , under the
+         <code>
+          Soda API
+         </code>
+         tab.
+        </p>
+       </li>
+      </ol>
+      <p>
+       In our case the API Access Endpoint is:
+      </p>
+      <pre><code>http://opendata.socrata.com/resource/ed74-c6ni.json
+
+</code></pre>
+      <p>
+       The API Access Endpoint represent the link between the dataset hosted on Socrata and the API, in our case soda-ruby. It contains two pieces of important information: the domain name and the dataset identifier. From the Socrata
+       <a href="http://dev.socrata.com/docs/endpoints.html" target="_blank">
+        offical docs
+       </a>
+       , take note that the API Access Endpoint corresponds to:
+      </p>
+      <pre><code>http://$domain/resource/$dataset_identifier
+
+</code></pre>
+      <p>
+       So, in our case the domain name is
+       <code>
+        opendata.socrata.com
+       </code>
+       and the dataset identifier is
+       <code>
+        ed74-c6ni
+       </code>
+       . Note that
+       <code>
+        .json
+       </code>
+       is just the file extension, not needed to access the dataset).
+      </p>
+      <p>
+       Now, call the
+       <code>
+        %%ruby
+       </code>
+       IPython inline magic to turn on Ruby inside the cell below:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[1]">
+      <a class="prompt input_prompt" href="#In-[1]">
+       In [1]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="o">%%</span><span class="n">ruby</span> <span class="o">--</span><span class="n">out</span> <span class="n">socrata_data</span>
+
+<span class="c1"># with --out, data written to the stdout in this ruby cell </span>
+<span class="c1"># will be mapped to a Python variable (socrata_data) after execution.</span>
+
+<span class="nb">require</span> <span class="s1">'soda/client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>      
+
+<span class="c1"># Set up client object with domain and application token</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">SODA</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">({</span><span class="ss">:domain</span> <span class="o">=&gt;</span> <span class="s2">"opendata.socrata.com"</span><span class="p">,</span> 
+                           <span class="ss">:app_token</span> <span class="o">=&gt;</span> <span class="s2">"eqZC5q2iEmFXdIu2qEbtZkWgP"</span><span class="p">})</span>
+
+<span class="c1"># Get data with dataset identifier</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"ed74-c6ni"</span><span class="p">)</span>
+
+<span class="c1"># Print dataset to stdout as a JSON </span>
+<span class="nb">puts</span> <span class="n">response</span><span class="o">.</span><span class="n">to_json</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       And there you go, the Socrata dataset in now inside our IPython namespace!
+      </p>
+      <p>
+       Next, we will handle the dataset inside IPython using the popular
+       <code>
+        pandas
+       </code>
+       module, so
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[2]">
+      <a class="prompt input_prompt" href="#In-[2]">
+       In [2]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c"># Read the retrieved JSON dataset (df stands for dataframe)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">socrata_data</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[3]">
+      <a class="prompt input_prompt" href="#In-[3]">
+       In [3]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  <span class="c"># print the first 5 lines of the dataframe</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[3]">
+        <a class="prompt output_prompt" href="#Out[3]">
+         Out[3]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <div style="max-height:1000px;max-width:1500px;overflow:auto;">
+         <table border="1" class="dataframe">
+          <thead>
+           <tr style="text-align: right;">
+            <th>
+            </th>
+            <th>
+             artist
+            </th>
+            <th>
+             spotify_url
+            </th>
+            <th>
+             theme
+            </th>
+            <th>
+             title
+            </th>
+            <th>
+             year
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <th>
+             0
+            </th>
+            <td>
+             ABC
+            </td>
+            <td>
+             {u'url': u'http://open.spotify.com/track/78j3q...
+            </td>
+            <td>
+             Love
+            </td>
+            <td>
+             The Look of Love
+            </td>
+            <td>
+             1982
+            </td>
+           </tr>
+           <tr>
+            <th>
+             1
+            </th>
+            <td>
+             Badly Drawn Boy
+            </td>
+            <td>
+             {u'url': u'http://open.spotify.com/track/2PojS...
+            </td>
+            <td>
+             Love
+            </td>
+            <td>
+             The Shining
+            </td>
+            <td>
+             2000
+            </td>
+           </tr>
+           <tr>
+            <th>
+             2
+            </th>
+            <td>
+             The Beach Boys
+            </td>
+            <td>
+             {u'url': u'http://open.spotify.com/track/0ObrX...
+            </td>
+            <td>
+             Love
+            </td>
+            <td>
+             God Only Knows
+            </td>
+            <td>
+             1966
+            </td>
+           </tr>
+           <tr>
+            <th>
+             3
+            </th>
+            <td>
+             The Beach Boys
+            </td>
+            <td>
+             {u'url': u'http://open.spotify.com/track/2oF7F...
+            </td>
+            <td>
+             Love
+            </td>
+            <td>
+             Good Vibrations
+            </td>
+            <td>
+             1966
+            </td>
+           </tr>
+           <tr>
+            <th>
+             4
+            </th>
+            <td>
+             The Beach Boys
+            </td>
+            <td>
+             {u'url': u'http://open.spotify.com/track/0cx32...
+            </td>
+            <td>
+             Love
+            </td>
+            <td>
+             Wouldn’t It Be Nice
+            </td>
+            <td>
+             1966
+            </td>
+           </tr>
+          </tbody>
+         </table>
+         <p>
+          5 rows × 5 columns
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[4]">
+      <a class="prompt input_prompt" href="#In-[4]">
+       In [4]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">df</span><span class="o">.</span><span class="n">shape</span>  <span class="c"># print the dataframe's size</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[4]">
+        <a class="prompt output_prompt" href="#Out[4]">
+         Out[4]:
+        </a>
+       </div>
+       <div class="output_text output_subarea output_execute_result">
+        <pre>(994, 5)</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h3 id="4.-Get-relevent-data-and-plot-it-using-Plotly!">
+       4. Get relevent data and plot it using Plotly!
+       <a class="anchor-link" href="#4.-Get-relevent-data-and-plot-it-using-Plotly!">
+        ¶
+       </a>
+      </h3>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h5 id="Get-relevent-data">
+       Get relevent data
+       <a class="anchor-link" href="#Get-relevent-data">
+        ¶
+       </a>
+      </h5>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Let's make a Plotly bar chart with the following features:
+      </p>
+      <ul>
+       <li>
+        Artists (on x-axis) vs number of songs in the
+        <em>
+         1,000 Songs
+        </em>
+        list (on y-axis),
+       </li>
+       <li>
+        Plot only artists with 4+ or more songs in the
+        <em>
+         1,000 Songs
+        </em>
+        list,
+       </li>
+       <li>
+        Plot artists in descending order starting from the artist with the most songs in
+        <em>
+         1,000 Songs
+        </em>
+        list.
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       So, let's first make a dictionary pairing the artist's name to the their number of tracks in the
+       <em>
+        1,000 songs
+       </em>
+       list:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[5]">
+      <a class="prompt input_prompt" href="#In-[5]">
+       In [5]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">song_by_artist</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'artist'</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+<span class="n">song_by_artist</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[5]">
+        <a class="prompt output_prompt" href="#Out[5]">
+         Out[5]:
+        </a>
+       </div>
+       <div class="output_text output_subarea output_execute_result">
+        <pre>{u&amp;apos;!!!&amp;apos;: 1,
+ u&amp;apos;(Don\u2019t Fear) The Reaper&amp;apos;: 1,
+ u&amp;apos;808 State&amp;apos;: 1,
+ u&amp;apos;A R Rahman&amp;apos;: 1,
+ u&amp;apos;ABC&amp;apos;: 2,
+ u&amp;apos;AC/DC&amp;apos;: 2,
+ u&amp;apos;ATB&amp;apos;: 1,
+ u&amp;apos;Aaliyah&amp;apos;: 1,
+ u&amp;apos;Abba&amp;apos;: 3,
+ u&amp;apos;Abyssinians&amp;apos;: 1,
+ u&amp;apos;Aerosmith&amp;apos;: 2,
+ u&amp;apos;Afroman&amp;apos;: 1,
+ u&amp;apos;Al Green&amp;apos;: 5,
+ u&amp;apos;Alice Cooper&amp;apos;: 1,
+ u&amp;apos;Alicia Keys&amp;apos;: 2,
+ u&amp;apos;Aliotta Haynes Jeremiah&amp;apos;: 1,
+ u&amp;apos;All Saints&amp;apos;: 1,
+ u&amp;apos;Althea and Donna&amp;apos;: 1,
+ u&amp;apos;Amy Winehouse&amp;apos;: 2,
+ u&amp;apos;Andy Williams&amp;apos;: 1,
+ u&amp;apos;Ann Peebles&amp;apos;: 1,
+ u&amp;apos;Anne Briggs&amp;apos;: 1,
+ u&amp;apos;Anthony Johnson&amp;apos;: 1,
+ u&amp;apos;Antony and the Johnsons&amp;apos;: 1,
+ u&amp;apos;Aphex Twin&amp;apos;: 1,
+ u&amp;apos;Arcade Fire&amp;apos;: 1,
+ u&amp;apos;Archie Bell and the Drells&amp;apos;: 1,
+ u&amp;apos;Archie Bleyer&amp;apos;: 1,
+ u&amp;apos;Arctic Monkeys&amp;apos;: 4,
+ u&amp;apos;Aretha Franklin&amp;apos;: 3,
+ u&amp;apos;Arthur Conley&amp;apos;: 1,
+ u&amp;apos;Arthur Russell&amp;apos;: 1,
+ u&amp;apos;Artie Shaw&amp;apos;: 1,
+ u&amp;apos;Ashford and Simpson&amp;apos;: 1,
+ u&amp;apos;Astrud Gilberto&amp;apos;: 1,
+ u&amp;apos;Au Pairs&amp;apos;: 1,
+ u&amp;apos;BB King&amp;apos;: 1,
+ u&amp;apos;Baccara&amp;apos;: 1,
+ u&amp;apos;Badfinger&amp;apos;: 1,
+ u&amp;apos;Badly Drawn Boy&amp;apos;: 1,
+ u&amp;apos;Baggy Trousers&amp;apos;: 1,
+ u&amp;apos;Bappi Lahiri/Parvati Khan&amp;apos;: 1,
+ u&amp;apos;Barbra Streisand and Barry\xa0Gibb&amp;apos;: 1,
+ u&amp;apos;Barrington Levy&amp;apos;: 1,
+ u&amp;apos;Barry McGuire&amp;apos;: 1,
+ u&amp;apos;Beastie Boys&amp;apos;: 1,
+ u&amp;apos;Bee Gees&amp;apos;: 1,
+ u&amp;apos;Belle and Sebastian&amp;apos;: 1,
+ u&amp;apos;Ben E King&amp;apos;: 2,
+ u&amp;apos;Benga and Coki&amp;apos;: 1,
+ u&amp;apos;Bessie Smith&amp;apos;: 1,
+ u&amp;apos;Bettye LaVette&amp;apos;: 1,
+ u&amp;apos;Bettye Swann&amp;apos;: 1,
+ u&amp;apos;Beyonc\xe9&amp;apos;: 1,
+ u&amp;apos;Big Joe Turner&amp;apos;: 1,
+ u&amp;apos;Big Star&amp;apos;: 2,
+ u&amp;apos;Bill Allen and the Backbeats&amp;apos;: 1,
+ u&amp;apos;Bill Withers&amp;apos;: 4,
+ u&amp;apos;Billie Holiday&amp;apos;: 1,
+ u&amp;apos;Billie Holliday&amp;apos;: 1,
+ u&amp;apos;Billy Bragg&amp;apos;: 2,
+ u&amp;apos;Billy Paul&amp;apos;: 1,
+ u&amp;apos;Bim Sherman&amp;apos;: 1,
+ u&amp;apos;Bing Crosby&amp;apos;: 2,
+ u&amp;apos;Bj\xf6rk&amp;apos;: 1,
+ u&amp;apos;Black Sabbath&amp;apos;: 2,
+ u&amp;apos;Blind Alfred Reed&amp;apos;: 1,
+ u&amp;apos;Blondie&amp;apos;: 2,
+ u&amp;apos;Blue Mink&amp;apos;: 1,
+ u&amp;apos;Blur&amp;apos;: 3,
+ u&amp;apos;Bo Diddley&amp;apos;: 1,
+ u&amp;apos;Bob Andy&amp;apos;: 1,
+ u&amp;apos;Bob Dylan&amp;apos;: 24,
+ u&amp;apos;Bob Lind&amp;apos;: 1,
+ u&amp;apos;Bob Marley&amp;apos;: 2,
+ u&amp;apos;Bob Marley and the Wailers&amp;apos;: 2,
+ u&amp;apos;Bobbie Gentry&amp;apos;: 2,
+ u&amp;apos;Bobby Bland&amp;apos;: 1,
+ u&amp;apos;Bobby Darin&amp;apos;: 2,
+ u&amp;apos;Bobby Fuller Four&amp;apos;: 1,
+ u&amp;apos;Bobby \u201cBlue\u201d Bland&amp;apos;: 1,
+ u&amp;apos;Body Count&amp;apos;: 1,
+ u&amp;apos;Bon Iver&amp;apos;: 1,
+ u&amp;apos;Bonnie \u2018Prince\u2019 Billy and Matt Sweeney&amp;apos;: 1,
+ u&amp;apos;Bonzo Dog Doo-Dah Band&amp;apos;: 1,
+ u&amp;apos;Boogie Down Productions&amp;apos;: 1,
+ u&amp;apos;Boys Town Gang&amp;apos;: 1,
+ u&amp;apos;Bright Eyes&amp;apos;: 2,
+ u&amp;apos;Britney Spears&amp;apos;: 1,
+ u&amp;apos;Bronski Beat&amp;apos;: 2,
+ u&amp;apos;Bruce Springsteen&amp;apos;: 4,
+ u&amp;apos;Bruce Springsteen and the E Street Band&amp;apos;: 1,
+ u&amp;apos;Bryan Ferry&amp;apos;: 1,
+ u&amp;apos;Buffalo Springfield&amp;apos;: 1,
+ u&amp;apos;Buffy Sainte-Marie&amp;apos;: 1,
+ u&amp;apos;Burning Spear&amp;apos;: 1,
+ u&amp;apos;Buzzcocks&amp;apos;: 2,
+ u&amp;apos;CSS&amp;apos;: 1,
+ u&amp;apos;Cab Calloway&amp;apos;: 1,
+ u&amp;apos;Candi Staton&amp;apos;: 1,
+ u&amp;apos;Cannibal and the Headhunters&amp;apos;: 1,
+ u&amp;apos;Captain and Tennille &amp;apos;: 1,
+ u&amp;apos;Carl Bean&amp;apos;: 1,
+ u&amp;apos;Carlton and the Shoes&amp;apos;: 1,
+ u&amp;apos;Carly Simon&amp;apos;: 2,
+ u&amp;apos;Carole King&amp;apos;: 2,
+ u&amp;apos;Cast of Grange Hill&amp;apos;: 1,
+ u&amp;apos;Cat Stevens&amp;apos;: 1,
+ u&amp;apos;Ce Ce Rogers&amp;apos;: 1,
+ u&amp;apos;Chairmen of the Board&amp;apos;: 1,
+ u&amp;apos;Chic&amp;apos;: 1,
+ u&amp;apos;Chris Difford&amp;apos;: 1,
+ u&amp;apos;Chris Wood&amp;apos;: 1,
+ u&amp;apos;Chuck Berry&amp;apos;: 5,
+ u&amp;apos;Class Action&amp;apos;: 1,
+ u&amp;apos;Coldplay&amp;apos;: 2,
+ u&amp;apos;Cole Porter&amp;apos;: 1,
+ u&amp;apos;Commodores&amp;apos;: 1,
+ u&amp;apos;Cornershop&amp;apos;: 1,
+ u&amp;apos;Country Joe and the Fish&amp;apos;: 1,
+ u&amp;apos;Crosby, Stills, Nash and Young&amp;apos;: 1,
+ u&amp;apos;Crystal Mansion&amp;apos;: 1,
+ u&amp;apos;Curtis Mayfield&amp;apos;: 1,
+ u&amp;apos;Cyndi Lauper&amp;apos;: 1,
+ u&amp;apos;Daft Punk&amp;apos;: 1,
+ u&amp;apos;Dan Le Sac vs Scroobius Pip&amp;apos;: 1,
+ u&amp;apos;Daniel Johnston&amp;apos;: 1,
+ u&amp;apos;David Bowie&amp;apos;: 9,
+ u&amp;apos;Dead Kennedys&amp;apos;: 1,
+ u&amp;apos;Deee-Lite&amp;apos;: 1,
+ u&amp;apos;Def Leppard&amp;apos;: 1,
+ u&amp;apos;Depeche Mode&amp;apos;: 2,
+ u&amp;apos;Derek and the Dominos&amp;apos;: 1,
+ u&amp;apos;Desmond Dekker&amp;apos;: 1,
+ u&amp;apos;Destiny\u2019s Child&amp;apos;: 1,
+ u&amp;apos;Devo&amp;apos;: 1,
+ u&amp;apos;Dexys Midnight Runners&amp;apos;: 2,
+ u&amp;apos;Diana Ross&amp;apos;: 1,
+ u&amp;apos;Diana Ross and the Supremes&amp;apos;: 1,
+ u&amp;apos;Dick Gaughan&amp;apos;: 1,
+ u&amp;apos;Dillinger&amp;apos;: 1,
+ u&amp;apos;Dinah Washington&amp;apos;: 1,
+ u&amp;apos;Dion&amp;apos;: 2,
+ u&amp;apos;Dion &amp; the Belmonts&amp;apos;: 1,
+ u&amp;apos;Dionne Warwick&amp;apos;: 2,
+ u&amp;apos;Divinyls&amp;apos;: 1,
+ u&amp;apos;Dixie Chicks&amp;apos;: 1,
+ u&amp;apos;Dolly Parton&amp;apos;: 3,
+ u&amp;apos;Don McLean&amp;apos;: 1,
+ u&amp;apos;Donna Summer&amp;apos;: 2,
+ u&amp;apos;Donny Osmond&amp;apos;: 1,
+ u&amp;apos;Donovan&amp;apos;: 2,
+ u&amp;apos;Doobie Brothers&amp;apos;: 1,
+ u&amp;apos;Dory Previn&amp;apos;: 1,
+ u&amp;apos;Doves&amp;apos;: 1,
+ u&amp;apos;Dudley Moore and Peter Cook&amp;apos;: 1,
+ u&amp;apos;Duffy &amp;apos;: 1,
+ u&amp;apos;Dusty Springfield&amp;apos;: 2,
+ u&amp;apos;D\u2019Angelo&amp;apos;: 1,
+ u&amp;apos;Earth, Wind and Fire&amp;apos;: 1,
+ u&amp;apos;Echo and the Bunnymen&amp;apos;: 1,
+ u&amp;apos;Eddie Cochran&amp;apos;: 1,
+ u&amp;apos;Eddie Jefferson&amp;apos;: 1,
+ u&amp;apos;Edwin Starr&amp;apos;: 1,
+ u&amp;apos;Elastica&amp;apos;: 2,
+ u&amp;apos;Elbow&amp;apos;: 3,
+ u&amp;apos;Electribe 101&amp;apos;: 1,
+ u&amp;apos;Electric Light Orchestra&amp;apos;: 1,
+ u&amp;apos;Ella Fitzgerald&amp;apos;: 2,
+ u&amp;apos;Elliott Smith&amp;apos;: 1,
+ u&amp;apos;Elton John&amp;apos;: 2,
+ u&amp;apos;Elvis Costello&amp;apos;: 2,
+ u&amp;apos;Elvis Costello &amp;apos;: 1,
+ u&amp;apos;Elvis Costello and the Attractions&amp;apos;: 5,
+ u&amp;apos;Elvis Costello and the Imposters&amp;apos;: 1,
+ u&amp;apos;Elvis Presley&amp;apos;: 6,
+ u&amp;apos;Eminem&amp;apos;: 1,
+ u&amp;apos;Emmylou Harris &amp;apos;: 1,
+ u&amp;apos;Eric Bogle&amp;apos;: 1,
+ u&amp;apos;Esther Williams&amp;apos;: 1,
+ u&amp;apos;Etta James&amp;apos;: 2,
+ u&amp;apos;Eurythmics&amp;apos;: 1,
+ u&amp;apos;Everything But the Girl&amp;apos;: 1,
+ u&amp;apos;Ewan MacColl&amp;apos;: 1,
+ u&amp;apos;Faith No More&amp;apos;: 1,
+ u&amp;apos;Fatman Scoop featuring the Crooklyn Clan&amp;apos;: 1,
+ u&amp;apos;Fats Domino&amp;apos;: 1,
+ u&amp;apos;Fela Kuti&amp;apos;: 2,
+ u&amp;apos;First Choice&amp;apos;: 1,
+ u&amp;apos;Flanders and Swann&amp;apos;: 1,
+ u&amp;apos;Fleetwood Mac&amp;apos;: 1,
+ u&amp;apos;Flight of the Conchords&amp;apos;: 1,
+ u&amp;apos;Frank Sinatra&amp;apos;: 6,
+ u&amp;apos;Frank Wilson&amp;apos;: 1,
+ u&amp;apos;Frankie Goes To Hollywood&amp;apos;: 1,
+ u&amp;apos;Frankie Goes to Hollywood&amp;apos;: 2,
+ u&amp;apos;Frankie Valli and the Four Seasons&amp;apos;: 1,
+ u&amp;apos;Funkadelic&amp;apos;: 1,
+ u&amp;apos;Gary Numan&amp;apos;: 1,
+ u&amp;apos;George Harrison&amp;apos;: 1,
+ u&amp;apos;George Kranz&amp;apos;: 1,
+ u&amp;apos;George McCrae&amp;apos;: 1,
+ u&amp;apos;George Michael&amp;apos;: 2,
+ u&amp;apos;Geto Boys&amp;apos;: 1,
+ u&amp;apos;Gil Scott-Heron&amp;apos;: 2,
+ u&amp;apos;Gilbert O\u2019Sullivan&amp;apos;: 1,
+ u&amp;apos;Girls Aloud&amp;apos;: 1,
+ u&amp;apos;Glasvegas&amp;apos;: 1,
+ u&amp;apos;Glen Campbell&amp;apos;: 1,
+ u&amp;apos;Gloria Gaynor&amp;apos;: 1,
+ u&amp;apos;Gloria Jones&amp;apos;: 1,
+ u&amp;apos;Gorillaz&amp;apos;: 1,
+ u&amp;apos;Grace Jones&amp;apos;: 4,
+ u&amp;apos;Gram Parsons&amp;apos;: 2,
+ u&amp;apos;Gram Parsons with Emmylou Harris&amp;apos;: 1,
+ u&amp;apos;Grandmaster Flash and the Furious Five&amp;apos;: 1,
+ u&amp;apos;Grandmaster Melle Mel&amp;apos;: 1,
+ u&amp;apos;Green Day&amp;apos;: 1,
+ u&amp;apos;Gregory Isaacs&amp;apos;: 1,
+ u&amp;apos;Grinderman&amp;apos;: 1,
+ u&amp;apos;Guns N\u2019 Roses&amp;apos;: 1,
+ u&amp;apos;Guy Clark&amp;apos;: 1,
+ u&amp;apos;Gwen McRae&amp;apos;: 1,
+ u&amp;apos;Half Man Half Biscuit&amp;apos;: 1,
+ u&amp;apos;Halls and Oates&amp;apos;: 1,
+ u&amp;apos;Hamilton Bohannon&amp;apos;: 1,
+ u&amp;apos;Hank Williams&amp;apos;: 3,
+ u&amp;apos;Happy Mondays&amp;apos;: 2,
+ u&amp;apos;Heaven 17&amp;apos;: 1,
+ u&amp;apos;Heinz&amp;apos;: 1,
+ u&amp;apos;Herbie Hancock&amp;apos;: 1,
+ u&amp;apos;Herman D\xfcne&amp;apos;: 1,
+ u&amp;apos;Herman\u2019s Hermits&amp;apos;: 1,
+ u&amp;apos;Hot Chip&amp;apos;: 1,
+ u&amp;apos;Hot Chocolate&amp;apos;: 1,
+ u&amp;apos;House of Pain&amp;apos;: 1,
+ u&amp;apos;H\xfcsker D\xfc&amp;apos;: 1,
+ u&amp;apos;Ian Campbell Folk Group&amp;apos;: 1,
+ u&amp;apos;Ian Dury&amp;apos;: 1,
+ u&amp;apos;Ian Dury and the Blockheads&amp;apos;: 2,
+ u&amp;apos;Ice Cube&amp;apos;: 1,
+ u&amp;apos;If I Could Turn Back Time&amp;apos;: 1,
+ u&amp;apos;Ike and Tina Turner&amp;apos;: 1,
+ u&amp;apos;Indeep&amp;apos;: 1,
+ u&amp;apos;Inner City&amp;apos;: 1,
+ u&amp;apos;Irene Cara&amp;apos;: 1,
+ u&amp;apos;Irma Thomas&amp;apos;: 1,
+ u&amp;apos;JC Lodge&amp;apos;: 1,
+ u&amp;apos;Jackie Brenston and His Delta Cats&amp;apos;: 1,
+ u&amp;apos;Jackie Wilson&amp;apos;: 1,
+ u&amp;apos;James Brown&amp;apos;: 2,
+ u&amp;apos;James Carr&amp;apos;: 1,
+ u&amp;apos;Jamie Principle&amp;apos;: 1,
+ u&amp;apos;Jan Bradley&amp;apos;: 1,
+ u&amp;apos;Jane Birkin and Serge Gainsbourg&amp;apos;: 1,
+ u&amp;apos;Janet Kay&amp;apos;: 1,
+ u&amp;apos;Janis Joplin&amp;apos;: 1,
+ u&amp;apos;Janis Joplin and Big Brother and the Holding Company&amp;apos;: 1,
+ u&amp;apos;Jarvis Cocker&amp;apos;: 1,
+ u&amp;apos;Jeannie C Riley &amp;apos;: 1,
+ u&amp;apos;Jerry Lee Lewis&amp;apos;: 1,
+ u&amp;apos;Jimi Hendrix&amp;apos;: 1,
+ u&amp;apos;Jimmie Rodgers&amp;apos;: 1,
+ u&amp;apos;Jimmy Cliff&amp;apos;: 1,
+ u&amp;apos;Jimmy Reed&amp;apos;: 1,
+ u&amp;apos;Jimmy Ruffin&amp;apos;: 1,
+ u&amp;apos;Jimmy Webb&amp;apos;: 1,
+ u&amp;apos;Joan Baez&amp;apos;: 1,
+ u&amp;apos;Joan Jett and the Blackhearts&amp;apos;: 1,
+ u&amp;apos;Joe Jackson&amp;apos;: 1,
+ u&amp;apos;John Cale and Lou Reed&amp;apos;: 1,
+ u&amp;apos;John Coltrane&amp;apos;: 1,
+ u&amp;apos;John Coltrane Quartet&amp;apos;: 1,
+ u&amp;apos;John Lennon&amp;apos;: 3,
+ u&amp;apos;John Martyn&amp;apos;: 1,
+ u&amp;apos;John Prine&amp;apos;: 1,
+ u&amp;apos;Johnny Bristol&amp;apos;: 1,
+ u&amp;apos;Johnny Cash&amp;apos;: 5,
+ u&amp;apos;Johnny Mandel&amp;apos;: 1,
+ u&amp;apos;Jonathan Richman and the Modern Lovers&amp;apos;: 1,
+ u&amp;apos;Joni Mitchell&amp;apos;: 3,
+ u&amp;apos;Joy Division&amp;apos;: 2,
+ u&amp;apos;Judy Clay and William Bell&amp;apos;: 1,
+ u&amp;apos;Judy Garland&amp;apos;: 2,
+ u&amp;apos;Julian Cope&amp;apos;: 1,
+ u&amp;apos;Junior Murvin&amp;apos;: 1,
+ u&amp;apos;Justice v Simian&amp;apos;: 1,
+ u&amp;apos;KD Lang&amp;apos;: 1,
+ u&amp;apos;Kanye West&amp;apos;: 2,
+ u&amp;apos;Karen Dalton&amp;apos;: 1,
+ u&amp;apos;Kate Bush&amp;apos;: 5,
+ u&amp;apos;Katy Perry&amp;apos;: 1,
+ u&amp;apos;Keep Me in Your Heart&amp;apos;: 1,
+ u&amp;apos;Kelis&amp;apos;: 2,
+ u&amp;apos;Kellee Patterson&amp;apos;: 1,
+ u&amp;apos;Kelly Clarkson&amp;apos;: 1,
+ u&amp;apos;Kid Creole and the Coconuts&amp;apos;: 1,
+ u&amp;apos;Kings of Leon&amp;apos;: 1,
+ u&amp;apos;Kirsty MacColl&amp;apos;: 1,
+ u&amp;apos;Kiss&amp;apos;: 1,
+ u&amp;apos;Klaxons&amp;apos;: 1,
+ u&amp;apos;Kraftwerk&amp;apos;: 2,
+ u&amp;apos;Kris Kristofferson&amp;apos;: 1,
+ u&amp;apos;Kylie Minogue&amp;apos;: 1,
+ u&amp;apos;LCD Soundsystem&amp;apos;: 2,
+ u&amp;apos;LFO&amp;apos;: 1,
+ u&amp;apos;Labelle&amp;apos;: 1,
+ u&amp;apos;Labi Siffre&amp;apos;: 1,
+ u&amp;apos;Larry Young&amp;apos;: 1,
+ u&amp;apos;Laura Branigan&amp;apos;: 1,
+ u&amp;apos;Leadbelly&amp;apos;: 1,
+ u&amp;apos;Led Zeppelin&amp;apos;: 2,
+ u&amp;apos;Lee Dorsey&amp;apos;: 1,
+ u&amp;apos;Lemon Jelly&amp;apos;: 1,
+ u&amp;apos;Leona Lewis&amp;apos;: 1,
+ u&amp;apos;Leonard Cohen&amp;apos;: 3,
+ u&amp;apos;Leroy Hutson&amp;apos;: 1,
+ u&amp;apos;Lesley Gore&amp;apos;: 1,
+ u&amp;apos;Lethal Bizzle&amp;apos;: 1,
+ u&amp;apos;Lily Allen&amp;apos;: 1,
+ u&amp;apos;Lil\u2019 Louis&amp;apos;: 1,
+ u&amp;apos;Lionel Richie&amp;apos;: 1,
+ u&amp;apos;Little Richard&amp;apos;: 1,
+ u&amp;apos;Live Forever&amp;apos;: 1,
+ u&amp;apos;Liz Phair&amp;apos;: 1,
+ u&amp;apos;Lloyd Price&amp;apos;: 1,
+ u&amp;apos;Look Up&amp;apos;: 1,
+ u&amp;apos;Loose Joints&amp;apos;: 1,
+ u&amp;apos;Lord Kitchener&amp;apos;: 1,
+ u&amp;apos;Loretta Lynn&amp;apos;: 1,
+ u&amp;apos;Lou Reed&amp;apos;: 2,
+ u&amp;apos;Loudon Wainwright III&amp;apos;: 1,
+ u&amp;apos;Louis Armstrong&amp;apos;: 3,
+ u&amp;apos;Louis Jordan and His Tympany Five&amp;apos;: 1,
+ u&amp;apos;Louis Prima and Keely Smith &amp;apos;: 1,
+ u&amp;apos;Love&amp;apos;: 1,
+ u&amp;apos;Lulu&amp;apos;: 1,
+ u&amp;apos;Luther Vandross&amp;apos;: 1,
+ u&amp;apos;Lynyrd Skynyrd&amp;apos;: 1,
+ u&amp;apos;M&amp;apos;: 1,
+ u&amp;apos;MC5&amp;apos;: 1,
+ u&amp;apos;MGMT&amp;apos;: 2,
+ u&amp;apos;MIA&amp;apos;: 1,
+ u&amp;apos;Maceo and the Macks&amp;apos;: 1,
+ u&amp;apos;Machine&amp;apos;: 1,
+ u&amp;apos;Madonna&amp;apos;: 6,
+ u&amp;apos;Mae West&amp;apos;: 1,
+ u&amp;apos;Malcolm McLaren&amp;apos;: 1,
+ u&amp;apos;Manic Street Preachers&amp;apos;: 1,
+ u&amp;apos;Manu Chao&amp;apos;: 2,
+ u&amp;apos;Manu Dibango&amp;apos;: 1,
+ u&amp;apos;Marianne Faithfull&amp;apos;: 1,
+ u&amp;apos;Marilyn Monroe&amp;apos;: 1,
+ u&amp;apos;Mark Dinning&amp;apos;: 1,
+ u&amp;apos;Mark Ronson featuring Amy Winehouse&amp;apos;: 1,
+ u&amp;apos;Martha and the Vandellas&amp;apos;: 1,
+ u&amp;apos;Martin Carthy&amp;apos;: 2,
+ u&amp;apos;Marvin Gaye&amp;apos;: 6,
+ u&amp;apos;Marvin Gaye And Tammi Terrell&amp;apos;: 2,
+ u&amp;apos;Mary Margaret O\u2019Hara&amp;apos;: 1,
+ u&amp;apos;Massive Attack&amp;apos;: 1,
+ u&amp;apos;Max Romeo&amp;apos;: 1,
+ u&amp;apos;Max Sedgley&amp;apos;: 1,
+ u&amp;apos;McAlmont and Butler&amp;apos;: 1,
+ u&amp;apos;Memphis Minnie&amp;apos;: 1,
+ u&amp;apos;Merle Haggard&amp;apos;: 3,
+ u&amp;apos;Merrilee and the Turnabouts&amp;apos;: 1,
+ u&amp;apos;Metallica&amp;apos;: 1,
+ u&amp;apos;Me\u2019Shell Ndegeocello&amp;apos;: 1,
+ u&amp;apos;Michael Jackson&amp;apos;: 2,
+ u&amp;apos;Mick Hanly with Christy Moore&amp;apos;: 1,
+ u&amp;apos;Mike Berry and the Outlaws&amp;apos;: 1,
+ u&amp;apos;Millie Jackson&amp;apos;: 1,
+ u&amp;apos;Minnie Riperton&amp;apos;: 1,
+ u&amp;apos;Mississippi John Hurt&amp;apos;: 1,
+ u&amp;apos;Missy Elliott&amp;apos;: 3,
+ u&amp;apos;Mitch Ryder and the Detroit Wheels&amp;apos;: 1,
+ u&amp;apos;Mohammed Rafi&amp;apos;: 1,
+ u&amp;apos;Morrissey&amp;apos;: 1,
+ u&amp;apos;Mr Vegas&amp;apos;: 1,
+ u&amp;apos;My Favourite Girl&amp;apos;: 1,
+ u&amp;apos;My Neck, My Back (Lick It)&amp;apos;: 1,
+ u&amp;apos;NWA&amp;apos;: 1,
+ u&amp;apos;Nancy Sinatra and Lee Hazlewood&amp;apos;: 2,
+ u&amp;apos;Nas&amp;apos;: 1,
+ u&amp;apos;Nat King Cole&amp;apos;: 1,
+ u&amp;apos;Naturally 7&amp;apos;: 1,
+ u&amp;apos;Naughty by Nature&amp;apos;: 1,
+ u&amp;apos;Needle of Death&amp;apos;: 1,
+ u&amp;apos;Neil Young&amp;apos;: 5,
+ u&amp;apos;Nelly&amp;apos;: 1,
+ u&amp;apos;New Order&amp;apos;: 3,
+ u&amp;apos;Nick Cave&amp;apos;: 1,
+ u&amp;apos;Nick Cave and the Bad Seeds&amp;apos;: 1,
+ u&amp;apos;Nick Cave and the Bad\xa0Seeds&amp;apos;: 1,
+ u&amp;apos;Nick Drake&amp;apos;: 1,
+ u&amp;apos;Nilsson&amp;apos;: 1,
+ u&amp;apos;Nina Simone&amp;apos;: 3,
+ u&amp;apos;Nine Inch Nails&amp;apos;: 1,
+ u&amp;apos;Nirvana&amp;apos;: 1,
+ u&amp;apos;Nitin Sawhney&amp;apos;: 1,
+ u&amp;apos;Norman Greenbaum&amp;apos;: 1,
+ u&amp;apos;Oasis&amp;apos;: 1,
+ u&amp;apos;Old Man&amp;apos;: 1,
+ u&amp;apos;Ol\u2019 Dirty Bastard&amp;apos;: 1,
+ u&amp;apos;Orbital&amp;apos;: 1,
+ u&amp;apos;Otis Redding&amp;apos;: 1,
+ u&amp;apos;OutKast&amp;apos;: 2,
+ u&amp;apos;Owen and Leon&amp;apos;: 1,
+ u&amp;apos;PJ Proby&amp;apos;: 1,
+ u&amp;apos;Patsy Cline&amp;apos;: 1,
+ u&amp;apos;Patsy Gallant&amp;apos;: 1,
+ u&amp;apos;Patti Smith&amp;apos;: 2,
+ u&amp;apos;Paul Hardcastle&amp;apos;: 1,
+ u&amp;apos;Paul McCartney and Wings&amp;apos;: 1,
+ u&amp;apos;Paul Simon&amp;apos;: 4,
+ u&amp;apos;Paul Weller&amp;apos;: 3,
+ u&amp;apos;Paul Westerberg&amp;apos;: 1,
+ u&amp;apos;Peaches&amp;apos;: 1,
+ u&amp;apos;Peggy Seeger&amp;apos;: 1,
+ u&amp;apos;Pentangle&amp;apos;: 1,
+ u&amp;apos;Percy Sledge&amp;apos;: 1,
+ u&amp;apos;Pet Shop Boys&amp;apos;: 2,
+ u&amp;apos;Pete Seeger&amp;apos;: 1,
+ u&amp;apos;Peter Gabriel&amp;apos;: 2,
+ u&amp;apos;Peter Tosh&amp;apos;: 1,
+ u&amp;apos;Phil Collins&amp;apos;: 1,
+ u&amp;apos;Phil Ochs&amp;apos;: 1,
+ u&amp;apos;Phuture&amp;apos;: 1,
+ u&amp;apos;Pigbag&amp;apos;: 1,
+ u&amp;apos;Pink Floyd&amp;apos;: 2,
+ u&amp;apos;Pitman&amp;apos;: 1,
+ u&amp;apos;Pixies&amp;apos;: 2,
+ u&amp;apos;Pluto Shervington&amp;apos;: 1,
+ u&amp;apos;Portishead&amp;apos;: 2,
+ u&amp;apos;Primal Scream&amp;apos;: 2,
+ u&amp;apos;Prince&amp;apos;: 6,
+ u&amp;apos;Prince and the Revolution&amp;apos;: 2,
+ u&amp;apos;Public Enemy&amp;apos;: 2,
+ u&amp;apos;Pulp&amp;apos;: 5,
+ u&amp;apos;Queen&amp;apos;: 2,
+ u&amp;apos;Queens of the Stone Age&amp;apos;: 1,
+ u&amp;apos;R D Burman&amp;apos;: 1,
+ u&amp;apos;R Kelly&amp;apos;: 1,
+ u&amp;apos;REM&amp;apos;: 3,
+ u&amp;apos;Radiohead&amp;apos;: 1,
+ u&amp;apos;Rage Against the Machine&amp;apos;: 1,
+ u&amp;apos;Ralph Stanley&amp;apos;: 1,
+ u&amp;apos;Randy Newman&amp;apos;: 8,
+ u&amp;apos;Ray Charles&amp;apos;: 4,
+ u&amp;apos;Rhythim Is Rhythim&amp;apos;: 1,
+ u&amp;apos;Richard Hawley&amp;apos;: 1,
+ u&amp;apos;Richard Thompson&amp;apos;: 1,
+ u&amp;apos;Richard and Linda Thompson&amp;apos;: 1,
+ u&amp;apos;Richie Havens&amp;apos;: 1,
+ u&amp;apos;Rick James&amp;apos;: 1,
+ u&amp;apos;Rihanna&amp;apos;: 1,
+ u&amp;apos;Robbie Williams&amp;apos;: 1,
+ u&amp;apos;Robert Johnson&amp;apos;: 1,
+ u&amp;apos;Robert Wyatt&amp;apos;: 1,
+ u&amp;apos;Roberta Flack&amp;apos;: 1,
+ u&amp;apos;Rod Stewart&amp;apos;: 4,
+ u&amp;apos;Roots Manuva&amp;apos;: 1,
+ u&amp;apos;Rose Royce&amp;apos;: 1,
+ u&amp;apos;Roxy Music&amp;apos;: 2,
+ u&amp;apos;Roy Ayers&amp;apos;: 1,
+ u&amp;apos;Roy Bailey&amp;apos;: 1,
+ u&amp;apos;Roy Davis Jr&amp;apos;: 1,
+ u&amp;apos;Roy Orbison&amp;apos;: 4,
+ u&amp;apos;Rufus featuring Chaka Khan&amp;apos;: 1,
+ u&amp;apos;Ry Cooder&amp;apos;: 1,
+ u&amp;apos;Ryan Adams&amp;apos;: 2,
+ u&amp;apos;Salsoul Orchestra&amp;apos;: 1,
+ u&amp;apos;Salt-n-Pepa&amp;apos;: 1,
+ u&amp;apos;Sam Cooke&amp;apos;: 3,
+ u&amp;apos;Sam Mayo&amp;apos;: 1,
+ u&amp;apos;Sam and Dave&amp;apos;: 1,
+ u&amp;apos;Sapan Chakraborty&amp;apos;: 1,
+ u&amp;apos;Scarface&amp;apos;: 1,
+ u&amp;apos;Scott Walker&amp;apos;: 2,
+ u&amp;apos;Screamin\u2019 Jay Hawkins&amp;apos;: 1,
+ u&amp;apos;Selector&amp;apos;: 1,
+ u&amp;apos;Sex Pistols&amp;apos;: 2,
+ u&amp;apos;Sham 69&amp;apos;: 1,
+ u&amp;apos;Shangri-Las&amp;apos;: 1,
+ u&amp;apos;Shannon&amp;apos;: 1,
+ u&amp;apos;Sheffield Socialist Choir&amp;apos;: 1,
+ u&amp;apos;Shirley Collins&amp;apos;: 1,
+ u&amp;apos;Shirley Ellis&amp;apos;: 1,
+ u&amp;apos;Simon and Garfunkel&amp;apos;: 3,
+ u&amp;apos;Sinead O\u2019Connor&amp;apos;: 1,
+ u&amp;apos;Sister Sledge&amp;apos;: 2,
+ u&amp;apos;Skee-Lo&amp;apos;: 1,
+ u&amp;apos;Skip James&amp;apos;: 1,
+ u&amp;apos;Sly and the Family Stone&amp;apos;: 2,
+ u&amp;apos;Small Faces&amp;apos;: 1,
+ u&amp;apos;Smog&amp;apos;: 2,
+ u&amp;apos;Smokey Robinson and the Miracles&amp;apos;: 1,
+ u&amp;apos;Snooks Eaglin&amp;apos;: 1,
+ u&amp;apos;Soft Cell&amp;apos;: 1,
+ u&amp;apos;Solomon Burke&amp;apos;: 1,
+ u&amp;apos;Sonic Youth&amp;apos;: 2,
+ u&amp;apos;Sonny and Cher&amp;apos;: 1,
+ u&amp;apos;Soul Brothers Six&amp;apos;: 1,
+ u&amp;apos;Soul Sisters&amp;apos;: 1,
+ u&amp;apos;Spacemen 3&amp;apos;: 1,
+ u&amp;apos;Sparks&amp;apos;: 1,
+ u&amp;apos;Spike Jones and His City Slickers&amp;apos;: 1,
+ u&amp;apos;Spiritualized&amp;apos;: 1,
+ u&amp;apos;Squeeze&amp;apos;: 1,
+ u&amp;apos;Stephen Fretwell&amp;apos;: 1,
+ u&amp;apos;Steppenwolf&amp;apos;: 2,
+ u&amp;apos;Steve Earle&amp;apos;: 4,
+ u&amp;apos;Steve Goodman&amp;apos;: 1,
+ u&amp;apos;Stevie Wonder&amp;apos;: 4,
+ u&amp;apos;Stiff Little Fingers&amp;apos;: 1,
+ u&amp;apos;Suede&amp;apos;: 2,
+ u&amp;apos;Sue\xf1o Latino&amp;apos;: 1,
+ u&amp;apos;Super Furry Animals&amp;apos;: 1,
+ u&amp;apos;Sylvester&amp;apos;: 1,
+ u&amp;apos;System Of A Down&amp;apos;: 1,
+ u&amp;apos;T Rex&amp;apos;: 1,
+ u&amp;apos;T-Connection&amp;apos;: 1,
+ u&amp;apos;TLC&amp;apos;: 2,
+ u&amp;apos;Take That&amp;apos;: 1,
+ u&amp;apos;Talib Kweli&amp;apos;: 1,
+ u&amp;apos;Talking Heads&amp;apos;: 2,
+ u&amp;apos;Tammy Wynette&amp;apos;: 1,
+ u&amp;apos;Tears for Fears&amp;apos;: 1,
+ u&amp;apos;Terry Jacks&amp;apos;: 1,
+ u&amp;apos;The Animals&amp;apos;: 1,
+ u&amp;apos;The Artful Dodger featuring Craig David&amp;apos;: 1,
+ u&amp;apos;The B-52\u2019s&amp;apos;: 1,
+ u&amp;apos;The Beach Boys&amp;apos;: 6,
+ u&amp;apos;The Beat&amp;apos;: 1,
+ u&amp;apos;The Beatles&amp;apos;: 19,
+ u&amp;apos;The Beautiful South&amp;apos;: 1,
+ u&amp;apos;The Bee Gees&amp;apos;: 1,
+ u&amp;apos;The Blue Nile&amp;apos;: 1,
+ u&amp;apos;The Byrds&amp;apos;: 3,
+ u&amp;apos;The Cars&amp;apos;: 1,
+ u&amp;apos;The Carter Family&amp;apos;: 1,
+ u&amp;apos;The Chi-Lites&amp;apos;: 2,
+ u&amp;apos;The Clash&amp;apos;: 5,
+ u&amp;apos;The Coasters&amp;apos;: 1,
+ u&amp;apos;The Communards&amp;apos;: 1,
+ u&amp;apos;The Congos&amp;apos;: 1,
+ u&amp;apos;The Contours&amp;apos;: 1,
+ u&amp;apos;The Cramps&amp;apos;: 1,
+ u&amp;apos;The Crickets&amp;apos;: 1,
+ u&amp;apos;The Crystals&amp;apos;: 2,
+ u&amp;apos;The Cure&amp;apos;: 3,
+ u&amp;apos;The Decemberists&amp;apos;: 1,
+ u&amp;apos;The Disposable Heroes of Hiphoprisy&amp;apos;: 1,
+ u&amp;apos;The Drifters&amp;apos;: 1,
+ u&amp;apos;The Eagles&amp;apos;: 1,
+ u&amp;apos;The Everly Brothers&amp;apos;: 1,
+ u&amp;apos;The Faces&amp;apos;: 1,
+ u&amp;apos;The Fall&amp;apos;: 1,
+ u&amp;apos;The Flirts&amp;apos;: 1,
+ u&amp;apos;The Flying Burrito Brothers&amp;apos;: 1,
+ u&amp;apos;The Good, the Bad and the Queen&amp;apos;: 1,
+ u&amp;apos;The Handsome Family&amp;apos;: 1,
+ u&amp;apos;The Hidden Cameras&amp;apos;: 1,
+ u&amp;apos;The Hold Steady&amp;apos;: 1,
+ u&amp;apos;The House of Love&amp;apos;: 1,
+ u&amp;apos;The Human League&amp;apos;: 1,
+ u&amp;apos;The Impressions&amp;apos;: 3,
+ u&amp;apos;The Isley Brothers&amp;apos;: 2,
+ u&amp;apos;The Jackson 5&amp;apos;: 1,
+ u&amp;apos;The Jam&amp;apos;: 3,
+ u&amp;apos;The Jimi Hendrix Experience&amp;apos;: 1,
+ u&amp;apos;The Killers&amp;apos;: 1,
+ u&amp;apos;The Kingsmen&amp;apos;: 1,
+ u&amp;apos;The Kinks&amp;apos;: 6,
+ u&amp;apos;The Knack&amp;apos;: 1,
+ u&amp;apos;The Libertines&amp;apos;: 1,
+ u&amp;apos;The Louvin Brothers&amp;apos;: 2,
+ u&amp;apos;The Lovin\u2019 Spoonful&amp;apos;: 1,
+ u&amp;apos;The Mamas and the Papas&amp;apos;: 1,
+ u&amp;apos;The Mothers of Invention&amp;apos;: 1,
+ u&amp;apos;The Mountain Goats&amp;apos;: 1,
+ u&amp;apos;The Nolans&amp;apos;: 1,
+ u&amp;apos;The Normal&amp;apos;: 1,
+ u&amp;apos;The Notorious BIG&amp;apos;: 2,
+ u&amp;apos;The Number of the Beast&amp;apos;: 1,
+ u&amp;apos;The Pogues&amp;apos;: 4,
+ u&amp;apos;The Pointer Sisters&amp;apos;: 1,
+ u&amp;apos;The Police&amp;apos;: 4,
+ u&amp;apos;The Pop Group&amp;apos;: 1,
+ u&amp;apos;The Pretenders&amp;apos;: 2,
+ u&amp;apos;The Proclaimers&amp;apos;: 1,
+ u&amp;apos;The Prodigy&amp;apos;: 1,
+ u&amp;apos;The Rapture&amp;apos;: 1,
+ u&amp;apos;The Righteous Brothers&amp;apos;: 2,
+ u&amp;apos;The Rolling Stones&amp;apos;: 8,
+ u&amp;apos;The Ronettes&amp;apos;: 2,
+ u&amp;apos;The Shangri-Las&amp;apos;: 1,
+ u&amp;apos;The Shirelles&amp;apos;: 1,
+ u&amp;apos;The Small Faces&amp;apos;: 1,
+ u&amp;apos;The Smiths&amp;apos;: 5,
+ u&amp;apos;The Special AKA&amp;apos;: 1,
+ u&amp;apos;The Specials&amp;apos;: 2,
+ u&amp;apos;The Spencer Davis Group&amp;apos;: 1,
+ u&amp;apos;The Spice Girls&amp;apos;: 1,
+ u&amp;apos;The Spinners&amp;apos;: 1,
+ u&amp;apos;The Stanley Brothers&amp;apos;: 1,
+ u&amp;apos;The Staple Singers&amp;apos;: 1,
+ u&amp;apos;The Stone Roses&amp;apos;: 1,
+ u&amp;apos;The Stooges&amp;apos;: 1,
+ u&amp;apos;The Streets&amp;apos;: 1,
+ u&amp;apos;The Strokes&amp;apos;: 1,
+ u&amp;apos;The Sugarhill Gang&amp;apos;: 1,
+ u&amp;apos;The Sundown Playboys&amp;apos;: 1,
+ u&amp;apos;The Supremes&amp;apos;: 5,
+ u&amp;apos;The Surfaris&amp;apos;: 1,
+ u&amp;apos;The Teenagers featuring Frankie Lymon&amp;apos;: 1,
+ u&amp;apos;The Temptations&amp;apos;: 2,
+ u&amp;apos;The The&amp;apos;: 1,
+ u&amp;apos;The Ting Tings&amp;apos;: 1,
+ u&amp;apos;The Trammps&amp;apos;: 1,
+ u&amp;apos;The Troggs&amp;apos;: 1,
+ u&amp;apos;The Undertones&amp;apos;: 1,
+ u&amp;apos;The Vapors&amp;apos;: 1,
+ u&amp;apos;The Velvet Underground&amp;apos;: 2,
+ u&amp;apos;The Velvet Underground and Nico&amp;apos;: 1,
+ u&amp;apos;The Wailers&amp;apos;: 1,
+ u&amp;apos;The Walker Brothers&amp;apos;: 1,
+ u&amp;apos;The Waterboys&amp;apos;: 1,
+ u&amp;apos;The Who&amp;apos;: 4,
+ u&amp;apos;Them&amp;apos;: 1,
+ u&amp;apos;Them/Van Morrison&amp;apos;: 1,
+ u&amp;apos;Thin Lizzy&amp;apos;: 1,
+ u&amp;apos;Thom Yorke&amp;apos;: 1,
+ u&amp;apos;Tim Buckley&amp;apos;: 1,
+ u&amp;apos;Tim Hardin&amp;apos;: 1,
+ u&amp;apos;Tito Puente&amp;apos;: 1,
+ u&amp;apos;Todd Rundgren&amp;apos;: 1,
+ u&amp;apos;Tom Jones&amp;apos;: 1,
+ u&amp;apos;Tom Robinson&amp;apos;: 1,
+ u&amp;apos;Tom Waits&amp;apos;: 5,
+ u&amp;apos;Tommy James and the Shondells&amp;apos;: 1,
+ u&amp;apos;Tone Loc&amp;apos;: 1,
+ u&amp;apos;Toni Braxton&amp;apos;: 1,
+ u&amp;apos;Tony Bennett&amp;apos;: 1,
+ u&amp;apos;Toots and the Maytals&amp;apos;: 1,
+ u&amp;apos;Townes Van Zandt&amp;apos;: 1,
+ u&amp;apos;Tullio De Piscopo&amp;apos;: 1,
+ u&amp;apos;Tupac&amp;apos;: 2,
+ u&amp;apos;Tupac - as Makaveli&amp;apos;: 1,
+ u&amp;apos;Tweet&amp;apos;: 1,
+ u&amp;apos;Twinkle&amp;apos;: 1,
+ u&amp;apos;U2&amp;apos;: 5,
+ u&amp;apos;USA for Africa&amp;apos;: 1,
+ u&amp;apos;Vampire Weekend&amp;apos;: 1,
+ u&amp;apos;Van Morrison&amp;apos;: 3,
+ u&amp;apos;Vic Chesnutt&amp;apos;: 1,
+ u&amp;apos;Wanda Jackson&amp;apos;: 1,
+ u&amp;apos;War&amp;apos;: 1,
+ u&amp;apos;Warren G and Nate Dogg&amp;apos;: 1,
+ u&amp;apos;Wayne Smith&amp;apos;: 1,
+ u&amp;apos;West Street Mob&amp;apos;: 1,
+ u&amp;apos;Wham!&amp;apos;: 1,
+ u&amp;apos;Whitney Houston&amp;apos;: 2,
+ u&amp;apos;William Blake, Charles Hubert and Hastings Parry&amp;apos;: 1,
+ u&amp;apos;Willie Nelson&amp;apos;: 1,
+ u&amp;apos;Wilson Pickett&amp;apos;: 2,
+ u&amp;apos;Woody Guthrie&amp;apos;: 2,
+ u&amp;apos;World Domination Enterprises&amp;apos;: 1,
+ u&amp;apos;X-Ray Spex&amp;apos;: 1}</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Now, loop through that dictionary and select the key-value pairs corresponding to the artists with 4 or more songs in the
+       <em>
+        1,000 songs
+       </em>
+       list:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[6]">
+      <a class="prompt input_prompt" href="#In-[6]">
+       In [6]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">song_by_artist_4plus</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">song_by_artist</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span><span class="o">&gt;=</span><span class="mi">4</span><span class="p">}</span>
+
+<span class="n">song_by_artist_4plus</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[6]">
+        <a class="prompt output_prompt" href="#Out[6]">
+         Out[6]:
+        </a>
+       </div>
+       <div class="output_text output_subarea output_execute_result">
+        <pre>{u&amp;apos;Al Green&amp;apos;: 5,
+ u&amp;apos;Arctic Monkeys&amp;apos;: 4,
+ u&amp;apos;Bill Withers&amp;apos;: 4,
+ u&amp;apos;Bob Dylan&amp;apos;: 24,
+ u&amp;apos;Bruce Springsteen&amp;apos;: 4,
+ u&amp;apos;Chuck Berry&amp;apos;: 5,
+ u&amp;apos;David Bowie&amp;apos;: 9,
+ u&amp;apos;Elvis Costello and the Attractions&amp;apos;: 5,
+ u&amp;apos;Elvis Presley&amp;apos;: 6,
+ u&amp;apos;Frank Sinatra&amp;apos;: 6,
+ u&amp;apos;Grace Jones&amp;apos;: 4,
+ u&amp;apos;Johnny Cash&amp;apos;: 5,
+ u&amp;apos;Kate Bush&amp;apos;: 5,
+ u&amp;apos;Madonna&amp;apos;: 6,
+ u&amp;apos;Marvin Gaye&amp;apos;: 6,
+ u&amp;apos;Neil Young&amp;apos;: 5,
+ u&amp;apos;Paul Simon&amp;apos;: 4,
+ u&amp;apos;Prince&amp;apos;: 6,
+ u&amp;apos;Pulp&amp;apos;: 5,
+ u&amp;apos;Randy Newman&amp;apos;: 8,
+ u&amp;apos;Ray Charles&amp;apos;: 4,
+ u&amp;apos;Rod Stewart&amp;apos;: 4,
+ u&amp;apos;Roy Orbison&amp;apos;: 4,
+ u&amp;apos;Steve Earle&amp;apos;: 4,
+ u&amp;apos;Stevie Wonder&amp;apos;: 4,
+ u&amp;apos;The Beach Boys&amp;apos;: 6,
+ u&amp;apos;The Beatles&amp;apos;: 19,
+ u&amp;apos;The Clash&amp;apos;: 5,
+ u&amp;apos;The Kinks&amp;apos;: 6,
+ u&amp;apos;The Pogues&amp;apos;: 4,
+ u&amp;apos;The Police&amp;apos;: 4,
+ u&amp;apos;The Rolling Stones&amp;apos;: 8,
+ u&amp;apos;The Smiths&amp;apos;: 5,
+ u&amp;apos;The Supremes&amp;apos;: 5,
+ u&amp;apos;The Who&amp;apos;: 4,
+ u&amp;apos;Tom Waits&amp;apos;: 5,
+ u&amp;apos;U2&amp;apos;: 5}</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Next, as Python dictionaries cannot be sorted, make separate lists of keys and values from the
+       <code>
+        song_by_artist_4plus
+       </code>
+       dictionary and sort them in descending order:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[7]">
+      <a class="prompt input_prompt" href="#In-[7]">
+       In [7]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+
+<span class="c"># Lists of keys and values</span>
+<span class="n">my_keys</span> <span class="o">=</span> <span class="n">song_by_artist_4plus</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">my_vals</span> <span class="o">=</span> <span class="n">song_by_artist_4plus</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+<span class="c"># Find indices of sorted values (first converted to a numpy array)</span>
+<span class="n">i_sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">my_vals</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c"># Sort both the keys and value list </span>
+<span class="n">my_keys_sorted</span> <span class="o">=</span> <span class="p">[</span><span class="n">my_keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">i_sorted</span><span class="p">]</span>
+<span class="n">my_vals_sorted</span> <span class="o">=</span> <span class="p">[</span><span class="n">my_vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">i_sorted</span><span class="p">]</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h5 id="Plot-it-using-Plotly!">
+       Plot it using Plotly!
+       <a class="anchor-link" href="#Plot-it-using-Plotly!">
+        ¶
+       </a>
+      </h5>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       If have a plotly account as well as a credentials file set up on your machine, singing in to Plotly's servers is done automatically while importing
+       <code>
+        plotly.plotly
+       </code>
+       :
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[8]">
+      <a class="prompt input_prompt" href="#In-[8]">
+       In [8]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="kn">import</span> <span class="nn">plotly.plotly</span> <span class="k">as</span> <span class="nn">py</span>  
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       For more info on how to sign up or sign in to Plotly, see
+       <a href="http://nbviewer.ipython.org/github/plotly/python-user-guide/blob/master/s00_homepage/s00_homepage.ipynb#Installation-guidelines" target="_blank">
+        Plotly's Python API User Guide
+       </a>
+       .
+      </p>
+      <p>
+       Next, import a few graph objects needed to make our Plotly plot:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[9]">
+      <a class="prompt input_prompt" href="#In-[9]">
+       In [9]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="kn">from</span> <span class="nn">plotly.graph_objs</span> <span class="k">import</span> <span class="n">Figure</span><span class="p">,</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Layout</span>
+<span class="kn">from</span> <span class="nn">plotly.graph_objs</span> <span class="k">import</span> <span class="n">Bar</span>
+<span class="kn">from</span> <span class="nn">plotly.graph_objs</span> <span class="k">import</span> <span class="n">XAxis</span><span class="p">,</span> <span class="n">YAxis</span><span class="p">,</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">Font</span><span class="p">,</span> <span class="n">Margin</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Make an instance of the bar and data object:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[10]">
+      <a class="prompt input_prompt" href="#In-[10]">
+       In [10]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">my_bar</span> <span class="o">=</span> <span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">my_keys_sorted</span><span class="p">,</span>  <span class="c"># labels of the x-axis</span>
+             <span class="n">y</span><span class="o">=</span><span class="n">my_vals_sorted</span><span class="p">,</span>  <span class="c"># values of the y-axis</span>
+             <span class="n">marker</span><span class="o">=</span> <span class="n">Marker</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'#2ca02c'</span><span class="p">))</span>  <span class="c"># a nice green color</span>
+
+<span class="n">my_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">([</span><span class="n">my_bar</span><span class="p">])</span>  <span class="c"># make data object, (Data accepts only list)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Make an instance of the layout object:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[11]">
+      <a class="prompt input_prompt" href="#In-[11]">
+       In [11]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">my_title</span> <span class="o">=</span> <span class="s">'Number of songs listed in the Guardian</span><span class="se">\'</span><span class="s">s&lt;br&gt;</span><span class="se">\</span>
+<span class="s">&lt;em&gt;Top 1,000 Songs to Hear Before You Die&lt;/em&gt; per artist with 4 or more songs'</span>
+<span class="n">my_ytitle</span> <span class="o">=</span> <span class="s">'Number of songs per artist'</span>
+
+<span class="n">my_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">my_title</span><span class="p">,</span>   <span class="c"># set plot title</span>
+                   <span class="n">showlegend</span><span class="o">=</span><span class="k">False</span><span class="p">,</span> <span class="c"># remove legend </span>
+                   <span class="n">font</span><span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s">'Georgia, serif'</span><span class="p">,</span> <span class="c"># set global font family</span>
+                              <span class="n">color</span><span class="o">=</span><span class="s">'#635F5D'</span><span class="p">),</span>        <span class="c">#   and color </span>
+                   <span class="n">plot_bgcolor</span><span class="o">=</span><span class="s">'#EFECEA'</span><span class="p">,</span>   <span class="c"># set plot color to grey</span>
+                   <span class="n">xaxis</span><span class="o">=</span> <span class="n">XAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">''</span><span class="p">,</span>             <span class="c"># no x-axis title</span>
+                                <span class="n">tickangle</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>         <span class="c"># tick labels' angle</span>
+                                <span class="n">ticks</span><span class="o">=</span><span class="s">'outside'</span><span class="p">,</span>      <span class="c"># draw ticks outside axes </span>
+                                <span class="n">ticklen</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>            <span class="c"># tick length</span>
+                                <span class="n">tickwidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,),</span>       <span class="c">#   and width, </span>
+                   <span class="n">yaxis</span><span class="o">=</span> <span class="n">YAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">my_ytitle</span><span class="p">,</span>      <span class="c"># y-axis title</span>
+                                <span class="n">gridcolor</span><span class="o">=</span><span class="s">'#FFFFFF'</span><span class="p">,</span>  <span class="c"># white grid lines</span>
+                                <span class="n">ticks</span><span class="o">=</span><span class="s">'outside'</span><span class="p">,</span>     
+                                <span class="n">ticklen</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>           
+                                <span class="n">tickwidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">),</span>
+                   <span class="n">autosize</span><span class="o">=</span><span class="k">False</span><span class="p">,</span>  <span class="c"># manual figure size</span>
+                   <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span>       
+                   <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+                   <span class="n">margin</span><span class="o">=</span> <span class="n">Margin</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>  <span class="c"># increase bottom margin, </span>
+                  <span class="p">)</span>                       <span class="c"># to fit long x-axis tick labels</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Make instance of the figure object, send it to Plotly and get a plot in return inside this IPython notebook:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[12]">
+      <a class="prompt input_prompt" href="#In-[12]">
+       In [12]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">my_fig</span> <span class="o">=</span> <span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">my_data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+
+<span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">my_fig</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">'socrata1'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt">
+       </div>
+       <div class="output_html rendered_html output_subarea ">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~etpinard/269" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Not bad, but let's try to improve our plot by making use of Plotly's hover capabilities.
+      </p>
+      <p>
+       Next, we add hover text to each of bars so that hovering with cursor over them will show a list of the songs' titles and years of release included in the
+       <em>
+        1,000 songs
+       </em>
+       list in chronological order.
+      </p>
+      <p>
+       First, we need to trim the original dataframe so that it contains only the artists with 4 or more songs in the
+       <em>
+        1,000 songs
+       </em>
+       list:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[13]">
+      <a class="prompt input_prompt" href="#In-[13]">
+       In [13]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="c"># Rows which have 'artist' name in song_by_artist_4plus</span>
+<span class="n">i_good</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'artist'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">song_by_artist_4plus</span><span class="p">))</span>  
+
+<span class="n">df_good</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">i_good</span><span class="p">]</span>  <span class="c"># a new dataframe</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[14]">
+      <a class="prompt input_prompt" href="#In-[14]">
+       In [14]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">df_good</span><span class="o">.</span><span class="n">shape</span>   <span class="c"># a much smaller dataframe than the original</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[14]">
+        <a class="prompt output_prompt" href="#Out[14]">
+         Out[14]:
+        </a>
+       </div>
+       <div class="output_text output_subarea output_execute_result">
+        <pre>(222, 5)</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Next, loop through the sorted artists names building a text list to be linked the the
+       <code>
+        'text'
+       </code>
+       key in the data object.
+      </p>
+      <p>
+       Unfortunately, the biggest lists will have to be truncated to fit inside the Plotly figure:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[16]">
+      <a class="prompt input_prompt" href="#In-[16]">
+       In [16]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">my_text</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c"># init. the hover-text list</span>
+
+<span class="c"># Loop through the sorted artist names, so that my_text</span>
+<span class="c"># will have to same ordering as the values linked to 'x' and 'y' in my_data</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">my_keys_sorted</span><span class="p">:</span>
+    
+    <span class="c"># Slice dataframe to artist name and sort songs by year</span>
+    <span class="n">i_artist</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'artist'</span><span class="p">]</span><span class="o">==</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">df_tmp</span> <span class="o">=</span> <span class="n">df_good</span><span class="p">[</span><span class="n">i_artist</span><span class="p">]</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s">'year'</span><span class="p">)</span>
+    
+    <span class="n">my_text_tmp</span> <span class="o">=</span> <span class="s">''</span>  <span class="c"># init. string </span>
+    <span class="n">cnt_song</span> <span class="o">=</span> <span class="mi">0</span>                   <span class="c"># song counter for given artist</span>
+    <span class="n">N_song</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_tmp</span><span class="p">[</span><span class="s">'title'</span><span class="p">])</span>  <span class="c"># total number of song for given artist</span>
+    
+    <span class="c"># Loop through songs</span>
+    <span class="k">for</span> <span class="n">i_song</span><span class="p">,</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">df_tmp</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        
+        <span class="c"># Add to string and counter</span>
+        <span class="n">my_text_tmp</span> <span class="o">+=</span> <span class="n">song</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">+</span><span class="s">' ('</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">song</span><span class="p">[</span><span class="s">'year'</span><span class="p">])</span><span class="o">+</span><span class="s">')&lt;br&gt;'</span>
+        <span class="n">cnt_song</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="c"># Skip if song list is too long to fit on figure</span>
+        <span class="k">if</span> <span class="n">cnt_song</span><span class="o">&gt;</span><span class="mi">12</span><span class="p">:</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">N_song</span> <span class="o">-</span> <span class="n">cnt_song</span>
+            <span class="n">my_text_tmp</span> <span class="o">+=</span> <span class="s">' and '</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span><span class="o">+</span><span class="s">' more ...'</span>
+            <span class="k">break</span>
+    
+    <span class="c"># Append hover-text list</span>
+    <span class="n">my_text</span> <span class="o">+=</span> <span class="p">[</span><span class="n">my_text_tmp</span><span class="p">]</span>
+    
+<span class="c"># Update figure object </span>
+<span class="n">my_fig</span><span class="p">[</span><span class="s">'data'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">my_text</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Finally, add a text annotation citing our data source to our plot:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[17]">
+      <a class="prompt input_prompt" href="#In-[17]">
+       In [17]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="kn">from</span> <span class="nn">plotly.graph_objs</span> <span class="k">import</span> <span class="n">Annotation</span>
+
+<span class="n">my_anno_text</span> <span class="o">=</span> <span class="s">'&lt;em&gt;Open Data by Socrata&lt;/em&gt;&lt;br&gt;</span><span class="se">\</span>
+<span class="s">Hover over the bars to see list of songs'</span>
+
+<span class="n">my_anno</span> <span class="o">=</span> <span class="n">Annotation</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">my_anno_text</span><span class="p">,</span>  <span class="c"># annotation text</span>
+                     <span class="n">x</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>  <span class="c"># position's x-coord</span>
+                     <span class="n">y</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>  <span class="c">#   and y-coord</span>
+                     <span class="n">xref</span><span class="o">=</span><span class="s">'paper'</span><span class="p">,</span>  <span class="c"># use paper coords</span>
+                     <span class="n">yref</span><span class="o">=</span><span class="s">'paper'</span><span class="p">,</span>  <span class="c">#  for both coordinates</span>
+                     <span class="n">font</span><span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">),</span>  <span class="c"># increase font size (default is 12)</span>
+                     <span class="n">showarrow</span><span class="o">=</span><span class="k">False</span><span class="p">,</span>      <span class="c"># remove arrow </span>
+                     <span class="n">bgcolor</span><span class="o">=</span><span class="s">'#FFFFFF'</span><span class="p">,</span>      <span class="c"># white background</span>
+                     <span class="n">borderpad</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>       <span class="c"># space bt. border and text (in px)</span>
+
+<span class="c"># Update figure object</span>
+<span class="n">my_fig</span><span class="p">[</span><span class="s">'layout'</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">annotations</span><span class="o">=</span><span class="p">[</span><span class="n">my_anno</span><span class="p">])</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       And now all we have left to do is to send the updated figure object to plotly:
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[18]">
+      <a class="prompt input_prompt" href="#In-[18]">
+       In [18]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">my_fig</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">'socrata1-hover'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt">
+       </div>
+       <div class="output_html rendered_html output_subarea ">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~etpinard/270" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Spend some time hovering over the bars and admire plotly's interactibility!
+      </p>
+      <p>
+       <em>
+        Great data and beautiful visualization, at your finger tips.
+       </em>
+      </p>
+      <p>
+       <br/>
+      </p>
+      <hr>
+      </hr>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <div style="float:right; \">
+       <a data-lightbox="socrata_image02" href="/static/api_docs/image/ipython_notebooks/socrata_image02.png">
+        <img align="right" alt="socrata image02" src="/static/api_docs/image/ipython_notebooks/socrata_image02.png" style="float:right; margin-left: 5px; margin-top: -10px"/>
+       </a>
+      </div>
+      <h4 style="margin-top:80px;">
+       Got Questions or Feedback?
+      </h4>
+      <p>
+       About
+       <a href="/" target="_blank">
+        Plotly
+       </a>
+      </p>
+      <ul>
+       <li>
+        email: feedback@plot.ly
+       </li>
+       <li>
+        tweet:
+        <a href="https://twitter.com/plotlygraphs" target="_blank">
+         @plotlygraphs
+        </a>
+       </li>
+      </ul>
+      <h4 style="margin-top:30px;">
+       Notebook styling ideas
+      </h4>
+      <p>
+       Big thanks to
+      </p>
+      <ul>
+       <li>
+        <a href="http://nbviewer.ipython.org/github/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/blob/master/Prologue/Prologue.ipynb" target="_blank">
+         Cam Davidson-Pilon
+        </a>
+       </li>
+       <li>
+        <a href="http://lorenabarba.com/blog/announcing-aeropython/#.U1ULXdX1LJ4.google_plusone_share" target="_blank">
+         Lorena A. Barba
+        </a>
+       </li>
+      </ul>
+      <p>
+       <br/>
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[18]">
+      <a class="prompt input_prompt" href="#In-[18]">
+       In [18]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre><span class="c"># CSS styling within IPython notebook</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="k">def</span> <span class="nf">css_styling</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">'https://raw.githubusercontent.com/plotly/python-user-guide/master/custom.css'</span>
+    <span class="n">styles</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">styles</span><span class="p">)</span>
+
+<span class="n">css_styling</span><span class="p">()</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[18]">
+        <a class="prompt output_prompt" href="#Out[18]">
+         Out[18]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <style>
+         /*body {
+        background-color: #F5F5F5;
+    }*/
+    div.cell{
+        width: 850px;
+        margin-left: 10% !important;
+        margin-right: auto;
+    }
+    h1 {
+        font-family: "Open sans",verdana,arial,sans-serif;
+    }
+    .text_cell_render h1 {
+        font-weight: 200;
+        font-size: 40pt;
+        line-height: 100%;
+        color:#447adb;
+        margin-bottom: 0em;
+        margin-top: 0em;
+        display: block;
+        white-space: nowrap;
+    } 
+    h2 {
+        font-family: "Open sans",verdana,arial,sans-serif;
+        text-indent:1em;
+    }
+    .text_cell_render h2 {
+        font-weight: 200;
+        font-size: 20pt;
+        font-style: italic;
+        line-height: 100%;
+        color:#447adb;
+        margin-bottom: 1.5em;
+        margin-top: 0.5em;
+        display: block;
+        white-space: nowrap;
+    } 
+    h3 {
+        font-family: "Open sans",verdana,arial,sans-serif;
+    }
+    .text_cell_render h3 {
+        font-weight: 300;
+        font-size: 18pt;
+        line-height: 100%;
+        color:#447adb;
+        margin-bottom: 0.5em;
+        margin-top: 2em;
+        display: block;
+        white-space: nowrap;
+    }
+    h4 {
+        font-family: "Open sans",verdana,arial,sans-serif;
+    }
+    .text_cell_render h4 {
+        font-weight: 300;
+        font-size: 16pt;
+        color:#447adb;
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+        display: block;
+        white-space: nowrap;
+    }
+    h5 {
+        font-family: "Open sans",verdana,arial,sans-serif;
+    }
+    .text_cell_render h5 {
+        font-weight: 300;
+        font-style: normal;
+        color: #1d3b84;
+        font-size: 16pt;
+        margin-bottom: 0em;
+        margin-top: 1.5em;
+        display: block;
+        white-space: nowrap;
+    }
+    div.text_cell_render{
+        font-family: "Open sans",verdana,arial,sans-serif;
+        line-height: 135%;
+        font-size: 125%;
+        width:750px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:justify;
+        text-justify:inter-word;
+    }
+    div.output_subarea.output_text.output_pyout {
+        overflow-x: auto;
+        overflow-y: scroll;
+        max-height: 300px;
+    }
+    div.output_subarea.output_stream.output_stdout.output_text {
+        overflow-x: auto;
+        overflow-y: scroll;
+        max-height: 300px;
+    }
+    code{
+      font-size: 78%;
+    }
+    .rendered_html code{
+    background-color: transparent;
+    }
+    ul{
+        /* color:#447adb; */  // colors text too
+        margin: 2em;
+    }
+    ul li{
+        padding-left: 0.5em; 
+        margin-bottom: 0.5em; 
+        margin-top: 0.5em; 
+    }
+    ul li li{
+        padding-left: 0.2em; 
+        margin-bottom: 0.2em; 
+        margin-top: 0.2em; 
+    }
+    ol{
+        /* color:#447adb; */  // colors text too
+        margin: 2em;
+    }
+    ol li{
+        padding-left: 0.5em; 
+        margin-bottom: 0.5em; 
+        margin-top: 0.5em; 
+    }
+    /*.prompt{
+        display: None;
+    } */
+    ul li{
+        padding-left: 0.5em; 
+        margin-bottom: 0.5em; 
+        margin-top: 0.2em; 
+    }
+    a:link{
+       font-weight: bold;
+       color:#447adb;
+    }
+    a:visited{
+       font-weight: bold;
+       color: #1d3b84;
+    }
+    a:hover{
+       font-weight: bold;
+       color: #1d3b84;
+    }
+    a:focus{
+       font-weight: bold;
+       color:#447adb;
+    }
+    a:active{
+       font-weight: bold;
+       color:#447adb;
+    }
+    .rendered_html :link {
+       text-decoration: none; 
+    }
+    .rendered_html :hover {
+       text-decoration: none; 
+    }
+    .rendered_html :visited {
+      text-decoration: none;
+    }
+    .rendered_html :focus {
+      text-decoration: none;
+    }
+    .rendered_html :active {
+      text-decoration: none;
+    }
+    .warning{
+        color: rgb( 240, 20, 20 )
+    } 
+    hr {
+      color: #f3f3f3;
+      background-color: #f3f3f3;
+      height: 1px;
+    }
+    blockquote{
+      display:block;
+      background: #f3f3f3;
+      font-family: "Open sans",verdana,arial,sans-serif;
+      width:610px;
+      padding: 15px 15px 15px 15px;
+      text-align:justify;
+      text-justify:inter-word;
+      }
+      blockquote p {
+        margin-bottom: 0;
+        line-height: 125%;
+        font-size: 100%;
+      }
+   /* element.style {
+    } */
+        </style>
+        <script>
+         MathJax.Hub.Config({
+                        TeX: {
+                           extensions: ["AMSmath.js"]
+                           },
+                tex2jax: {
+                    inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+                    displayMath: [ ["$$","$$"], ["\\[","\\]"] ]
+                },
+                displayAlign: "center", // Change this to "center" to center equations.
+                "HTML-CSS": {
+                    styles: {".MathJax_Display": {"margin": 4}}
+                }
+        });
+        </script>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[18]">
+      <a class="prompt input_prompt" href="#In-[18]">
+       In [18]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython3">
+        <pre> 
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>

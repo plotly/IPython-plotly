@@ -5,6 +5,36 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("html-reports/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='graph_mysql'),
+        name='ipython-notebook-graph_mysql'),
+    url("cron-jobs/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='cron_jobs'),
+        name='ipython-notebook-cron_jobs'),
+    url("pandas-primer/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='pandas_primer'),
+        name='ipython-notebook-pandas_primer'),
+    url("html-reports/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='html_reports'),
+        name='ipython-notebook-html_reports'),
+    url("color-lover/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='colorlover'),
+        name='ipython-notebook-colorlover'),
+    url("socrata/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='socrata'),
+        name='ipython-notebook-socrata'),
     url("computational-bayesian-analysis/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
