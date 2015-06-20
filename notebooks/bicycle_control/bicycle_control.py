@@ -3,7 +3,7 @@
 
 # # Introduction
 # 
-# In this notebook I am going to develop a simple dual-loop feedback control system to balance and direct a bicycle. During the process of developing the controller, I will highlight some of the interesting dynamics and control properties of the vehicle. In particular, a bicycle requires control to both balance and direct the vehicle so I will use two feedback loops to address this. Control through steering is, in general, the primary input that has the most control authority. The steering lets the rider position the contact points at the wheels under the center of mass, very much like when balancing a stick on your hand. In the same way as the stick, one must "steer" into the fall. This means that if the bicycle is falling (rolling) to the left, the steering must ultimately be directed towards the left to keep the bicycle upright. Furthermore, to direct the bicycle we use this fact and effectively execute "controlled falls" to change the direction of travel. But there is one peculiarity that makes it more difficult to balance and control a bicycle than most vehicles, the fact that the bicycle is a non-minimum phase system. I will show how the controller design must take this into account.
+# In this notebook I am going to develop a simple dual-loop feedback control system to balance and direct a bicycle. During the process of developing the controller, I will highlight some of the interesting dynamics and control properties of the vehicle. In particular, a bicycle requires control to both balance and direct the vehicle so I will use two feedback loops to address this. Control through steering is, in general, the primary input that has the most control authority. The steering lets the rider position the wheel contact points under the center of mass, very much like when balancing a stick on your hand, i.e. you hand is synomymous to the wheel contact points. In the same way as the hand moving in the direction of the fall of the stick, one must "steer" the bicycle into the fall. This means that if the bicycle is falling (rolling) to the left, the steering must ultimately be directed towards the left to keep the bicycle upright. Furthermore, to direct the bicycle we use this fact and effectively execute "controlled falls" to change the direction of travel. But there is one peculiarity that makes it more difficult to balance and control a bicycle than most vehicles. This is the fact that the bicycle is a [non-minimum phase system](https://en.wikipedia.org/wiki/Minimum_phase#Non-minimum_phase) and requires the rider to "countersteer". I will show how the controller design must take this into account.
 # 
 # The main goals of the notebook are to:
 # 
@@ -14,7 +14,7 @@
 
 # # Open Loop Bicycle Model
 # 
-# To come up with a suitable controller I first need a model that describes the open loop dynamics of the system, i.e. a plant model. The model I will use is pretty much the simplest model of a bicycle that will allow one to study the steer into the fall mechanism. The assumptions that the model is founded on are as follows:
+# To come up with a suitable controller I first need a model that describes the open loop dynamics of the system, i.e. a plant model. The model I will use is pretty much the simplest model of a bicycle that will allow one to study mechanism of steering into the fall. The assumptions that the model is founded on are as follows:
 # 
 # - The bicycle and rider mass and inertia are all lumped into a single rigid body.
 # - The front assembly (handlebars, fork, and wheel) are massless and thus no effort is required to change the direction of the steering angle.
@@ -57,7 +57,7 @@
 # 
 # $$ (I + mh^2) \ddot{\theta} - mgh\theta = -\frac{mh}{b}\left(av\dot{\delta}+v^2\delta\right) $$
 # 
-# With $\theta$ as the output variable and $\delta$ as the input variable a transfer function can be created by transforming the above equation into the frequency domain.
+# With $\theta$ as the output variable and $\delta$ as the input variable a transfer function can be created by transforming the above equation into the frequency domain:
 # 
 # $$ \frac{\theta(s)}{\delta(s)} = 
 # -\frac{mhv}{b} \frac{as + v}{(I + mh^2)s^2 - mgh}$$
@@ -231,7 +231,7 @@ def plot_root_locus(gains, roots):
 neg_feedback_roots, neg_feedback_gains = cn.root_locus(theta_delta, kvect=np.linspace(0.0, 10.0, num=500))
 
 
-# The root locus shows that for increasing negative feedback gains the bicycle will simply fall over even faster. (Use the "Show closest data on hover" option in the Plotly graph and hover over the traces to see the value of the gain.) I already know that the right steer makes the bicycle fall to the left. So if the bicycle is falling to the left a positive error causes steering to the right! Which, of course, cause the bicycle to fall over even faster. So what if I use positive feedback instead?
+# The root locus shows that for increasing negative feedback gains the bicycle will simply fall over even faster. (Use the "Show closest data on hover" option in the Plotly graph and hover over the traces to see the value of the gain.) I already know that the right steer makes the bicycle fall to the left. So if the bicycle is falling to the left a positive error causes steering to the right! Which, of course, causes the bicycle to fall over even faster. So what if I use positive feedback instead?
 
 # In[12]:
 
@@ -246,11 +246,11 @@ pos_feedback_roots, pos_feedback_gains = cn.root_locus(theta_delta, kvect=np.lin
 pl.iplot(plot_root_locus(pos_feedback_gains, pos_feedback_roots))
 
 
-# Now that I know I can stabilize the system with positive feedback based on the roll angle error, I can choose a suitable controller that will allow me to command a roll angle and the bicycle will follow. The ability to command a roll angle is the first step to commanding a heading. For example, to head in the right direction the bicycle must eventually be steered and rolled to the right. So if I can command a rightward roll I are one step away from commanding a rightward turn.
+# Now that I know I can stabilize the system with positive feedback based on the roll angle error, I can choose a suitable controller that will allow me to command a roll angle and the bicycle will follow. The ability to command a roll angle is the first step to commanding a heading. For example, to head in the right direction the bicycle must eventually be steered and rolled to the right. So if I can command a rightward roll I am one step away from commanding a rightward turn.
 # 
-# Note that our system is a Type 0 system, thus a simple proportional feedback system will stabilize the system but there will be some steady state error. If better performance is required for the inner loop control, a different compensator, e.g. PID, would be needed. But since I am developing a sequential dual-loop controller that will not be necessary.
+# Note that our system is a Type 0 system, thus a simple proportional feedback system will stabilize the system but there will be some steady state error. If better performance is required for the inner loop control, a different compensator (e.g. PID) would be needed. But since I am developing a sequential dual-loop controller that will not be necessary.
 # 
-# Below I define a function that generates the closed loop transfer function of a basic feedback system.
+# Below I define a function that generates the closed loop transfer function of a basic feedback system:
 
 # In[14]:
 
@@ -280,7 +280,7 @@ theta_thetac = feedback(theta_delta, k_theta)
 theta_thetac
 
 
-# Now the closed loop system is stable and has the expected oscillatory roots.
+# Now the closed loop system is stable and has the expected oscillatory roots:
 
 # In[17]:
 
@@ -302,7 +302,7 @@ pl.iplot(plot_siso_response(time, np.rad2deg(thetac), np.rad2deg(theta),
                             output_y_lab='Roll Angle [deg]', subplots=False))
 
 
-# I can now examine the steer angle needed to produce this roll behavior. It is interesting to note here that a positive commanded roll angle requires an initial negative steer angle that settles into a positive steer angle at steady state. So, to roll the bicycle in a desired direction the controller must steer initially in the opposite direction. The following response shows the input and output traces of the roll controller block.
+# I can now examine the steer angle needed to produce this roll behavior. It is interesting to note here that a positive commanded roll angle requires an initial negative steer angle that settles into a positive steer angle at steady state. So, to roll the bicycle in a desired direction, the controller must steer initially in the opposite direction. The following response shows the input and output traces of the roll controller block.
 
 # In[20]:
 
@@ -358,7 +358,7 @@ psi_thetac.pole()
 psi_thetac.zero()
 
 
-# It is possible to see this phemona by simulating the step response of $\frac{\psi(s)}{\theta_c}$. Notice that to command a rightward roll angle, the heading is initially directed to the left before it gets into a steady turn.
+# It is possible to see this phenomena by simulating the step response of $\frac{\psi(s)}{\theta_c}$. Notice that to command a rightward roll angle, the heading is initially directed to the left before it gets into a steady turn.
 
 # In[28]:
 
@@ -372,7 +372,7 @@ pl.iplot(plot_siso_response(time, np.rad2deg(thetac), np.rad2deg(psi),
                             input_y_lab='Commanded Roll Angle [deg]'))
 
 
-# To close the heading loop, so that I can command a heading angle I will use the root locus technique once more.
+# To close the heading loop, so that I can command a heading angle, I will use the root locus technique once more.
 
 # In[30]:
 
@@ -448,4 +448,4 @@ fig = gr.Figure(data=data, layout=layout)
 pl.iplot(fig)
 
 
-# This final plot show the closed loop step response to a commanded rightward heading angle of 10 degrees. It is clear that one must initially steer about 5 degrees to the left causing a roll to the right to make the rightward change in heading. 
+# This final plot shows the closed loop step response to a commanded rightward heading angle of 10 degrees. It is clear that one must initially steer about 5 degrees to the left causing a roll to the right to make the rightward change in heading. 

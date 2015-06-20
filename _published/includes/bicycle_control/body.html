@@ -6,7 +6,11 @@
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       In this notebook I am going to develop a simple dual-loop feedback control system to balance and direct a bicycle. During the process of developing the controller, I will highlight some of the interesting dynamics and control properties of the vehicle. In particular, a bicycle requires control to both balance and direct the vehicle so I will use two feedback loops to address this. Control through steering is, in general, the primary input that has the most control authority. The steering lets the rider position the contact points at the wheels under the center of mass, very much like when balancing a stick on your hand. In the same way as the stick, one must "steer" into the fall. This means that if the bicycle is falling (rolling) to the left, the steering must ultimately be directed towards the left to keep the bicycle upright. Furthermore, to direct the bicycle we use this fact and effectively execute "controlled falls" to change the direction of travel. But there is one peculiarity that makes it more difficult to balance and control a bicycle than most vehicles, the fact that the bicycle is a non-minimum phase system. I will show how the controller design must take this into account.
+       In this notebook I am going to develop a simple dual-loop feedback control system to balance and direct a bicycle. During the process of developing the controller, I will highlight some of the interesting dynamics and control properties of the vehicle. In particular, a bicycle requires control to both balance and direct the vehicle so I will use two feedback loops to address this. Control through steering is, in general, the primary input that has the most control authority. The steering lets the rider position the wheel contact points under the center of mass, very much like when balancing a stick on your hand, i.e. you hand is synomymous to the wheel contact points. In the same way as the hand moving in the direction of the fall of the stick, one must "steer" the bicycle into the fall. This means that if the bicycle is falling (rolling) to the left, the steering must ultimately be directed towards the left to keep the bicycle upright. Furthermore, to direct the bicycle we use this fact and effectively execute "controlled falls" to change the direction of travel. But there is one peculiarity that makes it more difficult to balance and control a bicycle than most vehicles. This is the fact that the bicycle is a
+       <a href="https://en.wikipedia.org/wiki/Minimum_phase#Non-minimum_phase" target="_blank">
+        non-minimum phase system
+       </a>
+       and requires the rider to "countersteer". I will show how the controller design must take this into account.
       </p>
       <p>
        The main goals of the notebook are to:
@@ -40,7 +44,7 @@
        </a>
       </h2>
       <p>
-       To come up with a suitable controller I first need a model that describes the open loop dynamics of the system, i.e. a plant model. The model I will use is pretty much the simplest model of a bicycle that will allow one to study the steer into the fall mechanism. The assumptions that the model is founded on are as follows:
+       To come up with a suitable controller I first need a model that describes the open loop dynamics of the system, i.e. a plant model. The model I will use is pretty much the simplest model of a bicycle that will allow one to study mechanism of steering into the fall. The assumptions that the model is founded on are as follows:
       </p>
       <ul>
        <li>
@@ -129,7 +133,7 @@ $$
       </p>
       $$ (I + mh^2) \ddot{\theta} - mgh\theta = -\frac{mh}{b}\left(av\dot{\delta}+v^2\delta\right) $$
       <p>
-       With $\theta$ as the output variable and $\delta$ as the input variable a transfer function can be created by transforming the above equation into the frequency domain.
+       With $\theta$ as the output variable and $\delta$ as the input variable a transfer function can be created by transforming the above equation into the frequency domain:
       </p>
       $$ \frac{\theta(s)}{\delta(s)} = 
 -\frac{mhv}{b} \frac{as + v}{(I + mh^2)s^2 - mgh}$$
@@ -488,7 +492,7 @@ $ source activate bicycle-control
         </a>
        </div>
        <div class="output_html rendered_html output_subarea output_execute_result">
-        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/660.embed" style="border:none;" width="100%">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/748.embed" style="border:none;" width="100%">
         </iframe>
        </div>
       </div>
@@ -594,7 +598,7 @@ $ source activate bicycle-control
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       The root locus shows that for increasing negative feedback gains the bicycle will simply fall over even faster. (Use the "Show closest data on hover" option in the Plotly graph and hover over the traces to see the value of the gain.) I already know that the right steer makes the bicycle fall to the left. So if the bicycle is falling to the left a positive error causes steering to the right! Which, of course, cause the bicycle to fall over even faster. So what if I use positive feedback instead?
+       The root locus shows that for increasing negative feedback gains the bicycle will simply fall over even faster. (Use the "Show closest data on hover" option in the Plotly graph and hover over the traces to see the value of the gain.) I already know that the right steer makes the bicycle fall to the left. So if the bicycle is falling to the left a positive error causes steering to the right! Which, of course, causes the bicycle to fall over even faster. So what if I use positive feedback instead?
       </p>
      </div>
     </div>
@@ -624,7 +628,7 @@ $ source activate bicycle-control
         </a>
        </div>
        <div class="output_html rendered_html output_subarea output_execute_result">
-        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/662.embed" style="border:none;" width="100%">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/750.embed" style="border:none;" width="100%">
         </iframe>
        </div>
       </div>
@@ -668,7 +672,7 @@ $ source activate bicycle-control
         </a>
        </div>
        <div class="output_html rendered_html output_subarea output_execute_result">
-        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/664.embed" style="border:none;" width="100%">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/752.embed" style="border:none;" width="100%">
         </iframe>
        </div>
       </div>
@@ -681,13 +685,13 @@ $ source activate bicycle-control
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       Now that I know I can stabilize the system with positive feedback based on the roll angle error, I can choose a suitable controller that will allow me to command a roll angle and the bicycle will follow. The ability to command a roll angle is the first step to commanding a heading. For example, to head in the right direction the bicycle must eventually be steered and rolled to the right. So if I can command a rightward roll I are one step away from commanding a rightward turn.
+       Now that I know I can stabilize the system with positive feedback based on the roll angle error, I can choose a suitable controller that will allow me to command a roll angle and the bicycle will follow. The ability to command a roll angle is the first step to commanding a heading. For example, to head in the right direction the bicycle must eventually be steered and rolled to the right. So if I can command a rightward roll I am one step away from commanding a rightward turn.
       </p>
       <p>
-       Note that our system is a Type 0 system, thus a simple proportional feedback system will stabilize the system but there will be some steady state error. If better performance is required for the inner loop control, a different compensator, e.g. PID, would be needed. But since I am developing a sequential dual-loop controller that will not be necessary.
+       Note that our system is a Type 0 system, thus a simple proportional feedback system will stabilize the system but there will be some steady state error. If better performance is required for the inner loop control, a different compensator (e.g. PID) would be needed. But since I am developing a sequential dual-loop controller that will not be necessary.
       </p>
       <p>
-       Below I define a function that generates the closed loop transfer function of a basic feedback system.
+       Below I define a function that generates the closed loop transfer function of a basic feedback system:
       </p>
      </div>
     </div>
@@ -788,7 +792,7 @@ s^2 + 6.023 s + 50.78</pre>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       Now the closed loop system is stable and has the expected oscillatory roots.
+       Now the closed loop system is stable and has the expected oscillatory roots:
       </p>
      </div>
     </div>
@@ -880,7 +884,7 @@ s^2 + 6.023 s + 50.78</pre>
         </a>
        </div>
        <div class="output_html rendered_html output_subarea output_execute_result">
-        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/666.embed" style="border:none;" width="100%">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/754.embed" style="border:none;" width="100%">
         </iframe>
        </div>
       </div>
@@ -893,7 +897,7 @@ s^2 + 6.023 s + 50.78</pre>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       I can now examine the steer angle needed to produce this roll behavior. It is interesting to note here that a positive commanded roll angle requires an initial negative steer angle that settles into a positive steer angle at steady state. So, to roll the bicycle in a desired direction the controller must steer initially in the opposite direction. The following response shows the input and output traces of the roll controller block.
+       I can now examine the steer angle needed to produce this roll behavior. It is interesting to note here that a positive commanded roll angle requires an initial negative steer angle that settles into a positive steer angle at steady state. So, to roll the bicycle in a desired direction, the controller must steer initially in the opposite direction. The following response shows the input and output traces of the roll controller block.
       </p>
      </div>
     </div>
@@ -943,7 +947,7 @@ s^2 + 6.023 s + 50.78</pre>
         </a>
        </div>
        <div class="output_html rendered_html output_subarea output_execute_result">
-        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/668.embed" style="border:none;" width="100%">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/756.embed" style="border:none;" width="100%">
         </iframe>
        </div>
       </div>
@@ -1199,7 +1203,7 @@ s</pre>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       It is possible to see this phemona by simulating the step response of $\frac{\psi(s)}{\theta_c}$. Notice that to command a rightward roll angle, the heading is initially directed to the left before it gets into a steady turn.
+       It is possible to see this phenomena by simulating the step response of $\frac{\psi(s)}{\theta_c}$. Notice that to command a rightward roll angle, the heading is initially directed to the left before it gets into a steady turn.
       </p>
      </div>
     </div>
@@ -1248,7 +1252,7 @@ s</pre>
         </a>
        </div>
        <div class="output_html rendered_html output_subarea output_execute_result">
-        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/670.embed" style="border:none;" width="100%">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/758.embed" style="border:none;" width="100%">
         </iframe>
        </div>
       </div>
@@ -1261,7 +1265,7 @@ s</pre>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       To close the heading loop, so that I can command a heading angle I will use the root locus technique once more.
+       To close the heading loop, so that I can command a heading angle, I will use the root locus technique once more.
       </p>
      </div>
     </div>
@@ -1308,7 +1312,7 @@ s</pre>
         </a>
        </div>
        <div class="output_html rendered_html output_subarea output_execute_result">
-        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/672.embed" style="border:none;" width="100%">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/760.embed" style="border:none;" width="100%">
         </iframe>
        </div>
       </div>
@@ -1450,7 +1454,7 @@ s^3 + 2.898 s^2 + 50.78 s + 29.54</pre>
         </a>
        </div>
        <div class="output_html rendered_html output_subarea output_execute_result">
-        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/674.embed" style="border:none;" width="100%">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/762.embed" style="border:none;" width="100%">
         </iframe>
        </div>
       </div>
@@ -1532,7 +1536,7 @@ s^3 + 2.898 s^2 + 50.78 s + 29.54</pre>
         </a>
        </div>
        <div class="output_html rendered_html output_subarea output_execute_result">
-        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/676.embed" style="border:none;" width="100%">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~JasonMoore/764.embed" style="border:none;" width="100%">
         </iframe>
        </div>
       </div>
@@ -1545,7 +1549,7 @@ s^3 + 2.898 s^2 + 50.78 s + 29.54</pre>
     <div class="inner_cell">
      <div class="text_cell_render border-box-sizing rendered_html">
       <p>
-       This final plot show the closed loop step response to a commanded rightward heading angle of 10 degrees. It is clear that one must initially steer about 5 degrees to the left causing a roll to the right to make the rightward change in heading.
+       This final plot shows the closed loop step response to a commanded rightward heading angle of 10 degrees. It is clear that one must initially steer about 5 degrees to the left causing a roll to the right to make the rightward change in heading.
       </p>
      </div>
     </div>
