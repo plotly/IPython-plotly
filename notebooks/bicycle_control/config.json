@@ -1,0 +1,15 @@
+{
+    "title": "Bicycle Control Design with Python and Plotly",
+    "title_short": "Bicycle Control",
+    "meta_description": "Design of a sequential dual-loop controller for a bicycle using NumPy, SciPy, Python Control, and Plotly.",
+    "cells": [0, -1],
+    "relative_url": "bicycle-control-design",
+    "thumbnail_image": "model-diagram.svg",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}

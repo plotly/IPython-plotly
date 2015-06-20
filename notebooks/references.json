@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "bicycle_control",
         "montecarlo",
         "bioinformatics",
         "baltimore",

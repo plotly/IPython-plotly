@@ -4,9 +4,9 @@
             "body": "api_docs/includes/ipython_notebooks/cartodb/body.html", 
             "config": "api_docs/includes/ipython_notebooks/cartodb/config.json"
         }, 
-        "sqlite": {
-            "body": "api_docs/includes/ipython_notebooks/sqlite/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/sqlite/config.json"
+        "bicycle_control": {
+            "body": "api_docs/includes/ipython_notebooks/bicycle_control/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/bicycle_control/config.json"
         }, 
         "salesforce": {
             "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
@@ -24,25 +24,29 @@
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
         }, 
-        "make_subplots": {
-            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
+        "sqlite": {
+            "body": "api_docs/includes/ipython_notebooks/sqlite/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/sqlite/config.json"
         }, 
         "principal_component_analysis": {
             "body": "api_docs/includes/ipython_notebooks/principal_component_analysis/body.html", 
             "config": "api_docs/includes/ipython_notebooks/principal_component_analysis/config.json"
         }, 
-        "montecarlo": {
-            "body": "api_docs/includes/ipython_notebooks/montecarlo/body.html",
-            "config": "api_docs/includes/ipython_notebooks/montecarlo/config.json"
-        },
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
         }, 
-        "baltimore": {
-            "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
+        "montecarlo": {
+            "body": "api_docs/includes/ipython_notebooks/montecarlo/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/montecarlo/config.json"
+        }, 
+        "make_subplots": {
+            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
+        }, 
+        "survival_analysis": {
+            "body": "api_docs/includes/ipython_notebooks/survival_analysis/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/survival_analysis/config.json"
         }, 
         "apachespark": {
             "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
@@ -68,9 +72,9 @@
             "body": "api_docs/includes/ipython_notebooks/basemap/body.html", 
             "config": "api_docs/includes/ipython_notebooks/basemap/config.json"
         }, 
-        "survival_analysis": {
-            "body": "api_docs/includes/ipython_notebooks/survival_analysis/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/survival_analysis/config.json"
+        "baltimore": {
+            "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
         }, 
         "gmail": {
             "body": "api_docs/includes/ipython_notebooks/gmail/body.html", 
@@ -79,11 +83,17 @@
     }, 
     "splash": [
         {
-            "title_short": "Bayesian Analysis",
-            "thumbnail_image": "",
-            "relative_url": "computational-bayesian-analysis",
+            "title_short": "Bicycle Control", 
+            "thumbnail_image": "model-diagram.svg", 
+            "relative_url": "bicycle-control-design", 
+            "title": "Bicycle Control Design with Python and Plotly"
+        }, 
+        {
+            "title_short": "Bayesian Analysis", 
+            "thumbnail_image": "", 
+            "relative_url": "computational-bayesian-analysis", 
             "title": "Computational Methods in Bayesian Analysis"
-        },
+        }, 
         {
             "title_short": "Exploratory bioinformatics", 
             "thumbnail_image": "", 
@@ -194,7 +204,8 @@
         }
     ], 
     "notebooks": [
-        "montecarlo",
+        "bicycle_control", 
+        "montecarlo", 
         "bioinformatics", 
         "baltimore", 
         "aircraft_pitch", 
