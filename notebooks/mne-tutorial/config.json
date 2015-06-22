@@ -1,0 +1,15 @@
+{
+    "title": "Plotly visualizations for MNE-Python \n to process MEG/EEG data",
+    "title_short": "Plotly visualizations for MNE-Python",
+    "meta_description": "Create interactive visualizations using MNE-Python and Plotly",
+    "cells": [1, "end"],
+    "relative_url": "mne-tutorial",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}

@@ -60,6 +60,10 @@
             "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
             "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
         }, 
+        "mne-tutorial": {
+            "body": "api_docs/includes/ipython_notebooks/mne-tutorial/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/mne-tutorial/config.json"
+        }, 
         "cufflinks": {
             "body": "api_docs/includes/ipython_notebooks/cufflinks/body.html", 
             "config": "api_docs/includes/ipython_notebooks/cufflinks/config.json"
@@ -82,6 +86,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Plotly visualizations for MNE-Python", 
+            "thumbnail_image": "", 
+            "relative_url": "mne-tutorial", 
+            "title": "Plotly visualizations for MNE-Python \n to process MEG/EEG data"
+        }, 
         {
             "title_short": "Bicycle Control", 
             "thumbnail_image": "model-diagram.svg", 
@@ -204,6 +214,7 @@
         }
     ], 
     "notebooks": [
+        "mne-tutorial", 
         "bicycle_control", 
         "montecarlo", 
         "bioinformatics", 
