@@ -2,7 +2,7 @@
     "meta_description": "Design of a sequential dual-loop controller for a bicycle using NumPy, SciPy, Python Control, and Plotly.", 
     "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/bicycle_control", 
     "title_short": "Bicycle Control", 
-    "last_modified": "Friday 19 June 2015", 
+    "last_modified": "Tuesday 23 June 2015", 
     "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/bicycle_control/bicycle_control.ipynb", 
     "title": "Bicycle Control Design with Python and Plotly", 
     "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/bicycle_control/bicycle_control.py"

@@ -13,7 +13,8 @@ import common
 
 
 # Download image(s) from online source and translate 'src'
-def wget_images(body, nb, name, img_folder_on_streambed, img_folder_in_repo):
+def wget_images(body, nb, name,
+                dir_nb, img_folder_on_streambed, img_folder_in_repo):
     imgs = body.findAll('img')
 
     def custom_img_name(img_src, img_i):
@@ -27,6 +28,7 @@ def wget_images(body, nb, name, img_folder_on_streambed, img_folder_in_repo):
         return "{name} image{img_i}".format(name=name, img_i=_img_i)
 
     ds.utils.wget_images(imgs,
+                         dir_root=dir_nb,
                          dir_download=img_folder_in_repo,
                          dir_publish=img_folder_on_streambed,
                          translate_src=True,
@@ -168,6 +170,7 @@ def main():
 
     for arg in path_handler.args:
 
+        dir_nb = path_handler.get_path(arg)
         file_html = path_handler.get_file(arg, '.tmp.html')
         config = path_handler.load_config(arg)
         tree = path_handler.get_tree(arg)
@@ -176,7 +179,7 @@ def main():
 
         # Download images
         wget_images(body, arg, config['title_short'],
-                    path_image, tree['static']['image'])
+                    dir_nb, path_image, tree['static']['image'])
 
         # Update body
         remove_h1(body)
