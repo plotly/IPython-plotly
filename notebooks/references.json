@@ -1,5 +1,6 @@
 {
     "notebooks": [
+	"mne-tutorial",
         "bicycle_control",
         "montecarlo",
         "bioinformatics",

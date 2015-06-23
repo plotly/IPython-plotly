@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("mne-tutorial/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='mne-tutorial'),
+        name='ipython-notebook-mne-tutorial'),
     url("bicycle-control-design/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',

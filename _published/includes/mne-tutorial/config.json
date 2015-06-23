@@ -1,0 +1,9 @@
+{
+    "meta_description": "Create interactive visualizations using MNE-Python and Plotly", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/mne-tutorial", 
+    "title_short": "Plotly visualizations for MNE-Python", 
+    "last_modified": "Monday 22 June 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/mne-tutorial/mne-tutorial.ipynb", 
+    "title": "Plotly visualizations for MNE-Python \n to process MEG/EEG data", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/mne-tutorial/mne-tutorial.py"
+}
