@@ -1,0 +1,9 @@
+{
+    "meta_description": "pytables notebook covering plotly, pytables, pandas, and hdf5", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/pytables", 
+    "title_short": "pytables", 
+    "last_modified": "Friday 26 June 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/pytables/pytables.ipynb", 
+    "title": "Graphing Data From HDF5, Pandas, PyTables and Plotly", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/pytables/pytables.py"
+}

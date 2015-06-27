@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "pytables",
         "bioinformatics",
         "baltimore",
         "aircraft_pitch",

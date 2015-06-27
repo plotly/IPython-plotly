@@ -16,6 +16,10 @@
             "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
             "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
         }, 
+        "pytables": {
+            "body": "api_docs/includes/ipython_notebooks/pytables/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/pytables/config.json"
+        }, 
         "redshift": {
             "body": "api_docs/includes/ipython_notebooks/redshift/body.html", 
             "config": "api_docs/includes/ipython_notebooks/redshift/config.json"
@@ -74,6 +78,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "pytables", 
+            "thumbnail_image": "", 
+            "relative_url": "pytables", 
+            "title": "Graphing Data From HDF5, Pandas, PyTables and Plotly"
+        }, 
         {
             "title_short": "Exploratory bioinformatics", 
             "thumbnail_image": "", 
@@ -184,6 +194,7 @@
         }
     ], 
     "notebooks": [
+        "pytables", 
         "bioinformatics", 
         "baltimore", 
         "aircraft_pitch", 

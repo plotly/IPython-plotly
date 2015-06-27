@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("pytables/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='pytables'),
+        name='ipython-notebook-pytables'),
     url("bioinformatics/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
