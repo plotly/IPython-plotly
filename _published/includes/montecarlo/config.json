@@ -1,0 +1,9 @@
+{
+    "meta_description": "Monte Carlo simulations, Markov chains, Gibbs sampling illustrated in Plotly",
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/montecarlo", 
+    "title_short": "Bayesian Analysis", 
+    "last_modified": "Thursday 18 June 2015",
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/montecarlo/montecarlo.ipynb", 
+    "title": "Computational Methods in Bayesian Analysis", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/montecarlo/montecarlo.py"
+}

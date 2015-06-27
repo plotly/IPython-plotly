@@ -19,6 +19,45 @@ def items():
             priority=0.5
         ),
         dict(
+            location='/ipython-notebooks/mne-tutorial',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'mne-tutorial',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
+            location='/ipython-notebooks/bicycle-control-design',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'bicycle_control',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
+            location='/ipython-notebooks/computational-bayesian-analysis',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'montecarlo',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
             location='/ipython-notebooks/bioinformatics',
             lmfile=os.path.join(
                 settings.TOP_DIR,

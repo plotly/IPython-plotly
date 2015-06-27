@@ -1,0 +1,15 @@
+{
+    "title": "Computational Methods in Bayesian Analysis",
+    "title_short": "Bayesian Analysis",
+    "meta_description": "Monte Carlo simulations, Markov chains, Gibbs sampling illustrated in Plotly",
+    "cells": [0, "end"],
+    "relative_url": "computational-bayesian-analysis",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}

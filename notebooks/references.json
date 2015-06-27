@@ -1,6 +1,9 @@
 {
     "notebooks": [
         "pytables",
+	"mne-tutorial",
+        "bicycle_control",
+        "montecarlo",
         "bioinformatics",
         "baltimore",
         "aircraft_pitch",
