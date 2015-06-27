@@ -4,12 +4,20 @@
 # ### HDF5 and Plotly
 
 # This notebook will give an overview of using the excellent [HDF5 Data Format](https://www.hdfgroup.org/HDF5/) for high performance computing and [Plotly](https://plot.ly/) to graph data stored in this files.
+#  Plotly is a web-based graphing platform that lets you make and share interactive graphs and dashboards. You can use it for free online--sign up for an account [here](https:www.plot.ly)--and on-premise with [Plotly Enterprise](https://plot.ly/product/enterprise/).
+# 
 # 
 # For those unfamilar with the HDF5 file format:
 # 
+# 
+# 
 # HDF5 is a data model, library, and file format for storing and managing data. It supports an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for high volume and complex data. HDF5 is portable and is extensible, allowing applications to evolve in their use of HDF5. The HDF5 Technology suite includes tools and applications for managing, manipulating, viewing, and analyzing data in the HDF5 format.
 # 
+# 
+# 
 # -- [The HDF5 Group](https://www.hdfgroup.org/HDF5/)
+# 
+# 
 # 
 # The HDF group has some great reasons to use their files - namely that it works great with all kind of data. You can [read more here.](https://www.hdfgroup.org/why_hdf/)
 
