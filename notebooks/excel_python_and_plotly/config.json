@@ -1,0 +1,10 @@
+{
+    "title": "Online Dashboards with Excel, Python, & Plotly",
+    "title_short": "Online Dashboards with Excel, Python, & Plotly",
+    "meta_description": "This notebook is a primer on building interacitve web-based visualizations straight from an excel workbook with python, xlwings, pandas, and plotly",
+    "cells": [0, "end"],
+    "relative_url": "excel-python-and-plotly",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+    ]
+}
