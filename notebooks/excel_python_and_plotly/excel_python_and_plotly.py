@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# ## Online Dashboards with Excel, Python, & Plotly 
+# # Online Dashboards with Excel, Python, & Plotly 
 # 
 # 
 # ##### Building Interactive Graphs at the Push of an (Excel) Button Using Plot.ly and xlwings
@@ -374,4 +374,9 @@ Image(filename= "assets/plotlyeditor.png", width="800")
 # In[65]:
 
 Image(filename='assets/sharing.png')
+
+
+# In[ ]:
+
+
 
