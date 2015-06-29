@@ -6,6 +6,19 @@ from django.conf import settings
 def items():
     items = [
         dict(
+            location='/ipython-notebooks/excel-python-and-plotly',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'excel_python_and_plotly',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
             location='/ipython-notebooks/mne-tutorial',
             lmfile=os.path.join(
                 settings.TOP_DIR,

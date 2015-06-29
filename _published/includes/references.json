@@ -8,57 +8,65 @@
             "body": "api_docs/includes/ipython_notebooks/bicycle_control/body.html", 
             "config": "api_docs/includes/ipython_notebooks/bicycle_control/config.json"
         }, 
-        "salesforce": {
-            "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/salesforce/config.json"
-        }, 
-        "networkx": {
-            "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
-        }, 
         "redshift": {
             "body": "api_docs/includes/ipython_notebooks/redshift/body.html", 
             "config": "api_docs/includes/ipython_notebooks/redshift/config.json"
-        }, 
-        "ukelectionbbg": {
-            "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
         }, 
         "sqlite": {
             "body": "api_docs/includes/ipython_notebooks/sqlite/body.html", 
             "config": "api_docs/includes/ipython_notebooks/sqlite/config.json"
         }, 
+        "networkx": {
+            "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
+        }, 
+        "gmail": {
+            "body": "api_docs/includes/ipython_notebooks/gmail/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/gmail/config.json"
+        }, 
+        "ukelectionbbg": {
+            "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
+        }, 
         "principal_component_analysis": {
             "body": "api_docs/includes/ipython_notebooks/principal_component_analysis/body.html", 
             "config": "api_docs/includes/ipython_notebooks/principal_component_analysis/config.json"
-        }, 
-        "collaborate": {
-            "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
         }, 
         "montecarlo": {
             "body": "api_docs/includes/ipython_notebooks/montecarlo/body.html", 
             "config": "api_docs/includes/ipython_notebooks/montecarlo/config.json"
         }, 
-        "make_subplots": {
-            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
-        }, 
-        "survival_analysis": {
-            "body": "api_docs/includes/ipython_notebooks/survival_analysis/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/survival_analysis/config.json"
-        }, 
         "apachespark": {
             "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
             "config": "api_docs/includes/ipython_notebooks/apachespark/config.json"
+        }, 
+        "markowitz": {
+            "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
+        }, 
+        "excel_python_and_plotly": {
+            "body": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/config.json"
+        }, 
+        "collaborate": {
+            "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
         }, 
         "bioinformatics": {
             "body": "api_docs/includes/ipython_notebooks/bioinformatics/body.html", 
             "config": "api_docs/includes/ipython_notebooks/bioinformatics/config.json"
         }, 
-        "markowitz": {
-            "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
+        "make_subplots": {
+            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
+        }, 
+        "salesforce": {
+            "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/salesforce/config.json"
+        }, 
+        "baltimore": {
+            "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
         }, 
         "mne-tutorial": {
             "body": "api_docs/includes/ipython_notebooks/mne-tutorial/body.html", 
@@ -76,16 +84,18 @@
             "body": "api_docs/includes/ipython_notebooks/basemap/body.html", 
             "config": "api_docs/includes/ipython_notebooks/basemap/config.json"
         }, 
-        "baltimore": {
-            "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
-        }, 
-        "gmail": {
-            "body": "api_docs/includes/ipython_notebooks/gmail/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/gmail/config.json"
+        "survival_analysis": {
+            "body": "api_docs/includes/ipython_notebooks/survival_analysis/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/survival_analysis/config.json"
         }
     }, 
     "splash": [
+        {
+            "title_short": "Online Dashboards with Excel, Python, & Plotly", 
+            "thumbnail_image": "", 
+            "relative_url": "excel-python-and-plotly", 
+            "title": "Online Dashboards with Excel, Python, & Plotly"
+        }, 
         {
             "title_short": "Plotly visualizations for MNE-Python", 
             "thumbnail_image": "", 
@@ -214,6 +224,7 @@
         }
     ], 
     "notebooks": [
+        "excel_python_and_plotly", 
         "mne-tutorial", 
         "bicycle_control", 
         "montecarlo", 
