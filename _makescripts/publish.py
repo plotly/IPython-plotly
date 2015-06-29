@@ -72,14 +72,15 @@ def update_anchors(body):
     anchors = body.findAll('a')
 
     for anchor in anchors:
-        if anchor['href'].startswith((user_root, '#')):
-            continue
-        elif anchor['href'].startswith(site_root):
-            ds.translate([anchor], 'href', {site_root: '/'})
-            ds.translate([anchor], 'href', {'//': '/'})
-        else:
-            # Add target='_blank' attributes to outbound links
-            ds.add_attr(anchor, {'target': '_blank'})
+        if anchor.has_attr('href'):
+            if anchor['href'].startswith((user_root, '#')):
+                continue
+            elif anchor['href'].startswith(site_root):
+                ds.translate([anchor], 'href', {site_root: '/'})
+                ds.translate([anchor], 'href', {'//': '/'})
+            else:
+                # Add target='_blank' attributes to outbound links
+                ds.add_attr(anchor, {'target': '_blank'})
 
 
 # Add anchors inside In / Out <div>
