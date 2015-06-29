@@ -46,7 +46,7 @@ run:
 	@cd $(path_to_notebooks)/$(nb) && mv $(nb).tmp.py $(nb).py
 	
 publish:
-	@ipython $(path_to_makescripts)/publish.py $(nb) --pdb
+	@ipython $(path_to_makescripts)/publish.py $(nb)
 
 run-publish: run publish
 
