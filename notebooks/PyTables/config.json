@@ -1,0 +1,10 @@
+{
+    "title": "Graphing Data From HDF5, Pandas, PyTables and Plotly",
+    "title_short": "pytables", 
+    "meta_description": "pytables notebook covering plotly, pytables, pandas, and hdf5",
+    "cells": [0, "end"], 
+    "relative_url": "pytables",
+    "thumbnail_image": "", 
+    "non_pip_deps": [
+    ]
+}

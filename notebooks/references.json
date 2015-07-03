@@ -1,6 +1,7 @@
 {
     "notebooks": [
-	    "excel_python_and_plotly",
+        "pytables",
+        "excel_python_and_plotly",
         "mne-tutorial",
         "bicycle_control",
         "montecarlo",

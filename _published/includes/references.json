@@ -64,6 +64,10 @@
             "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
             "config": "api_docs/includes/ipython_notebooks/salesforce/config.json"
         }, 
+        "pytables": {
+            "body": "api_docs/includes/ipython_notebooks/pytables/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/pytables/config.json"
+        }, 
         "baltimore": {
             "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
             "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
@@ -90,6 +94,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "pytables", 
+            "thumbnail_image": "", 
+            "relative_url": "pytables", 
+            "title": "Graphing Data From HDF5, Pandas, PyTables and Plotly"
+        }, 
         {
             "title_short": "Online Dashboards with Excel, Python, & Plotly", 
             "thumbnail_image": "", 
@@ -224,6 +234,7 @@
         }
     ], 
     "notebooks": [
+        "pytables", 
         "excel_python_and_plotly", 
         "mne-tutorial", 
         "bicycle_control", 

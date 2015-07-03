@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("pytables/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='pytables'),
+        name='ipython-notebook-pytables'),
     url("excel-python-and-plotly/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
