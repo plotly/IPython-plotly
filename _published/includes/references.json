@@ -44,6 +44,10 @@
             "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
             "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
         }, 
+        "excel_python_and_plotly": {
+            "body": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/config.json"
+        }, 
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
@@ -95,6 +99,12 @@
             "thumbnail_image": "", 
             "relative_url": "pytables", 
             "title": "Graphing Data From HDF5, Pandas, PyTables and Plotly"
+        }, 
+        {
+            "title_short": "Online Dashboards with Excel, Python, & Plotly", 
+            "thumbnail_image": "", 
+            "relative_url": "excel-python-and-plotly", 
+            "title": "Online Dashboards with Excel, Python, & Plotly"
         }, 
         {
             "title_short": "Plotly visualizations for MNE-Python", 
@@ -225,6 +235,7 @@
     ], 
     "notebooks": [
         "pytables", 
+        "excel_python_and_plotly", 
         "mne-tutorial", 
         "bicycle_control", 
         "montecarlo", 

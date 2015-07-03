@@ -10,6 +10,11 @@ urlpatterns = patterns(
             lang='ipython-notebooks',
             notebook='pytables'),
         name='ipython-notebook-pytables'),
+    url("excel-python-and-plotly/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='excel_python_and_plotly'),
+        name='ipython-notebook-excel_python_and_plotly'),
     url("mne-tutorial/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
