@@ -4,7 +4,7 @@
 # # Computational Methods in Bayesian Analysis
 
 # ####About the author
-# This notebook was forked from this [project](https://github.com/fonnesbeck/scipy2014_tutorial). The original author is Chris Fonnesbeck, Assistant Professor of Biostatistics.
+# This notebook was forked from this [project](https://github.com/fonnesbeck/scipy2014_tutorial). The original author is Chris Fonnesbeck, Assistant Professor of Biostatistics. You can follow Chris on Twitter [@fonnesbeck](https://twitter.com/fonnesbeck).
 
 # ###Introduction
 # 

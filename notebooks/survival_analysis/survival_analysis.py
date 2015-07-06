@@ -45,7 +45,7 @@ get_ipython().magic(u'load_ext rpy2.ipython')
 # Install R packages
 get_ipython().magic(u'R install.packages("devtools")')
 get_ipython().magic(u'R devtools::install_github("ropensci/plotly")')
-get_ipython().magic(u'R install.packages("IOsurv")')
+get_ipython().magic(u'R install.packages("OIsurv")')
 
 
 # ## Introduction

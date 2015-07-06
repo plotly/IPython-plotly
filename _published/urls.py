@@ -5,6 +5,26 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("pytables/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='pytables'),
+        name='ipython-notebook-pytables'),
+    url("excel-python-and-plotly/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='excel_python_and_plotly'),
+        name='ipython-notebook-excel_python_and_plotly'),
+    url("mne-tutorial/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='mne-tutorial'),
+        name='ipython-notebook-mne-tutorial'),
+    url("bicycle-control-design/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='bicycle_control'),
+        name='ipython-notebook-bicycle_control'),
     url("computational-bayesian-analysis/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',

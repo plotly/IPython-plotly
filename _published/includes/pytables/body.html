@@ -1,0 +1,1576 @@
+<div class="border-box-sizing" id="notebook" tabindex="-1">
+  <div class="container" id="notebook-container">
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <h3 id="HDF5-and-Plotly">
+       HDF5 and Plotly
+       <a class="anchor-link" href="#HDF5-and-Plotly">
+        ¶
+       </a>
+      </h3>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       This notebook will give an overview of using the excellent
+       <a href="https://www.hdfgroup.org/HDF5/" target="_blank">
+        HDF5 Data Format
+       </a>
+       for high performance computing and
+       <a href="/">
+        Plotly
+       </a>
+       to graph data stored in this files.
+ Plotly is a web-based graphing platform that lets you make and share interactive graphs and dashboards. You can use it for free online--sign up for an account
+       <a href="https:www.plot.ly" target="_blank">
+        here
+       </a>
+       --and on-premise with
+       <a href="/product/enterprise/">
+        Plotly Enterprise
+       </a>
+       .
+      </p>
+      <p>
+       For those unfamilar with the HDF5 file format:
+      </p>
+      <p>
+       HDF5 is a data model, library, and file format for storing and managing data. It supports an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for high volume and complex data. HDF5 is portable and is extensible, allowing applications to evolve in their use of HDF5. The HDF5 Technology suite includes tools and applications for managing, manipulating, viewing, and analyzing data in the HDF5 format.
+      </p>
+      <p>
+       --
+       <a href="https://www.hdfgroup.org/HDF5/" target="_blank">
+        The HDF5 Group
+       </a>
+      </p>
+      <p>
+       The HDF group has some great reasons to use their files - namely that it works great with all kind of data. You can
+       <a href="https://www.hdfgroup.org/why_hdf/" target="_blank">
+        read more here.
+       </a>
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[1]">
+      <a class="prompt input_prompt" href="#In-[1]">
+       In [1]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">plotly.plotly</span> <span class="kn">as</span> <span class="nn">py</span> <span class="c"># interactive graphing</span>
+<span class="kn">from</span> <span class="nn">plotly.graph_objs</span> <span class="kn">import</span> <span class="n">Bar</span><span class="p">,</span> <span class="n">Scatter</span><span class="p">,</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Figure</span><span class="p">,</span> <span class="n">Heatmap</span><span class="p">,</span> <span class="n">XAxis</span><span class="p">,</span> <span class="n">YAxis</span>
+<span class="kn">import</span> <span class="nn">plotly.tools</span> <span class="kn">as</span> <span class="nn">tls</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       The dataset that we'll be using is data from
+       <a href="https://nycopendata.socrata.com/data" target="_blank">
+        NYC's open data portal
+       </a>
+       . We'll be exploring a 100mb dataset covering traffic accidents in NYC. While we are capable of fitting this data into memory, the HDF5 file format has some unique affordances that allow us to query and save data in convenient ways.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Now the first thing we'll want to do is open up an access point to this HDF5 file, doing so is simple because pandas provides ready access to doing so.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[2]">
+      <a class="prompt input_prompt" href="#In-[2]">
+       In [2]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">'io.hdf.default_format'</span><span class="p">,</span><span class="s">'table'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[3]">
+      <a class="prompt input_prompt" href="#In-[3]">
+       In [3]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">store</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="s">'nypd_motors.h5'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Now that we've opened up our store, let's start storing some data
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[4]">
+      <a class="prompt input_prompt" href="#In-[4]">
+       In [4]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="c"># df = pd.read_csv('NYPD_motor_collisions.csv', parse_dates=['DATE'])</span>
+<span class="c"># df.columns = [col.lower().replace(" ", "_") for col in df.columns]</span>
+<span class="c"># store.append("nypd", df,format='table',data_columns=True)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[5]">
+      <a class="prompt input_prompt" href="#In-[5]">
+       In [5]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">store</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[5]">
+        <a class="prompt output_prompt" href="#Out[5]">
+         Out[5]:
+        </a>
+       </div>
+       <div class="output_text output_subarea output_execute_result">
+        <pre>&lt;class &amp;apos;pandas.io.pytables.HDFStore&amp;apos;&gt;
+File path: nypd_motors.h5
+/nypd            frame_table  (typ-&gt;appendable,nrows-&gt;596990,ncols-&gt;29,indexers-&gt;[index],dc-&gt;[date,time,borough,zip_code,latitude,longitude,location,on_street_name,cross_street_name,off_street_name,number_of_persons_injured,number_of_persons_killed,number_of_pedestrians_injured,number_of_pedestrians_killed,number_of_cyclist_injured,number_of_cyclist_killed,number_of_motorist_injured,number_of_motorist_killed,contributing_factor_vehicle_1,contributing_factor_vehicle_2,contributing_factor_vehicle_3,contributing_factor_vehicle_4,contributing_factor_vehicle_5,unique_key,vehicle_type_code_1,vehicle_type_code_2,vehicle_type_code_3,vehicle_type_code_4,vehicle_type_code_5])</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[6]">
+      <a class="prompt input_prompt" href="#In-[6]">
+       In [6]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="c"># store.close()</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       One thing that's nice about the HDF5 file is that it's kind of like a key value store. It's simple to use, and allows you to store things just like you might in a file system type hierarchy.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       What's awesome about the HDF5 format is that it's almost like a miniature file system. It supports hierarchical data and is accessed like a python dictionary.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[7]">
+      <a class="prompt input_prompt" href="#In-[7]">
+       In [7]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">store</span><span class="o">.</span><span class="n">get_storer</span><span class="p">(</span><span class="s">"df"</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[8]">
+      <a class="prompt input_prompt" href="#In-[8]">
+       In [8]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">"nypd"</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[8]">
+        <a class="prompt output_prompt" href="#Out[8]">
+         Out[8]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <div style="max-height:1000px;max-width:1500px;overflow:auto;">
+         <table border="1" class="dataframe">
+          <thead>
+           <tr style="text-align: right;">
+            <th>
+            </th>
+            <th>
+             date
+            </th>
+            <th>
+             time
+            </th>
+            <th>
+             borough
+            </th>
+            <th>
+             zip_code
+            </th>
+            <th>
+             latitude
+            </th>
+            <th>
+             longitude
+            </th>
+            <th>
+             location
+            </th>
+            <th>
+             on_street_name
+            </th>
+            <th>
+             cross_street_name
+            </th>
+            <th>
+             off_street_name
+            </th>
+            <th>
+             ...
+            </th>
+            <th>
+             contributing_factor_vehicle_2
+            </th>
+            <th>
+             contributing_factor_vehicle_3
+            </th>
+            <th>
+             contributing_factor_vehicle_4
+            </th>
+            <th>
+             contributing_factor_vehicle_5
+            </th>
+            <th>
+             unique_key
+            </th>
+            <th>
+             vehicle_type_code_1
+            </th>
+            <th>
+             vehicle_type_code_2
+            </th>
+            <th>
+             vehicle_type_code_3
+            </th>
+            <th>
+             vehicle_type_code_4
+            </th>
+            <th>
+             vehicle_type_code_5
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <th>
+             0
+            </th>
+            <td>
+             2015-06-02
+            </td>
+            <td>
+             13:48
+            </td>
+            <td>
+             MANHATTAN
+            </td>
+            <td>
+             10038
+            </td>
+            <td>
+             40.711780
+            </td>
+            <td>
+             -73.999701
+            </td>
+            <td>
+             (40.7117796, -73.9997006)
+            </td>
+            <td>
+             ST JAMES PLACE
+            </td>
+            <td>
+             MADISON STREET
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             ...
+            </td>
+            <td>
+             Unspecified
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             3232026
+            </td>
+            <td>
+             VAN
+            </td>
+            <td>
+             VAN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+           </tr>
+           <tr>
+            <th>
+             1
+            </th>
+            <td>
+             2015-06-02
+            </td>
+            <td>
+             13:40
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             ...
+            </td>
+            <td>
+             Turning Improperly
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             3232021
+            </td>
+            <td>
+             PASSENGER VEHICLE
+            </td>
+            <td>
+             SPORT UTILITY / STATION WAGON
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+           </tr>
+           <tr>
+            <th>
+             2
+            </th>
+            <td>
+             2015-06-02
+            </td>
+            <td>
+             13:40
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             1200 WATERS PLACE - PARKING LOT
+            </td>
+            <td>
+             ...
+            </td>
+            <td>
+             Unspecified
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             3232261
+            </td>
+            <td>
+             PASSENGER VEHICLE
+            </td>
+            <td>
+             PASSENGER VEHICLE
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+           </tr>
+           <tr>
+            <th>
+             3
+            </th>
+            <td>
+             2015-06-02
+            </td>
+            <td>
+             13:40
+            </td>
+            <td>
+             MANHATTAN
+            </td>
+            <td>
+             10004
+            </td>
+            <td>
+             40.706701
+            </td>
+            <td>
+             -74.016047
+            </td>
+            <td>
+             (40.7067007, -74.0160467)
+            </td>
+            <td>
+             WEST STREET
+            </td>
+            <td>
+             MORRIS STREET
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             ...
+            </td>
+            <td>
+             Unspecified
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             3232015
+            </td>
+            <td>
+             UNKNOWN
+            </td>
+            <td>
+             PASSENGER VEHICLE
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+           </tr>
+           <tr>
+            <th>
+             4
+            </th>
+            <td>
+             2015-06-02
+            </td>
+            <td>
+             13:38
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             WOOLLEY AVENUE
+            </td>
+            <td>
+             GURDON STREET
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             ...
+            </td>
+            <td>
+             Other Vehicular
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             3233372
+            </td>
+            <td>
+             PASSENGER VEHICLE
+            </td>
+            <td>
+             PASSENGER VEHICLE
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+            <td>
+             NaN
+            </td>
+           </tr>
+          </tbody>
+         </table>
+         <p>
+          5 rows × 29 columns
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[9]">
+      <a class="prompt input_prompt" href="#In-[9]">
+       In [9]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">boroughs</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">"nypd"</span><span class="p">,</span> <span class="s">"columns=['borough']"</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[10]">
+      <a class="prompt input_prompt" href="#In-[10]">
+       In [10]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">boroughs</span><span class="p">[</span><span class="s">'COUNT'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">borough_groups</span> <span class="o">=</span> <span class="n">boroughs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'borough'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[11]">
+      <a class="prompt input_prompt" href="#In-[11]">
+       In [11]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">borough_groups</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">index</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[11]">
+        <a class="prompt output_prompt" href="#Out[11]">
+         Out[11]:
+        </a>
+       </div>
+       <div class="output_text output_subarea output_execute_result">
+        <pre>Index([u&amp;apos;BRONX&amp;apos;, u&amp;apos;BROOKLYN&amp;apos;, u&amp;apos;MANHATTAN&amp;apos;, u&amp;apos;QUEENS&amp;apos;, u&amp;apos;STATEN ISLAND&amp;apos;], dtype=&amp;apos;object&amp;apos;)</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[12]">
+      <a class="prompt input_prompt" href="#In-[12]">
+       In [12]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">([</span><span class="n">Bar</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">borough_groups</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s">'COUNT'</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="n">borough_groups</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)])</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">xaxis</span><span class="o">=</span><span class="n">XAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Borough"</span><span class="p">),</span> <span class="n">yaxis</span><span class="o">=</span><span class="n">YAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">'Accident Count'</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[13]">
+      <a class="prompt input_prompt" href="#In-[13]">
+       In [13]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[13]">
+        <a class="prompt output_prompt" href="#Out[13]">
+         Out[13]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/474.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[14]">
+      <a class="prompt input_prompt" href="#In-[14]">
+       In [14]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">dates_borough</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">"nypd"</span><span class="p">,</span> <span class="s">"columns=['date', 'borough']"</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">'date'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[15]">
+      <a class="prompt input_prompt" href="#In-[15]">
+       In [15]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">dates_borough</span><span class="p">[</span><span class="s">'COUNT'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[16]">
+      <a class="prompt input_prompt" href="#In-[16]">
+       In [16]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">date_borough_sum</span> <span class="o">=</span> <span class="n">dates_borough</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'borough'</span><span class="p">,</span> <span class="s">"date"</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">date_borough_sum</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[16]">
+        <a class="prompt output_prompt" href="#Out[16]">
+         Out[16]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <div style="max-height:1000px;max-width:1500px;overflow:auto;">
+         <table border="1" class="dataframe">
+          <thead>
+           <tr style="text-align: right;">
+            <th>
+            </th>
+            <th>
+            </th>
+            <th>
+             COUNT
+            </th>
+           </tr>
+           <tr>
+            <th>
+             borough
+            </th>
+            <th>
+             date
+            </th>
+            <th>
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <th rowspan="5" valign="top">
+             BRONX
+            </th>
+            <th>
+             2012-07-01
+            </th>
+            <td>
+             39
+            </td>
+           </tr>
+           <tr>
+            <th>
+             2012-07-02
+            </th>
+            <td>
+             71
+            </td>
+           </tr>
+           <tr>
+            <th>
+             2012-07-03
+            </th>
+            <td>
+             73
+            </td>
+           </tr>
+           <tr>
+            <th>
+             2012-07-04
+            </th>
+            <td>
+             51
+            </td>
+           </tr>
+           <tr>
+            <th>
+             2012-07-05
+            </th>
+            <td>
+             60
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[17]">
+      <a class="prompt input_prompt" href="#In-[17]">
+       In [17]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">date_borough_sum</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'borough'</span><span class="p">):</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">COUNT</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="n">g</span><span class="p">))</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">xaxis</span><span class="o">=</span><span class="n">XAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Date"</span><span class="p">),</span> <span class="n">yaxis</span><span class="o">=</span><span class="n">YAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Accident Count"</span><span class="p">))</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[18]">
+      <a class="prompt input_prompt" href="#In-[18]">
+       In [18]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">Data</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">),</span> <span class="n">filename</span><span class="o">=</span><span class="s">'nypd_crashes/over_time'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[18]">
+        <a class="prompt output_prompt" href="#Out[18]">
+         Out[18]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/274.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Luckily for us, while this graph is a bit of a mess, we can still zoom in on specific times and ranges. This makes plotly perfect for exploring datasets. You can create a high level visual of the data then zoom into a more detailed level.
+      </p>
+      <p>
+       See below where using the above graph I could zoom in on a particular point and anontate it for future investigation.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[19]">
+      <a class="prompt input_prompt" href="#In-[19]">
+       In [19]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">tls</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="s">"https://plot.ly/~bill_chambers/274"</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[19]">
+        <a class="prompt output_prompt" href="#Out[19]">
+         Out[19]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/274.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[20]">
+      <a class="prompt input_prompt" href="#In-[20]">
+       In [20]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">car_types</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">"nypd"</span><span class="p">,</span> <span class="s">"columns=['vehicle_type_code_1', 'vehicle_type_code_2']"</span><span class="p">)</span>
+<span class="n">car_types</span><span class="p">[</span><span class="s">'COUNT'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[21]">
+      <a class="prompt input_prompt" href="#In-[21]">
+       In [21]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">code_1</span> <span class="o">=</span> <span class="n">car_types</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'vehicle_type_code_1'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">code_2</span> <span class="o">=</span> <span class="n">car_types</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'vehicle_type_code_2'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[22]">
+      <a class="prompt input_prompt" href="#In-[22]">
+       In [22]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">([</span>
+        <span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">code_1</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">code_1</span><span class="o">.</span><span class="n">COUNT</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s">'First Vehicle Type'</span><span class="p">),</span>
+        <span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">code_2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">code_2</span><span class="o">.</span><span class="n">COUNT</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s">'Second Vehicle Type'</span><span class="p">)</span>
+     <span class="p">])</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[23]">
+      <a class="prompt input_prompt" href="#In-[23]">
+       In [23]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">barmode</span><span class="o">=</span><span class="s">'group'</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="n">YAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Vehicle Incidents"</span><span class="p">))))</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[23]">
+        <a class="prompt output_prompt" href="#Out[23]">
+         Out[23]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/476.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       No big surprises here, we can see that passenger vehicles, likely being the most prevalent vehicles, are the ones involved in the most accidents for the first and second vehicles. However this does make for some more interesting questions, does this extrapolate to each vehicle class. That is, do all kinds of vehicles hit all other vehicles in more or less the same frequency?
+      </p>
+      <p>
+       Let's explore large commercial vehicles.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[24]">
+      <a class="prompt input_prompt" href="#In-[24]">
+       In [24]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">large_vehicles</span> <span class="o">=</span> <span class="n">car_types</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="s">'vehicle_type_code_1'</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span>
+    <span class="s">'LARGE COM VEH(6 OR MORE TIRES)'</span>
+<span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'vehicle_type_code_2'</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[25]">
+      <a class="prompt input_prompt" href="#In-[25]">
+       In [25]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">([</span><span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">large_vehicles</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">large_vehicles</span><span class="o">.</span><span class="n">COUNT</span><span class="p">)])</span>
+<span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">yaxis</span><span class="o">=</span><span class="n">YAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Incident Per Vehicle Type"</span><span class="p">))))</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[25]">
+        <a class="prompt output_prompt" href="#Out[25]">
+         Out[25]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/478.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       At first glance it seems alright, but it's worth more exploration - let's Z-Score the data and compare their scores.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[26]">
+      <a class="prompt input_prompt" href="#In-[26]">
+       In [26]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">large_vehicles</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[26]">
+        <a class="prompt output_prompt" href="#Out[26]">
+         Out[26]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <div style="max-height:1000px;max-width:1500px;overflow:auto;">
+         <table border="1" class="dataframe">
+          <thead>
+           <tr style="text-align: right;">
+            <th>
+            </th>
+            <th>
+             COUNT
+            </th>
+           </tr>
+           <tr>
+            <th>
+             vehicle_type_code_2
+            </th>
+            <th>
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <th>
+             AMBULANCE
+            </th>
+            <td>
+             9
+            </td>
+           </tr>
+           <tr>
+            <th>
+             BICYCLE
+            </th>
+            <td>
+             98
+            </td>
+           </tr>
+           <tr>
+            <th>
+             BUS
+            </th>
+            <td>
+             151
+            </td>
+           </tr>
+           <tr>
+            <th>
+             FIRE TRUCK
+            </th>
+            <td>
+             6
+            </td>
+           </tr>
+           <tr>
+            <th>
+             LARGE COM VEH(6 OR MORE TIRES)
+            </th>
+            <td>
+             878
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[27]">
+      <a class="prompt input_prompt" href="#In-[27]">
+       In [27]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">code_2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[27]">
+        <a class="prompt output_prompt" href="#Out[27]">
+         Out[27]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <div style="max-height:1000px;max-width:1500px;overflow:auto;">
+         <table border="1" class="dataframe">
+          <thead>
+           <tr style="text-align: right;">
+            <th>
+            </th>
+            <th>
+             COUNT
+            </th>
+           </tr>
+           <tr>
+            <th>
+             vehicle_type_code_2
+            </th>
+            <th>
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <th>
+             AMBULANCE
+            </th>
+            <td>
+             842
+            </td>
+           </tr>
+           <tr>
+            <th>
+             BICYCLE
+            </th>
+            <td>
+             13891
+            </td>
+           </tr>
+           <tr>
+            <th>
+             BUS
+            </th>
+            <td>
+             8935
+            </td>
+           </tr>
+           <tr>
+            <th>
+             FIRE TRUCK
+            </th>
+            <td>
+             412
+            </td>
+           </tr>
+           <tr>
+            <th>
+             LARGE COM VEH(6 OR MORE TIRES)
+            </th>
+            <td>
+             10299
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[28]">
+      <a class="prompt input_prompt" href="#In-[28]">
+       In [28]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="k">def</span> <span class="nf">z_score</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">'zscore'</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="o">.</span><span class="n">COUNT</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">COUNT</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">df</span><span class="o">.</span><span class="n">COUNT</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[29]">
+      <a class="prompt input_prompt" href="#In-[29]">
+       In [29]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">([</span>
+        <span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">z_score</span><span class="p">(</span><span class="n">code_2</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">z_score</span><span class="p">(</span><span class="n">code_2</span><span class="p">)</span><span class="o">.</span><span class="n">zscore</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'All Vehicles'</span><span class="p">),</span>
+        <span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">z_score</span><span class="p">(</span><span class="n">large_vehicles</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">z_score</span><span class="p">(</span><span class="n">large_vehicles</span><span class="p">)</span><span class="o">.</span><span class="n">zscore</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s">'Large Vehicles'</span><span class="p">),</span>
+        
+     <span class="p">])</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[30]">
+      <a class="prompt input_prompt" href="#In-[30]">
+       In [30]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">yaxis</span><span class="o">=</span><span class="n">YAxis</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Incident Per Vehicle Type"</span><span class="p">))),</span><span class="n">name</span><span class="o">=</span><span class="s">'nypd_crashes/large vs all vehicles'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[30]">
+        <a class="prompt output_prompt" href="#Out[30]">
+         Out[30]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/480.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       We can see that things are relatively similar, except that large vehicles seem to hit large vehicles much more than most others. This could warrant further investigation.
+      </p>
+      <p>
+       While grouped bar charts can be useful for these kinds of comparisons, it can be great to visualize this data with heatmaps as well. We can create one of these by creation a contingency table or cross tabulation.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[31]">
+      <a class="prompt input_prompt" href="#In-[31]">
+       In [31]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">cont_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">car_types</span><span class="p">[</span><span class="s">'vehicle_type_code_1'</span><span class="p">],</span> <span class="n">car_types</span><span class="p">[</span><span class="s">'vehicle_type_code_2'</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       Because of the different magnitudes of data, I decided to log scale it.
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing code_cell rendered">
+    <div class="input">
+     <div class="prompt input_prompt" id="In-[32]">
+      <a class="prompt input_prompt" href="#In-[32]">
+       In [32]:
+      </a>
+     </div>
+     <div class="inner_cell">
+      <div class="input_area">
+       <div class=" highlight hl-ipython2">
+        <pre><span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">Data</span><span class="p">([</span>
+            <span class="n">Heatmap</span><span class="p">(</span><span class="n">z</span> <span class="o">=</span> <span class="n">cont_table</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">cont_table</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">cont_table</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">colorscale</span><span class="o">=</span><span class="s">'Jet'</span><span class="p">)</span>
+        <span class="p">]),</span><span class="n">filename</span><span class="o">=</span><span class="s">'nypd_crashes/vehicle to vehicle heatmap'</span><span class="p">)</span>
+</pre>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="output_wrapper">
+     <div class="output">
+      <div class="output_area">
+       <div class="prompt output_prompt" id="Out[32]">
+        <a class="prompt output_prompt" href="#Out[32]">
+         Out[32]:
+        </a>
+       </div>
+       <div class="output_html rendered_html output_subarea output_execute_result">
+        <iframe height="525" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~bill_chambers/333.embed" style="border:none;" width="100%">
+        </iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="cell border-box-sizing text_cell rendered">
+    <div class="prompt input_prompt">
+    </div>
+    <div class="inner_cell">
+     <div class="text_cell_render border-box-sizing rendered_html">
+      <p>
+       With this we are able to see more interesting nuances in the data. For instance taxis seems to have lots of accidents with other taxis, while vans and station wagons also seem to have many accidents.
+      </p>
+      <p>
+       There's clearly a lot to explore in this dataset.
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>

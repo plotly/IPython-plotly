@@ -6,6 +6,58 @@ from django.conf import settings
 def items():
     items = [
         dict(
+            location='/ipython-notebooks/pytables',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'pytables',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
+            location='/ipython-notebooks/excel-python-and-plotly',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'excel_python_and_plotly',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
+            location='/ipython-notebooks/mne-tutorial',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'mne-tutorial',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
+            location='/ipython-notebooks/bicycle-control-design',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'bicycle_control',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
             location='/ipython-notebooks/computational-bayesian-analysis',
             lmfile=os.path.join(
                 settings.TOP_DIR,

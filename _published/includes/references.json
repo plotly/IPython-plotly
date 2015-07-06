@@ -4,57 +4,77 @@
             "body": "api_docs/includes/ipython_notebooks/cartodb/body.html", 
             "config": "api_docs/includes/ipython_notebooks/cartodb/config.json"
         }, 
-        "sqlite": {
-            "body": "api_docs/includes/ipython_notebooks/sqlite/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/sqlite/config.json"
-        }, 
-        "salesforce": {
-            "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/salesforce/config.json"
-        }, 
-        "networkx": {
-            "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
+        "bicycle_control": {
+            "body": "api_docs/includes/ipython_notebooks/bicycle_control/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/bicycle_control/config.json"
         }, 
         "redshift": {
             "body": "api_docs/includes/ipython_notebooks/redshift/body.html", 
             "config": "api_docs/includes/ipython_notebooks/redshift/config.json"
         }, 
+        "sqlite": {
+            "body": "api_docs/includes/ipython_notebooks/sqlite/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/sqlite/config.json"
+        }, 
+        "networkx": {
+            "body": "api_docs/includes/ipython_notebooks/networkx/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/networkx/config.json"
+        }, 
+        "gmail": {
+            "body": "api_docs/includes/ipython_notebooks/gmail/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/gmail/config.json"
+        }, 
         "ukelectionbbg": {
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
-        }, 
-        "make_subplots": {
-            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
         }, 
         "principal_component_analysis": {
             "body": "api_docs/includes/ipython_notebooks/principal_component_analysis/body.html", 
             "config": "api_docs/includes/ipython_notebooks/principal_component_analysis/config.json"
         }, 
         "montecarlo": {
-            "body": "api_docs/includes/ipython_notebooks/montecarlo/body.html",
+            "body": "api_docs/includes/ipython_notebooks/montecarlo/body.html", 
             "config": "api_docs/includes/ipython_notebooks/montecarlo/config.json"
-        },
-        "collaborate": {
-            "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
-        }, 
-        "baltimore": {
-            "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
         }, 
         "apachespark": {
             "body": "api_docs/includes/ipython_notebooks/apachespark/body.html", 
             "config": "api_docs/includes/ipython_notebooks/apachespark/config.json"
         }, 
+        "markowitz": {
+            "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
+        }, 
+        "excel_python_and_plotly": {
+            "body": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/config.json"
+        }, 
+        "collaborate": {
+            "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
+        }, 
         "bioinformatics": {
             "body": "api_docs/includes/ipython_notebooks/bioinformatics/body.html", 
             "config": "api_docs/includes/ipython_notebooks/bioinformatics/config.json"
         }, 
-        "markowitz": {
-            "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
+        "make_subplots": {
+            "body": "api_docs/includes/ipython_notebooks/make_subplots/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/make_subplots/config.json"
+        }, 
+        "salesforce": {
+            "body": "api_docs/includes/ipython_notebooks/salesforce/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/salesforce/config.json"
+        }, 
+        "pytables": {
+            "body": "api_docs/includes/ipython_notebooks/pytables/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/pytables/config.json"
+        }, 
+        "baltimore": {
+            "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
+        }, 
+        "mne-tutorial": {
+            "body": "api_docs/includes/ipython_notebooks/mne-tutorial/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/mne-tutorial/config.json"
         }, 
         "cufflinks": {
             "body": "api_docs/includes/ipython_notebooks/cufflinks/body.html", 
@@ -71,19 +91,39 @@
         "survival_analysis": {
             "body": "api_docs/includes/ipython_notebooks/survival_analysis/body.html", 
             "config": "api_docs/includes/ipython_notebooks/survival_analysis/config.json"
-        }, 
-        "gmail": {
-            "body": "api_docs/includes/ipython_notebooks/gmail/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/gmail/config.json"
         }
     }, 
     "splash": [
         {
-            "title_short": "Bayesian Analysis",
-            "thumbnail_image": "",
-            "relative_url": "computational-bayesian-analysis",
+            "title_short": "pytables", 
+            "thumbnail_image": "", 
+            "relative_url": "pytables", 
+            "title": "Graphing Data From HDF5, Pandas, PyTables and Plotly"
+        }, 
+        {
+            "title_short": "Online Dashboards with Excel, Python, & Plotly", 
+            "thumbnail_image": "", 
+            "relative_url": "excel-python-and-plotly", 
+            "title": "Online Dashboards with Excel, Python, & Plotly"
+        }, 
+        {
+            "title_short": "Plotly visualizations for MNE-Python", 
+            "thumbnail_image": "", 
+            "relative_url": "mne-tutorial", 
+            "title": "Plotly visualizations for MNE-Python \n to process MEG/EEG data"
+        }, 
+        {
+            "title_short": "Bicycle Control", 
+            "thumbnail_image": "model-diagram.svg", 
+            "relative_url": "bicycle-control-design", 
+            "title": "Bicycle Control Design with Python and Plotly"
+        }, 
+        {
+            "title_short": "Bayesian Analysis", 
+            "thumbnail_image": "", 
+            "relative_url": "computational-bayesian-analysis", 
             "title": "Computational Methods in Bayesian Analysis"
-        },
+        }, 
         {
             "title_short": "Exploratory bioinformatics", 
             "thumbnail_image": "", 
@@ -194,7 +234,11 @@
         }
     ], 
     "notebooks": [
-        "montecarlo",
+        "pytables", 
+        "excel_python_and_plotly", 
+        "mne-tutorial", 
+        "bicycle_control", 
+        "montecarlo", 
         "bioinformatics", 
         "baltimore", 
         "aircraft_pitch", 
