@@ -1,9 +1,0 @@
-{
-    "meta_description": "Graph ", 
-    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/graph_mysql", 
-    "title_short": "Graph MySQL data MySQL data in Python using MySQLdb and Plotly", 
-    "last_modified": "Friday 19 June 2015", 
-    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/graph_mysql/graph_mysql.ipynb", 
-    "title": "Graph MySQL data in Python using MySQLdb and Plotly", 
-    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/graph_mysql/graph_mysql.py"
-}

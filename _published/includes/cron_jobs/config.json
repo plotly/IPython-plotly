@@ -1,9 +1,0 @@
-{
-    "meta_description": "SF and Montreal Weather using Plotly and Wunderground APIs", 
-    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/cron_jobs", 
-    "title_short": "Plotly and Underground APIs", 
-    "last_modified": "Friday 19 June 2015", 
-    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/cron_jobs/cron_jobs.ipynb", 
-    "title": "SF and Montreal Weather using Plotly and Wunderground APIs", 
-    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/cron_jobs/cron_jobs.py"
-}
