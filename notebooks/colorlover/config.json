@@ -1,0 +1,15 @@
+{
+    "title": "Color Scales for IPython Notebook",
+    "title_short": "Color lover",
+    "meta_description": "Color Scales for IPython Notebook",
+    "relative_url": "colorlover",
+    "cells": [0, -1],
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}
