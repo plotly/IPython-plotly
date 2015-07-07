@@ -4,6 +4,10 @@
             "body": "api_docs/includes/ipython_notebooks/cartodb/body.html", 
             "config": "api_docs/includes/ipython_notebooks/cartodb/config.json"
         }, 
+        "excel_python_and_plotly": {
+            "body": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/config.json"
+        }, 
         "bicycle_control": {
             "body": "api_docs/includes/ipython_notebooks/bicycle_control/body.html", 
             "config": "api_docs/includes/ipython_notebooks/bicycle_control/config.json"
@@ -44,9 +48,9 @@
             "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
             "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
         }, 
-        "excel_python_and_plotly": {
-            "body": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/body.html", 
-            "config": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/config.json"
+        "socrata": {
+            "body": "api_docs/includes/ipython_notebooks/socrata/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/socrata/config.json"
         }, 
         "collaborate": {
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
@@ -94,6 +98,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Plotly and Socrata", 
+            "thumbnail_image": "", 
+            "relative_url": "socrata", 
+            "title": "Plotly and Socrata"
+        }, 
         {
             "title_short": "pytables", 
             "thumbnail_image": "", 
@@ -234,6 +244,7 @@
         }
     ], 
     "notebooks": [
+        "socrata", 
         "pytables", 
         "excel_python_and_plotly", 
         "mne-tutorial", 
