@@ -8,6 +8,10 @@
             "body": "api_docs/includes/ipython_notebooks/bicycle_control/body.html", 
             "config": "api_docs/includes/ipython_notebooks/bicycle_control/config.json"
         }, 
+        "html_reports": {
+            "body": "api_docs/includes/ipython_notebooks/html_reports/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/html_reports/config.json"
+        }, 
         "redshift": {
             "body": "api_docs/includes/ipython_notebooks/redshift/body.html", 
             "config": "api_docs/includes/ipython_notebooks/redshift/config.json"
@@ -94,6 +98,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "HTML reports", 
+            "thumbnail_image": "", 
+            "relative_url": "html_reports", 
+            "title": "Generate HTML reports with D3 graphs using Python, Plotly, and Pandas"
+        }, 
         {
             "title_short": "pytables", 
             "thumbnail_image": "", 
@@ -234,6 +244,7 @@
         }
     ], 
     "notebooks": [
+        "html_reports", 
         "pytables", 
         "excel_python_and_plotly", 
         "mne-tutorial", 
