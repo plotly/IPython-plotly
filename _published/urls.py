@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("graph_mysql/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='graph_mySQL'),
+        name='ipython-notebook-graph_mySQL'),
     url("pytables/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
