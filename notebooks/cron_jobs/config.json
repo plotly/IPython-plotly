@@ -1,0 +1,15 @@
+{
+    "title": "SF and Montréal weather using plotly and wunderground APIs",
+    "title_short": "Cron Jobs",
+    "meta_description": "SF and Montréal weather using plotly and wunderground APIs",
+    "cells": [0, "end"],
+    "relative_url": "",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}
