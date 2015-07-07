@@ -1,0 +1,15 @@
+{
+    "title": "Graph MySQL data in Python using MySQLdb and Plotly",
+    "title_short": "Graph MySQL data",
+    "meta_description": "Graph MySQL data in Python using MySQLdb and Plotly",
+    "cells": [0, -1],
+    "relative_url": "graph_mysql",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "", 
+            "description": ""
+        }
+    ]
+}
