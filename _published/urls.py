@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='cron_jobs'),
+        name='ipython-notebook-cron_jobs'),
     url("pytables/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
