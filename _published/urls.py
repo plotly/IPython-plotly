@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("socrata/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='socrata'),
+        name='ipython-notebook-socrata'),
     url("pytables/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',

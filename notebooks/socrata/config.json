@@ -1,0 +1,15 @@
+{
+    "title": "Plotly and Socrata",
+    "title_short": "Plotly and Socrata",
+    "meta_description": "Plotly and Socrata",
+    "cells": [0, -2],
+    "relative_url": "socrata",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}
