@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "html_reports",
         "pytables",
         "excel_python_and_plotly",
         "mne-tutorial",

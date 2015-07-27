@@ -1,0 +1,9 @@
+{
+    "meta_description": "Generate HTML reports with D3 graphs using Python, Plotly, and Pandas", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/html_reports", 
+    "title_short": "HTML reports", 
+    "last_modified": "Tuesday 07 July 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/html_reports/html_reports.ipynb", 
+    "title": "Generate HTML reports with D3 graphs using Python, Plotly, and Pandas", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/html_reports/html_reports.py"
+}

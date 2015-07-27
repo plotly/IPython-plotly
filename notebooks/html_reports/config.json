@@ -1,0 +1,15 @@
+{
+    "title": "Generate HTML reports with D3 graphs using Python, Plotly, and Pandas",
+    "title_short": "HTML reports",
+    "meta_description": "Generate HTML reports with D3 graphs using Python, Plotly, and Pandas",
+    "cells": [0, "end"],
+    "relative_url": "html_reports",
+    "thumbnail_image": "",
+    "non_pip_deps": [
+        {
+            "name": "" ,
+            "urls": "",
+            "description": ""
+        }
+    ]
+}
