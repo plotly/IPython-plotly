@@ -1,12 +1,15 @@
 Plotly IPython Notebooks
 ========================
 
-See them on [plot.ly](http://plot.ly/ipython-notebooks).
+Check them out: [plot.ly/ipython-notebooks](http://plot.ly/ipython-notebooks).
 
 ##### Want to add a notebook?
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
+See [Contributing.md](https://github.com/plotly/documentation/blob/source/Contributing.md)
 
+###### This repo has moved:
+
+To our central documentation repo: https://github.com/plotly/documentation/tree/sourc
 
 #####Questions?
 
