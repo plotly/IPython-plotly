@@ -1,5 +1,6 @@
 {
     "notebooks": [
+        "pandas_primer",
         "pytables",
         "excel_python_and_plotly",
         "mne-tutorial",

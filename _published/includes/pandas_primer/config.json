@@ -1,0 +1,9 @@
+{
+    "meta_description": "Ploting Basic Chart Types with Pandas Dataframes", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/pandas_primer", 
+    "title_short": "Plotly with Pandas", 
+    "last_modified": "Tuesday 07 July 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/pandas_primer/pandas_primer.ipynb", 
+    "title": "Plotting Basic Chart Types with Pandas Dataframes", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/pandas_primer/pandas_primer.py"
+}

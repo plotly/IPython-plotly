@@ -44,6 +44,10 @@
             "body": "api_docs/includes/ipython_notebooks/markowitz/body.html", 
             "config": "api_docs/includes/ipython_notebooks/markowitz/config.json"
         }, 
+        "pandas_primer": {
+            "body": "api_docs/includes/ipython_notebooks/pandas_primer/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/pandas_primer/config.json"
+        }, 
         "excel_python_and_plotly": {
             "body": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/body.html", 
             "config": "api_docs/includes/ipython_notebooks/excel_python_and_plotly/config.json"
@@ -94,6 +98,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Plotly with Pandas", 
+            "thumbnail_image": "", 
+            "relative_url": "pandas_primer", 
+            "title": "Plotting Basic Chart Types with Pandas Dataframes"
+        }, 
         {
             "title_short": "pytables", 
             "thumbnail_image": "", 
@@ -234,6 +244,7 @@
         }
     ], 
     "notebooks": [
+        "pandas_primer", 
         "pytables", 
         "excel_python_and_plotly", 
         "mne-tutorial", 

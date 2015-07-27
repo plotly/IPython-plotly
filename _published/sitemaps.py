@@ -6,6 +6,19 @@ from django.conf import settings
 def items():
     items = [
         dict(
+            location='/ipython-notebooks/pandas_primer',
+            lmfile=os.path.join(
+                settings.TOP_DIR,
+                'shelly',
+                'templates',
+                'api_docs',
+                'includes',
+                'ipython_notebooks',
+                'pandas_primer',
+                'body.html'),
+            priority=0.5
+        ),
+        dict(
             location='/ipython-notebooks/pytables',
             lmfile=os.path.join(
                 settings.TOP_DIR,

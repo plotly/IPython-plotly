@@ -5,6 +5,11 @@ from api_docs.views import IPythonNotebookPage
 
 urlpatterns = patterns(
     '',
+    url("pandas_primer/$",
+        IPythonNotebookPage.as_view(
+            lang='ipython-notebooks',
+            notebook='pandas_primer'),
+        name='ipython-notebook-pandas_primer'),
     url("pytables/$",
         IPythonNotebookPage.as_view(
             lang='ipython-notebooks',
