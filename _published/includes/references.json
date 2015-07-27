@@ -52,6 +52,10 @@
             "body": "api_docs/includes/ipython_notebooks/collaborate/body.html", 
             "config": "api_docs/includes/ipython_notebooks/collaborate/config.json"
         }, 
+        "cron_jobs": {
+            "body": "api_docs/includes/ipython_notebooks/cron_jobs/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/cron_jobs/config.json"
+        }, 
         "bioinformatics": {
             "body": "api_docs/includes/ipython_notebooks/bioinformatics/body.html", 
             "config": "api_docs/includes/ipython_notebooks/bioinformatics/config.json"
@@ -94,6 +98,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Cron Jobs", 
+            "thumbnail_image": "", 
+            "relative_url": "", 
+            "title": "SF and Montr\u00e9al weather using plotly and wunderground APIs"
+        }, 
         {
             "title_short": "pytables", 
             "thumbnail_image": "", 
@@ -234,6 +244,7 @@
         }
     ], 
     "notebooks": [
+        "cron_jobs", 
         "pytables", 
         "excel_python_and_plotly", 
         "mne-tutorial", 

@@ -1,0 +1,9 @@
+{
+    "meta_description": "SF and Montr\u00e9al weather using plotly and wunderground APIs", 
+    "github_url": "https://github.com/plotly/IPython-plotly/blob/master/notebooks/cron_jobs", 
+    "title_short": "Cron Jobs", 
+    "last_modified": "Tuesday 07 July 2015", 
+    "file_ipynb": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/cron_jobs/cron_jobs.ipynb", 
+    "title": "SF and Montr\u00e9al weather using plotly and wunderground APIs", 
+    "file_py": "https://raw.githubusercontent.com/plotly/IPython-plotly/master/notebooks/cron_jobs/cron_jobs.py"
+}
