@@ -24,6 +24,10 @@
             "body": "api_docs/includes/ipython_notebooks/gmail/body.html", 
             "config": "api_docs/includes/ipython_notebooks/gmail/config.json"
         }, 
+        "graph_mySQL": {
+            "body": "api_docs/includes/ipython_notebooks/graph_mySQL/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/graph_mySQL/config.json"
+        }, 
         "ukelectionbbg": {
             "body": "api_docs/includes/ipython_notebooks/ukelectionbbg/body.html", 
             "config": "api_docs/includes/ipython_notebooks/ukelectionbbg/config.json"
@@ -94,6 +98,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Graph MySQL data", 
+            "thumbnail_image": "", 
+            "relative_url": "graph_mysql", 
+            "title": "Graph MySQL data in Python using MySQLdb and Plotly"
+        }, 
         {
             "title_short": "pytables", 
             "thumbnail_image": "", 
@@ -234,6 +244,7 @@
         }
     ], 
     "notebooks": [
+        "graph_mySQL", 
         "pytables", 
         "excel_python_and_plotly", 
         "mne-tutorial", 
