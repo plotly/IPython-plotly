@@ -68,6 +68,10 @@
             "body": "api_docs/includes/ipython_notebooks/pytables/body.html", 
             "config": "api_docs/includes/ipython_notebooks/pytables/config.json"
         }, 
+        "colorlover": {
+            "body": "api_docs/includes/ipython_notebooks/colorlover/body.html", 
+            "config": "api_docs/includes/ipython_notebooks/colorlover/config.json"
+        }, 
         "baltimore": {
             "body": "api_docs/includes/ipython_notebooks/baltimore/body.html", 
             "config": "api_docs/includes/ipython_notebooks/baltimore/config.json"
@@ -94,6 +98,12 @@
         }
     }, 
     "splash": [
+        {
+            "title_short": "Color lover", 
+            "thumbnail_image": "", 
+            "relative_url": "colorlover", 
+            "title": "Color Scales for IPython Notebook"
+        }, 
         {
             "title_short": "pytables", 
             "thumbnail_image": "", 
@@ -234,6 +244,7 @@
         }
     ], 
     "notebooks": [
+        "colorlover", 
         "pytables", 
         "excel_python_and_plotly", 
         "mne-tutorial", 
